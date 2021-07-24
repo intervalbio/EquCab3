@@ -1,0 +1,347 @@
+# K746
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     K746_unknown_5_1_001.fq.gz 61ce0fee26e81dc1017e9cec653d921f
+#     K746_unknown_5_2_001.fq.gz bfe94cd5d574e51146c92759e43ca0bd
+#     K746_unknown_6_1_001.fq.gz c370b1381689ae43bc0490416e7dc7e0
+#     K746_unknown_6_2_001.fq.gz bd782c13dd753a4138224a52d9f0f444
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: trim_unknown_5
+####   inputs:
+####     K746_unknown_5_1.fastq.gz
+####     K746_unknown_5_2.fastq.gz
+####   outputs:
+####     K746_unknown_5_1_paired.fq.gz
+####     K746_unknown_5_1_unpaired.fq.gz
+####     K746_unknown_5_2_paired.fq.gz
+####     K746_unknown_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` K746_unknown_5_1.fastq.gz K746_unknown_5_2.fastq.gz K746_unknown_5_1_paired.fq.gz K746_unknown_5_1_unpaired.fq.gz K746_unknown_5_2_paired.fq.gz K746_unknown_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_unknown_5_2
+####   inputs:
+####     K746_unknown_5_2.fq.gz
+####   outputs:
+####     K746_unknown_5_2_fastqc.html
+####     K746_unknown_5_2_fastqc.zip
+
+fastqc  K746_unknown_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_6_2
+####   inputs:
+####     K746_unknown_6_2.fq.gz
+####   outputs:
+####     K746_unknown_6_2_fastqc.html
+####     K746_unknown_6_2_fastqc.zip
+
+fastqc  K746_unknown_6_2.fq.gz 
+
+
+########
+#### stage: trim_unknown_6
+####   inputs:
+####     K746_unknown_6_1.fastq.gz
+####     K746_unknown_6_2.fastq.gz
+####   outputs:
+####     K746_unknown_6_1_paired.fq.gz
+####     K746_unknown_6_1_unpaired.fq.gz
+####     K746_unknown_6_2_paired.fq.gz
+####     K746_unknown_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` K746_unknown_6_1.fastq.gz K746_unknown_6_2.fastq.gz K746_unknown_6_1_paired.fq.gz K746_unknown_6_1_unpaired.fq.gz K746_unknown_6_2_paired.fq.gz K746_unknown_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_unknown_5_1
+####   inputs:
+####     K746_unknown_5_1.fq.gz
+####   outputs:
+####     K746_unknown_5_1_fastqc.html
+####     K746_unknown_5_1_fastqc.zip
+
+fastqc  K746_unknown_5_1.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_6_1
+####   inputs:
+####     K746_unknown_6_1.fq.gz
+####   outputs:
+####     K746_unknown_6_1_fastqc.html
+####     K746_unknown_6_1_fastqc.zip
+
+fastqc  K746_unknown_6_1.fq.gz 
+
+
+########
+#### stage: bwa_unknown_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     K746_unknown_5_1.fq.gz (from trim_unknown_5)
+####     K746_unknown_5_2.fq.gz (from trim_unknown_5)
+####   outputs:
+####     K746_unknown_5.sorted.bai
+####     K746_unknown_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.5\tLB:unknown.5\tPL:ILLUMINA\tPU:unknown.5.UNKNOWN\tSM:K746' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta K746_unknown_5_1.fq.gz K746_unknown_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o K746_unknown_5.sorted.bam -; samtools index K746_unknown_5.sorted.bam K746_unknown_5.sorted.bai
+
+
+########
+#### stage: bwa_unknown_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     K746_unknown_6_1.fq.gz (from trim_unknown_6)
+####     K746_unknown_6_2.fq.gz (from trim_unknown_6)
+####   outputs:
+####     K746_unknown_6.sorted.bai
+####     K746_unknown_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.6\tLB:unknown.6\tPL:ILLUMINA\tPU:unknown.6.UNKNOWN\tSM:K746' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta K746_unknown_6_1.fq.gz K746_unknown_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o K746_unknown_6.sorted.bam -; samtools index K746_unknown_6.sorted.bam K746_unknown_6.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     K746_unknown_5.bam (from bwa_unknown_5)
+####     K746_unknown_6.bam (from bwa_unknown_6)
+####   outputs:
+####     K746.merged.bai
+####     K746.merged.bam
+
+samtools merge -@ `nproc` K746.merged.bam K746_unknown_5.bam K746_unknown_6.bam ; samtools index K746.merged.bam K746.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     K746.bam (from merge_bam)
+####   outputs:
+####     K746.markduplicates.bam
+####     K746.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=K746.bam O=K746.markduplicates.bam M=K746.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     K746.bam (from mark_duplicates)
+####   outputs:
+####     K746.bai
+
+samtools index -@ `nproc` K746.bam K746.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     K746.bai (from index_mark_duplicates)
+####     K746.bam (from mark_duplicates)
+####   outputs:
+####     K746.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I K746.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O K746.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     K746.bai (from index_mark_duplicates)
+####     K746.bam (from mark_duplicates)
+####     K746.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     K746.recalibrated.bai
+####     K746.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I K746.bam --bqsr-recal-file K746.recalibration.table -O K746.recalibrated.bam
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.gatk_haplotypecaller.vcf.gz
+####     K746.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I K746.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O K746.gatk_haplotypecaller.vcf.gz ; tabix -p vcf K746.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.samtoolsmpileup.vcf.gz
+####     K746.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta K746.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o K746.samtoolsmpileup.vcf.gz ; tabix K746.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I K746.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O K746.recalibration.table
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.platypuscallvariants.vcf.gz
+####     K746.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=K746.bam --output=K746.platypuscallvariants.vcf ; bgzip K746.platypuscallvariants.vcf ; tabix -p vcf K746.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.unmapped.fq.gz
+
+samtools view  -u -b -f 4 K746.bam | samtools fastq - | gzip -c - > K746.unmapped.fq.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.coverage.tsv
+
+samtools depth K746.bam | depth-of-coverage.py > K746.coverage.tsv
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     K746.bai (from apply_bsqr)
+####     K746.bam (from apply_bsqr)
+####   outputs:
+####     K746.metrics.alignment_summary_metrics
+####     K746.metrics.base_distribution_by_cycle.pdf
+####     K746.metrics.base_distribution_by_cycle_metrics
+####     K746.metrics.insert_size_histogram.pdf
+####     K746.metrics.insert_size_metrics
+####     K746.metrics.quality_by_cycle.pdf
+####     K746.metrics.quality_by_cycle_metrics
+####     K746.metrics.quality_distribution.pdf
+####     K746.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=K746.bam O=K746.metrics
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     K746.BQSR.csv
+####     K746.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv K746.BQSR.csv -plots K746.BQSR.pdf
+
+
+
+#   outputs:
+#     K746.bcftools.vcf.gz (from bcftools_mpileup)
+#     K746.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     K746.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     K746.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     K746.platypus.vcf.gz (from platypus_callvariants)
+#     K746.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     K746.recalibrated.bai (from apply_bsqr)
+#     K746.recalibrated.bam (from apply_bsqr)
+#     fastqc/K746_unknown_5_1_fastqc.html (from fastqc_unknown_5_1)
+#     fastqc/K746_unknown_5_1_fastqc.zip (from fastqc_unknown_5_1)
+#     fastqc/K746_unknown_5_2_fastqc.html (from fastqc_unknown_5_2)
+#     fastqc/K746_unknown_5_2_fastqc.zip (from fastqc_unknown_5_2)
+#     fastqc/K746_unknown_6_1_fastqc.html (from fastqc_unknown_6_1)
+#     fastqc/K746_unknown_6_1_fastqc.zip (from fastqc_unknown_6_1)
+#     fastqc/K746_unknown_6_2_fastqc.html (from fastqc_unknown_6_2)
+#     fastqc/K746_unknown_6_2_fastqc.zip (from fastqc_unknown_6_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/K746.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/K746.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/unknown_5_1_unpaired.fq.gz (from trim_unknown_5)
+#     unpaired/unknown_5_2_unpaired.fq.gz (from trim_unknown_5)
+#     unpaired/unknown_6_1_unpaired.fq.gz (from trim_unknown_6)
+#     unpaired/unknown_6_2_unpaired.fq.gz (from trim_unknown_6)

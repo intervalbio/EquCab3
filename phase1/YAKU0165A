@@ -1,0 +1,1899 @@
+# YAKU0165A
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+#     YAKU0165A_C26DWACXX_7_1_001.fq.gz e75eac186fbfce360e7b208500c3a423
+#     YAKU0165A_C26DWACXX_7_1_002.fq.gz 4428b558dbc7cbbd9ad61df423bb0b60
+#     YAKU0165A_C26DWACXX_7_2_001.fq.gz a8d4b32f7ac41245ee5f46d339d02f5b
+#     YAKU0165A_C26DWACXX_7_2_002.fq.gz cd3e4e2ff11af0a472e3c385e68ce437
+#     YAKU0165A_C26DWACXX_8_1_001.fq.gz e450a032ecad233a4a398874b24f0e8e
+#     YAKU0165A_C26DWACXX_8_1_002.fq.gz 242893569519b13d811010efc9fcc329
+#     YAKU0165A_C26DWACXX_8_1_003.fq.gz bfc6af85b87f6c8904baac87cc800025
+#     YAKU0165A_C26DWACXX_8_1_004.fq.gz 546efadb7cfb75ba229c609d6cdca147
+#     YAKU0165A_C26DWACXX_8_2_001.fq.gz 7207bd6f1dab356557d0a9192837211f
+#     YAKU0165A_C26DWACXX_8_2_002.fq.gz 766c0c3076528562559f8c286817ecae
+#     YAKU0165A_C26DWACXX_8_2_003.fq.gz 78a3e702972b6c16aba94bb889fd855b
+#     YAKU0165A_C26DWACXX_8_2_004.fq.gz c5c6310c84089ee7a1e6908cc5044304
+#     YAKU0165A_C274JACXX_8_1_001.fq.gz bdfbb310d80d3d01661c06ca57ad80e3
+#     YAKU0165A_C274JACXX_8_1_002.fq.gz 4662272335b8d69002709cbf05e951ed
+#     YAKU0165A_C274JACXX_8_2_001.fq.gz c56815a4725d5e950c38e9000446e6d4
+#     YAKU0165A_C274JACXX_8_2_002.fq.gz e836ddbb3beb9a8fd053175d9af30ba2
+#     YAKU0165A_C293UACXX_8_1_001.fq.gz 2e5b7038cb31ad609c6ac701d1238c03
+#     YAKU0165A_C293UACXX_8_1_002.fq.gz 501f1587b54a4c3c50578ca71d42332e
+#     YAKU0165A_C293UACXX_8_1_003.fq.gz a37b71983b84e2bd12b70a92841b1d5b
+#     YAKU0165A_C293UACXX_8_1_004.fq.gz 836f06d995a5ccc52de4e279c059fe7c
+#     YAKU0165A_C293UACXX_8_2_001.fq.gz 3c9257f76e8724b994e7f8c20a8e9fcc
+#     YAKU0165A_C293UACXX_8_2_002.fq.gz 915160ff4d9f0370f5fdb828fc94f27e
+#     YAKU0165A_C293UACXX_8_2_003.fq.gz d53b0a9493969f1c770c6234a8b9b3c5
+#     YAKU0165A_C293UACXX_8_2_004.fq.gz 0ea5d57e92d3ffd1051e71b73719a699
+#     YAKU0165A_C2BBCACXX_5_1_001.fq.gz 23fb4dd1ab26fd56c91492e50f7a1069
+#     YAKU0165A_C2BBCACXX_5_1_002.fq.gz e5ca28eb1ed362801aa93a091c3ee187
+#     YAKU0165A_C2BBCACXX_5_1_003.fq.gz 8e0a2a613692682fc336bc3bbdf49873
+#     YAKU0165A_C2BBCACXX_5_1_004.fq.gz 2c86fc8b4d68e0cc24c7c5ac5ff5a1d0
+#     YAKU0165A_C2BBCACXX_5_1_005.fq.gz 32011316a9995dd8438ea67561446098
+#     YAKU0165A_C2BBCACXX_5_2_001.fq.gz 1190a9d8db2af0efe2e07c059c856d66
+#     YAKU0165A_C2BBCACXX_5_2_002.fq.gz 5e9ca3dcb0d9583351569effef4f3602
+#     YAKU0165A_C2BBCACXX_5_2_003.fq.gz 6acd7e439916a0a53516c05bd8b660b2
+#     YAKU0165A_C2BBCACXX_5_2_004.fq.gz 1397a5a5941a867d523ac3cf85aaa5b9
+#     YAKU0165A_C2BBCACXX_5_2_005.fq.gz 2d37a71009074a5dd919b07a711c0f13
+#     YAKU0165A_C2F3GACXX_1_1_001.fq.gz 41657e88ead29592fe3f21b2f7ddb71c
+#     YAKU0165A_C2F3GACXX_1_1_002.fq.gz db9960fc859c24b5f63ca05bf6d70ebe
+#     YAKU0165A_C2F3GACXX_1_1_003.fq.gz 92ad468d9e8796e6610bb4fe257ce2bf
+#     YAKU0165A_C2F3GACXX_1_1_004.fq.gz 9fb676d37bb15c497418ae1340bb885e
+#     YAKU0165A_C2F3GACXX_1_1_005.fq.gz 3d3b96dcbbf7ca6db74ee5d70d958998
+#     YAKU0165A_C2F3GACXX_1_1_006.fq.gz 49f1b6367865af389d310f5e12facb61
+#     YAKU0165A_C2F3GACXX_1_2_001.fq.gz 33cf6567f3a3a0b7cca1835d8d622c57
+#     YAKU0165A_C2F3GACXX_1_2_002.fq.gz 7ca7e4d9256fa146b2a07706c10d8ea0
+#     YAKU0165A_C2F3GACXX_1_2_003.fq.gz 1aecc7f6e012227c035aabbabb00bec3
+#     YAKU0165A_C2F3GACXX_1_2_004.fq.gz dbcf38836a681ff53e5211586c87b85e
+#     YAKU0165A_C2F3GACXX_1_2_005.fq.gz f7d9077ab2c07a618c234fd24809e4c6
+#     YAKU0165A_C2F3GACXX_1_2_006.fq.gz 2502e3eb75adc8ae7c6a56bd1788634a
+#     YAKU0165A_C2F3GACXX_2_1_001.fq.gz 1f1db79fcfc855121dac77895de33bf2
+#     YAKU0165A_C2F3GACXX_2_1_002.fq.gz d6ab1f26e77fbad3568af9f3c202f266
+#     YAKU0165A_C2F3GACXX_2_1_003.fq.gz 7af36d7de0a2d2cc84ad0be2a176c893
+#     YAKU0165A_C2F3GACXX_2_1_004.fq.gz bd6da5786c72fd3266806dd8c281fb7e
+#     YAKU0165A_C2F3GACXX_2_1_005.fq.gz f922f75bf12f4848efadb7d615459022
+#     YAKU0165A_C2F3GACXX_2_2_001.fq.gz e71066480bf79fa1e2b9ed497d24025f
+#     YAKU0165A_C2F3GACXX_2_2_002.fq.gz 6bf68d6dbc711976fbd4add7ee4d8292
+#     YAKU0165A_C2F3GACXX_2_2_003.fq.gz 14e68a17d24d12e3b38e8aada7a58515
+#     YAKU0165A_C2F3GACXX_2_2_004.fq.gz 4fe93baf4952c6d66b0819341e0aa47a
+#     YAKU0165A_C2F3GACXX_2_2_005.fq.gz 0dd46df7fa4b43f30e7d1ec01969be0f
+#     YAKU0165A_C2F3GACXX_3_1_001.fq.gz e55c148955fce27ec4be68669afb172c
+#     YAKU0165A_C2F3GACXX_3_1_002.fq.gz 86c5d625509134f211f8a96154c636a1
+#     YAKU0165A_C2F3GACXX_3_1_003.fq.gz 5559fec58990cd459de4ab036c5aa6d1
+#     YAKU0165A_C2F3GACXX_3_1_004.fq.gz 91fb53e3408738093acc9aa147c0eb35
+#     YAKU0165A_C2F3GACXX_3_1_005.fq.gz c91752c9ed5871d4cc741f5a388431ca
+#     YAKU0165A_C2F3GACXX_3_1_006.fq.gz 8cfc72b5f915803863f75733fa1cf8df
+#     YAKU0165A_C2F3GACXX_3_2_001.fq.gz d8558c9f21276d05a09722a851951f3b
+#     YAKU0165A_C2F3GACXX_3_2_002.fq.gz cca6091f473458cabc8154662eea948c
+#     YAKU0165A_C2F3GACXX_3_2_003.fq.gz bb80eadf38816705fc263ee97460f6fc
+#     YAKU0165A_C2F3GACXX_3_2_004.fq.gz a588b008af92948722b8c7923267103f
+#     YAKU0165A_C2F3GACXX_3_2_005.fq.gz b3f36860939a11b1429356d47dba6e15
+#     YAKU0165A_C2F3GACXX_3_2_006.fq.gz 2dc59a3e560e07bf8685aca6535a6ee5
+#     YAKU0165A_C2F3GACXX_4_1_001.fq.gz d8a8d37f93bf02d27243360d1e4e132a
+#     YAKU0165A_C2F3GACXX_4_1_002.fq.gz 214ea17b3613e187028968cdefc75b53
+#     YAKU0165A_C2F3GACXX_4_1_003.fq.gz aa6ebd0f8e0487e298c88aed1cc4a12f
+#     YAKU0165A_C2F3GACXX_4_1_004.fq.gz 504f05fa674935f730baf6d8c96f3b24
+#     YAKU0165A_C2F3GACXX_4_1_005.fq.gz 766550ea58e2006b46964342f5a55efc
+#     YAKU0165A_C2F3GACXX_4_1_006.fq.gz 2aeb750335c483e81bc086b7aa1d65a3
+#     YAKU0165A_C2F3GACXX_4_2_001.fq.gz 484c7699829b1332416d75ad11184bfa
+#     YAKU0165A_C2F3GACXX_4_2_002.fq.gz b31d92162fa0005c63c97decb044ea0e
+#     YAKU0165A_C2F3GACXX_4_2_003.fq.gz 56f93c12ad50e710eed1346fc1c8959e
+#     YAKU0165A_C2F3GACXX_4_2_004.fq.gz 19c800866bc2a973e18a7fc014fe2377
+#     YAKU0165A_C2F3GACXX_4_2_005.fq.gz bd5c8cfcf5381544f6dd7d81e6c3fdfd
+#     YAKU0165A_C2F3GACXX_4_2_006.fq.gz 165e2f9ad33c202ae572bf1907167d61
+#     YAKU0165A_C2F3GACXX_5_1_001.fq.gz 09c40bc9d5e895e27cf581dfacdeefda
+#     YAKU0165A_C2F3GACXX_5_1_002.fq.gz 6c4ccfbbb1fff0a40917024891ebd4a0
+#     YAKU0165A_C2F3GACXX_5_1_003.fq.gz 07af9c36e3cfcf78b53ea3b9cebb26f8
+#     YAKU0165A_C2F3GACXX_5_1_004.fq.gz e14207c71faf3c94d7475f43d1687a26
+#     YAKU0165A_C2F3GACXX_5_1_005.fq.gz 132252c5548a673b3980e439772cbf96
+#     YAKU0165A_C2F3GACXX_5_2_001.fq.gz 417c519b22deb5703c89345e0c4bd682
+#     YAKU0165A_C2F3GACXX_5_2_002.fq.gz d3a97fbf976970653de38ab2074bc3fc
+#     YAKU0165A_C2F3GACXX_5_2_003.fq.gz eb717b49b24146725629e5623b3d4aaf
+#     YAKU0165A_C2F3GACXX_5_2_004.fq.gz e2ddbd6bede5b808357a33427cb61cbb
+#     YAKU0165A_C2F3GACXX_5_2_005.fq.gz dcb3ba138936ccf1c78dffe51e335937
+#     YAKU0165A_C2F3GACXX_6_1_001.fq.gz 87ba5dfe8154dc9d7c9c7565a1cebfe2
+#     YAKU0165A_C2F3GACXX_6_1_002.fq.gz aee024e1fabc1ef09040fe6605cdcde6
+#     YAKU0165A_C2F3GACXX_6_1_003.fq.gz 525b1602ab62f7294850f1e383cdcb7b
+#     YAKU0165A_C2F3GACXX_6_1_004.fq.gz 846228f6b9b0b92194dd195634419790
+#     YAKU0165A_C2F3GACXX_6_2_001.fq.gz b663148512e1deaa93945d349d03bd20
+#     YAKU0165A_C2F3GACXX_6_2_002.fq.gz 7cb116bb196aa07b75f910de787c7e4a
+#     YAKU0165A_C2F3GACXX_6_2_003.fq.gz 67f266bc3b436c50e17903a3a1db57fa
+#     YAKU0165A_C2F3GACXX_6_2_004.fq.gz 8779afc887100512801bb771b8baed9b
+#     YAKU0165A_C2F3GACXX_7_1_001.fq.gz 76d0f832d18b7256dc78c82ed9b03e66
+#     YAKU0165A_C2F3GACXX_7_1_002.fq.gz d94e64ae2ca34dc921a9306e4399cc12
+#     YAKU0165A_C2F3GACXX_7_1_003.fq.gz baffb058e8b2e5b2e7c27657bcf4b7dd
+#     YAKU0165A_C2F3GACXX_7_1_004.fq.gz 19c9830b6031350960baaadff0b9ab0c
+#     YAKU0165A_C2F3GACXX_7_2_001.fq.gz 7f649982846cd738a5c8c574f971c176
+#     YAKU0165A_C2F3GACXX_7_2_002.fq.gz 79d4efd68e59425b69e86ecd2264b785
+#     YAKU0165A_C2F3GACXX_7_2_003.fq.gz 08482ca177053f950bdc1e35c8378aa4
+#     YAKU0165A_C2F3GACXX_7_2_004.fq.gz c9f5850ee7455ee52def7740fc854157
+#     YAKU0165A_C2F3GACXX_8_1_001.fq.gz 03053222a3dfb698838d1ef91bb2dfee
+#     YAKU0165A_C2F3GACXX_8_1_002.fq.gz 1865f50e10764d03618814cf56e8ff2e
+#     YAKU0165A_C2F3GACXX_8_1_003.fq.gz 3da4dc4f73d36a0b260ad1c8411453e7
+#     YAKU0165A_C2F3GACXX_8_1_004.fq.gz d6384b8668e422c1925976b1f6b5fa08
+#     YAKU0165A_C2F3GACXX_8_1_005.fq.gz eeb939b23f94f153d508062773b91721
+#     YAKU0165A_C2F3GACXX_8_2_001.fq.gz b0b140c01e57a212984d3ddb93ff4aaa
+#     YAKU0165A_C2F3GACXX_8_2_002.fq.gz 9063ab9c9aff31451485fe147e4f0c1c
+#     YAKU0165A_C2F3GACXX_8_2_003.fq.gz ce93098d3bf0b3806643305349cff29c
+#     YAKU0165A_C2F3GACXX_8_2_004.fq.gz fccd742a584a4a89ffe55e9c631da89a
+#     YAKU0165A_C2F3GACXX_8_2_005.fq.gz ba6c3d449ac22f3f7f47886618587511
+#     YAKU0165A_C2F4CACXX_3_1_001.fq.gz 312493cc96f2b709566bb619de94f9ee
+#     YAKU0165A_C2F4CACXX_3_1_002.fq.gz 69fbb752b6c93fd412efe58fe623887f
+#     YAKU0165A_C2F4CACXX_3_1_003.fq.gz bb9084723bc73d0e77544611c09715d1
+#     YAKU0165A_C2F4CACXX_3_1_004.fq.gz 04477fe671184731a6f1fae99ccbf09f
+#     YAKU0165A_C2F4CACXX_3_1_005.fq.gz b853dcadbdc462219df488ac825d7361
+#     YAKU0165A_C2F4CACXX_3_2_001.fq.gz 476212154b5b068427f30aa8c40a6b4e
+#     YAKU0165A_C2F4CACXX_3_2_002.fq.gz 23047f5ee7d0e348f0474c7a374dc362
+#     YAKU0165A_C2F4CACXX_3_2_003.fq.gz c5a8d9c489e84bcb6cc331372cd6b798
+#     YAKU0165A_C2F4CACXX_3_2_004.fq.gz e66d61d6f6513fbe13ddbb84e84e2b8a
+#     YAKU0165A_C2F4CACXX_3_2_005.fq.gz 74b306d5fef6b87df9768bcacf70c998
+#     YAKU0165A_C2F4CACXX_4_1_001.fq.gz a979631ccc60f5adbc40f6a5c884f1ac
+#     YAKU0165A_C2F4CACXX_4_1_002.fq.gz 9b2fd99521b143c7cdf213c996a313f8
+#     YAKU0165A_C2F4CACXX_4_1_003.fq.gz 94b33d550fb5900e01cb187c6ee6777b
+#     YAKU0165A_C2F4CACXX_4_1_004.fq.gz 4333bbb829427f8899ec06a75feb4654
+#     YAKU0165A_C2F4CACXX_4_1_005.fq.gz 87b07a95cbfe09835817abc3a18bce62
+#     YAKU0165A_C2F4CACXX_4_2_001.fq.gz 64676f389fe8b24a1f6abb4f4da5853a
+#     YAKU0165A_C2F4CACXX_4_2_002.fq.gz 005875bef523f51ecedae45961f41485
+#     YAKU0165A_C2F4CACXX_4_2_003.fq.gz dd8221c7249182b68087bc51e5794595
+#     YAKU0165A_C2F4CACXX_4_2_004.fq.gz 5f261b19e79c178b7eff7a92ee7b53c7
+#     YAKU0165A_C2F4CACXX_4_2_005.fq.gz 25e0d18653fb365f3418e02e5eb08265
+#     YAKU0165A_C2F4CACXX_5_1_001.fq.gz 84d8e45e08bcd990e218ccf72bfc0a77
+#     YAKU0165A_C2F4CACXX_5_1_002.fq.gz fdb1fddbe674c474c6a132471831e2b4
+#     YAKU0165A_C2F4CACXX_5_1_003.fq.gz 93a3403c624d60c555a5e6db9bd5b68d
+#     YAKU0165A_C2F4CACXX_5_1_004.fq.gz 267fdba19bef3f5f8a33ce2e308c5d6f
+#     YAKU0165A_C2F4CACXX_5_1_005.fq.gz 21888a577088b2c7f051eba18a7d416c
+#     YAKU0165A_C2F4CACXX_5_2_001.fq.gz ae93a1a69908373786b51e5dcc44d0c2
+#     YAKU0165A_C2F4CACXX_5_2_002.fq.gz 92ba93f9b51570715fe71f6a166ba135
+#     YAKU0165A_C2F4CACXX_5_2_003.fq.gz b0a200626ca80582a84e78c2495e6de9
+#     YAKU0165A_C2F4CACXX_5_2_004.fq.gz 36df2148d6e16f6c5ea7c7df3040f59c
+#     YAKU0165A_C2F4CACXX_5_2_005.fq.gz 152ba20a649361e81bf64ba0e0e6d3c4
+#     YAKU0165A_D2CMCACXX_8_1_001.fq.gz 7cfa7109b9dafb32370c66f22c1b22a2
+#     YAKU0165A_D2CMCACXX_8_1_002.fq.gz af9be633103deb765412b4fadc80adde
+#     YAKU0165A_D2CMCACXX_8_1_003.fq.gz 313a62f8055e48e29f8dc3839a46b90f
+#     YAKU0165A_D2CMCACXX_8_1_004.fq.gz a0dbc982cd6c36070ce1a9bbfe5a4e97
+#     YAKU0165A_D2CMCACXX_8_1_005.fq.gz df5c319969cc151aa57cd98907abd2d2
+#     YAKU0165A_D2CMCACXX_8_1_006.fq.gz df98477164187008d294eb080d6b184c
+#     YAKU0165A_D2CMCACXX_8_1_007.fq.gz 52727460d0141996dda993f92646b5d3
+#     YAKU0165A_D2CMCACXX_8_2_001.fq.gz 133b9d620cb8cf6ffd7d1095e4080081
+#     YAKU0165A_D2CMCACXX_8_2_002.fq.gz e8b0ac9c5b976fe261dc2f1cba4a81af
+#     YAKU0165A_D2CMCACXX_8_2_003.fq.gz 71319942aaaf9435941638c04db3f16f
+#     YAKU0165A_D2CMCACXX_8_2_004.fq.gz c7c94779342cbf5b46184e8869c9c4e9
+#     YAKU0165A_D2CMCACXX_8_2_005.fq.gz ce34147a5b514321cf32a7e0f616b430
+#     YAKU0165A_D2CMCACXX_8_2_006.fq.gz 63b7a8a8672427f4ed19aa85c6e8490b
+#     YAKU0165A_D2CMCACXX_8_2_007.fq.gz 81e570829c8a708b73005ab8a523d487
+
+
+########
+#### stage: concat-readset_C2F4CACXX_5_1
+####   inputs:
+####     YAKU0165A_C2F4CACXX_5_1_001.fq.gz
+####     YAKU0165A_C2F4CACXX_5_1_002.fq.gz
+####     YAKU0165A_C2F4CACXX_5_1_003.fq.gz
+####     YAKU0165A_C2F4CACXX_5_1_004.fq.gz
+####     YAKU0165A_C2F4CACXX_5_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F4CACXX_5_1_001.fq.gz YAKU0165A_C2F4CACXX_5_1_002.fq.gz YAKU0165A_C2F4CACXX_5_1_003.fq.gz YAKU0165A_C2F4CACXX_5_1_004.fq.gz YAKU0165A_C2F4CACXX_5_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_D2CMCACXX_8_2
+####   inputs:
+####     YAKU0165A_D2CMCACXX_8_2_001.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_002.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_003.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_004.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_005.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_006.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_007.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_D2CMCACXX_8_2_001.fq.gz YAKU0165A_D2CMCACXX_8_2_002.fq.gz YAKU0165A_D2CMCACXX_8_2_003.fq.gz YAKU0165A_D2CMCACXX_8_2_004.fq.gz YAKU0165A_D2CMCACXX_8_2_005.fq.gz YAKU0165A_D2CMCACXX_8_2_006.fq.gz YAKU0165A_D2CMCACXX_8_2_007.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F3GACXX_2_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_2_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_2_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_2_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_2_1_004.fq.gz
+####     YAKU0165A_C2F3GACXX_2_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_2_1_001.fq.gz YAKU0165A_C2F3GACXX_2_1_002.fq.gz YAKU0165A_C2F3GACXX_2_1_003.fq.gz YAKU0165A_C2F3GACXX_2_1_004.fq.gz YAKU0165A_C2F3GACXX_2_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F3GACXX_2_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_2_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_2_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_2_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_2_2_004.fq.gz
+####     YAKU0165A_C2F3GACXX_2_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_2_2_001.fq.gz YAKU0165A_C2F3GACXX_2_2_002.fq.gz YAKU0165A_C2F3GACXX_2_2_003.fq.gz YAKU0165A_C2F3GACXX_2_2_004.fq.gz YAKU0165A_C2F3GACXX_2_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C274JACXX_8_2
+####   inputs:
+####     YAKU0165A_C274JACXX_8_2_001.fq.gz
+####     YAKU0165A_C274JACXX_8_2_002.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C274JACXX_8_2_001.fq.gz YAKU0165A_C274JACXX_8_2_002.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2BBCACXX_5_2
+####   inputs:
+####     YAKU0165A_C2BBCACXX_5_2_001.fq.gz
+####     YAKU0165A_C2BBCACXX_5_2_002.fq.gz
+####     YAKU0165A_C2BBCACXX_5_2_003.fq.gz
+####     YAKU0165A_C2BBCACXX_5_2_004.fq.gz
+####     YAKU0165A_C2BBCACXX_5_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2BBCACXX_5_2_001.fq.gz YAKU0165A_C2BBCACXX_5_2_002.fq.gz YAKU0165A_C2BBCACXX_5_2_003.fq.gz YAKU0165A_C2BBCACXX_5_2_004.fq.gz YAKU0165A_C2BBCACXX_5_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F3GACXX_8_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_8_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_8_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_8_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_8_2_004.fq.gz
+####     YAKU0165A_C2F3GACXX_8_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_8_2_001.fq.gz YAKU0165A_C2F3GACXX_8_2_002.fq.gz YAKU0165A_C2F3GACXX_8_2_003.fq.gz YAKU0165A_C2F3GACXX_8_2_004.fq.gz YAKU0165A_C2F3GACXX_8_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F3GACXX_5_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_5_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_5_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_5_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_5_1_004.fq.gz
+####     YAKU0165A_C2F3GACXX_5_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_5_1_001.fq.gz YAKU0165A_C2F3GACXX_5_1_002.fq.gz YAKU0165A_C2F3GACXX_5_1_003.fq.gz YAKU0165A_C2F3GACXX_5_1_004.fq.gz YAKU0165A_C2F3GACXX_5_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2BBCACXX_5_2
+####   inputs:
+####     YAKU0165A_C2BBCACXX_5_2.fq.gz (from concat-readset_C2BBCACXX_5_2)
+####   outputs:
+####     YAKU0165A_C2BBCACXX_5_2_fastqc.html
+####     YAKU0165A_C2BBCACXX_5_2_fastqc.zip
+
+fastqc  YAKU0165A_C2BBCACXX_5_2.fq.gz 
+
+
+########
+#### stage: concat-readset_C26DWACXX_7_1
+####   inputs:
+####     YAKU0165A_C26DWACXX_7_1_001.fq.gz
+####     YAKU0165A_C26DWACXX_7_1_002.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C26DWACXX_7_1_001.fq.gz YAKU0165A_C26DWACXX_7_1_002.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2BBCACXX_5_1
+####   inputs:
+####     YAKU0165A_C2BBCACXX_5_1_001.fq.gz
+####     YAKU0165A_C2BBCACXX_5_1_002.fq.gz
+####     YAKU0165A_C2BBCACXX_5_1_003.fq.gz
+####     YAKU0165A_C2BBCACXX_5_1_004.fq.gz
+####     YAKU0165A_C2BBCACXX_5_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2BBCACXX_5_1_001.fq.gz YAKU0165A_C2BBCACXX_5_1_002.fq.gz YAKU0165A_C2BBCACXX_5_1_003.fq.gz YAKU0165A_C2BBCACXX_5_1_004.fq.gz YAKU0165A_C2BBCACXX_5_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F4CACXX_5_2
+####   inputs:
+####     YAKU0165A_C2F4CACXX_5_2_001.fq.gz
+####     YAKU0165A_C2F4CACXX_5_2_002.fq.gz
+####     YAKU0165A_C2F4CACXX_5_2_003.fq.gz
+####     YAKU0165A_C2F4CACXX_5_2_004.fq.gz
+####     YAKU0165A_C2F4CACXX_5_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F4CACXX_5_2_001.fq.gz YAKU0165A_C2F4CACXX_5_2_002.fq.gz YAKU0165A_C2F4CACXX_5_2_003.fq.gz YAKU0165A_C2F4CACXX_5_2_004.fq.gz YAKU0165A_C2F4CACXX_5_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F4CACXX_4_1
+####   inputs:
+####     YAKU0165A_C2F4CACXX_4_1_001.fq.gz
+####     YAKU0165A_C2F4CACXX_4_1_002.fq.gz
+####     YAKU0165A_C2F4CACXX_4_1_003.fq.gz
+####     YAKU0165A_C2F4CACXX_4_1_004.fq.gz
+####     YAKU0165A_C2F4CACXX_4_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F4CACXX_4_1_001.fq.gz YAKU0165A_C2F4CACXX_4_1_002.fq.gz YAKU0165A_C2F4CACXX_4_1_003.fq.gz YAKU0165A_C2F4CACXX_4_1_004.fq.gz YAKU0165A_C2F4CACXX_4_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C274JACXX_8_2
+####   inputs:
+####     YAKU0165A_C274JACXX_8_2.fq.gz (from concat-readset_C274JACXX_8_2)
+####   outputs:
+####     YAKU0165A_C274JACXX_8_2_fastqc.html
+####     YAKU0165A_C274JACXX_8_2_fastqc.zip
+
+fastqc  YAKU0165A_C274JACXX_8_2.fq.gz 
+
+
+########
+#### stage: trim_C2F3GACXX_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_2_1.fastq.gz (from concat-readset_C2F3GACXX_2_1)
+####     YAKU0165A_C2F3GACXX_2_2.fastq.gz (from concat-readset_C2F3GACXX_2_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_2_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_2_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_2_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_2_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_2_1.fastq.gz YAKU0165A_C2F3GACXX_2_2.fastq.gz YAKU0165A_C2F3GACXX_2_1_paired.fq.gz YAKU0165A_C2F3GACXX_2_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_2_2_paired.fq.gz YAKU0165A_C2F3GACXX_2_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_C2F4CACXX_5_1
+####   inputs:
+####     YAKU0165A_C2F4CACXX_5_1.fq.gz (from concat-readset_C2F4CACXX_5_1)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_5_1_fastqc.html
+####     YAKU0165A_C2F4CACXX_5_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F4CACXX_5_1.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_1_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_1_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_1_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_1_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_1_1_004.fq.gz
+####     YAKU0165A_C2F3GACXX_1_1_005.fq.gz
+####     YAKU0165A_C2F3GACXX_1_1_006.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_1_1_001.fq.gz YAKU0165A_C2F3GACXX_1_1_002.fq.gz YAKU0165A_C2F3GACXX_1_1_003.fq.gz YAKU0165A_C2F3GACXX_1_1_004.fq.gz YAKU0165A_C2F3GACXX_1_1_005.fq.gz YAKU0165A_C2F3GACXX_1_1_006.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F3GACXX_5_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_5_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_5_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_5_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_5_2_004.fq.gz
+####     YAKU0165A_C2F3GACXX_5_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_5_2_001.fq.gz YAKU0165A_C2F3GACXX_5_2_002.fq.gz YAKU0165A_C2F3GACXX_5_2_003.fq.gz YAKU0165A_C2F3GACXX_5_2_004.fq.gz YAKU0165A_C2F3GACXX_5_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: trim_C2F3GACXX_5
+####   inputs:
+####     YAKU0165A_C2F3GACXX_5_1.fastq.gz (from concat-readset_C2F3GACXX_5_1)
+####     YAKU0165A_C2F3GACXX_5_2.fastq.gz (from concat-readset_C2F3GACXX_5_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_5_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_5_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_5_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_5_1.fastq.gz YAKU0165A_C2F3GACXX_5_2.fastq.gz YAKU0165A_C2F3GACXX_5_1_paired.fq.gz YAKU0165A_C2F3GACXX_5_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_5_2_paired.fq.gz YAKU0165A_C2F3GACXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: concat-readset_C2F3GACXX_7_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_7_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_7_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_7_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_7_1_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_7_1_001.fq.gz YAKU0165A_C2F3GACXX_7_1_002.fq.gz YAKU0165A_C2F3GACXX_7_1_003.fq.gz YAKU0165A_C2F3GACXX_7_1_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: trim_C2F4CACXX_5
+####   inputs:
+####     YAKU0165A_C2F4CACXX_5_1.fastq.gz (from concat-readset_C2F4CACXX_5_1)
+####     YAKU0165A_C2F4CACXX_5_2.fastq.gz (from concat-readset_C2F4CACXX_5_2)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_5_1_paired.fq.gz
+####     YAKU0165A_C2F4CACXX_5_1_unpaired.fq.gz
+####     YAKU0165A_C2F4CACXX_5_2_paired.fq.gz
+####     YAKU0165A_C2F4CACXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F4CACXX_5_1.fastq.gz YAKU0165A_C2F4CACXX_5_2.fastq.gz YAKU0165A_C2F4CACXX_5_1_paired.fq.gz YAKU0165A_C2F4CACXX_5_1_unpaired.fq.gz YAKU0165A_C2F4CACXX_5_2_paired.fq.gz YAKU0165A_C2F4CACXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_C26DWACXX_7_1
+####   inputs:
+####     YAKU0165A_C26DWACXX_7_1.fq.gz (from concat-readset_C26DWACXX_7_1)
+####   outputs:
+####     YAKU0165A_C26DWACXX_7_1_fastqc.html
+####     YAKU0165A_C26DWACXX_7_1_fastqc.zip
+
+fastqc  YAKU0165A_C26DWACXX_7_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2BBCACXX_5_1
+####   inputs:
+####     YAKU0165A_C2BBCACXX_5_1.fq.gz (from concat-readset_C2BBCACXX_5_1)
+####   outputs:
+####     YAKU0165A_C2BBCACXX_5_1_fastqc.html
+####     YAKU0165A_C2BBCACXX_5_1_fastqc.zip
+
+fastqc  YAKU0165A_C2BBCACXX_5_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_2_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_2_1.fq.gz (from concat-readset_C2F3GACXX_2_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_2_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_2_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_2_1.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_8_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_8_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_8_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_8_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_8_1_004.fq.gz
+####     YAKU0165A_C2F3GACXX_8_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_8_1_001.fq.gz YAKU0165A_C2F3GACXX_8_1_002.fq.gz YAKU0165A_C2F3GACXX_8_1_003.fq.gz YAKU0165A_C2F3GACXX_8_1_004.fq.gz YAKU0165A_C2F3GACXX_8_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F4CACXX_5_2
+####   inputs:
+####     YAKU0165A_C2F4CACXX_5_2.fq.gz (from concat-readset_C2F4CACXX_5_2)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_5_2_fastqc.html
+####     YAKU0165A_C2F4CACXX_5_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F4CACXX_5_2.fq.gz 
+
+
+########
+#### stage: trim_C2BBCACXX_5
+####   inputs:
+####     YAKU0165A_C2BBCACXX_5_1.fastq.gz (from concat-readset_C2BBCACXX_5_1)
+####     YAKU0165A_C2BBCACXX_5_2.fastq.gz (from concat-readset_C2BBCACXX_5_2)
+####   outputs:
+####     YAKU0165A_C2BBCACXX_5_1_paired.fq.gz
+####     YAKU0165A_C2BBCACXX_5_1_unpaired.fq.gz
+####     YAKU0165A_C2BBCACXX_5_2_paired.fq.gz
+####     YAKU0165A_C2BBCACXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2BBCACXX_5_1.fastq.gz YAKU0165A_C2BBCACXX_5_2.fastq.gz YAKU0165A_C2BBCACXX_5_1_paired.fq.gz YAKU0165A_C2BBCACXX_5_1_unpaired.fq.gz YAKU0165A_C2BBCACXX_5_2_paired.fq.gz YAKU0165A_C2BBCACXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C2F3GACXX_8
+####   inputs:
+####     YAKU0165A_C2F3GACXX_8_1.fastq.gz (from concat-readset_C2F3GACXX_8_1)
+####     YAKU0165A_C2F3GACXX_8_2.fastq.gz (from concat-readset_C2F3GACXX_8_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_8_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_8_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_8_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_8_1.fastq.gz YAKU0165A_C2F3GACXX_8_2.fastq.gz YAKU0165A_C2F3GACXX_8_1_paired.fq.gz YAKU0165A_C2F3GACXX_8_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_8_2_paired.fq.gz YAKU0165A_C2F3GACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: concat-readset_D2CMCACXX_8_1
+####   inputs:
+####     YAKU0165A_D2CMCACXX_8_1_001.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_002.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_003.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_004.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_005.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_006.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_007.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_D2CMCACXX_8_1_001.fq.gz YAKU0165A_D2CMCACXX_8_1_002.fq.gz YAKU0165A_D2CMCACXX_8_1_003.fq.gz YAKU0165A_D2CMCACXX_8_1_004.fq.gz YAKU0165A_D2CMCACXX_8_1_005.fq.gz YAKU0165A_D2CMCACXX_8_1_006.fq.gz YAKU0165A_D2CMCACXX_8_1_007.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F3GACXX_4_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_4_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_4_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_4_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_4_1_004.fq.gz
+####     YAKU0165A_C2F3GACXX_4_1_005.fq.gz
+####     YAKU0165A_C2F3GACXX_4_1_006.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_4_1_001.fq.gz YAKU0165A_C2F3GACXX_4_1_002.fq.gz YAKU0165A_C2F3GACXX_4_1_003.fq.gz YAKU0165A_C2F3GACXX_4_1_004.fq.gz YAKU0165A_C2F3GACXX_4_1_005.fq.gz YAKU0165A_C2F3GACXX_4_1_006.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F4CACXX_4_2
+####   inputs:
+####     YAKU0165A_C2F4CACXX_4_2_001.fq.gz
+####     YAKU0165A_C2F4CACXX_4_2_002.fq.gz
+####     YAKU0165A_C2F4CACXX_4_2_003.fq.gz
+####     YAKU0165A_C2F4CACXX_4_2_004.fq.gz
+####     YAKU0165A_C2F4CACXX_4_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F4CACXX_4_2_001.fq.gz YAKU0165A_C2F4CACXX_4_2_002.fq.gz YAKU0165A_C2F4CACXX_4_2_003.fq.gz YAKU0165A_C2F4CACXX_4_2_004.fq.gz YAKU0165A_C2F4CACXX_4_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: trim_D2CMCACXX_8
+####   inputs:
+####     YAKU0165A_D2CMCACXX_8_1.fastq.gz (from concat-readset_D2CMCACXX_8_1)
+####     YAKU0165A_D2CMCACXX_8_2.fastq.gz (from concat-readset_D2CMCACXX_8_2)
+####   outputs:
+####     YAKU0165A_D2CMCACXX_8_1_paired.fq.gz
+####     YAKU0165A_D2CMCACXX_8_1_unpaired.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_paired.fq.gz
+####     YAKU0165A_D2CMCACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_D2CMCACXX_8_1.fastq.gz YAKU0165A_D2CMCACXX_8_2.fastq.gz YAKU0165A_D2CMCACXX_8_1_paired.fq.gz YAKU0165A_D2CMCACXX_8_1_unpaired.fq.gz YAKU0165A_D2CMCACXX_8_2_paired.fq.gz YAKU0165A_D2CMCACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: concat-readset_C26DWACXX_7_2
+####   inputs:
+####     YAKU0165A_C26DWACXX_7_2_001.fq.gz
+####     YAKU0165A_C26DWACXX_7_2_002.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C26DWACXX_7_2_001.fq.gz YAKU0165A_C26DWACXX_7_2_002.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F3GACXX_5_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_5_1.fq.gz (from concat-readset_C2F3GACXX_5_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_5_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_5_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_5_1.fq.gz 
+
+
+########
+#### stage: trim_C26DWACXX_7
+####   inputs:
+####     YAKU0165A_C26DWACXX_7_1.fastq.gz (from concat-readset_C26DWACXX_7_1)
+####     YAKU0165A_C26DWACXX_7_2.fastq.gz (from concat-readset_C26DWACXX_7_2)
+####   outputs:
+####     YAKU0165A_C26DWACXX_7_1_paired.fq.gz
+####     YAKU0165A_C26DWACXX_7_1_unpaired.fq.gz
+####     YAKU0165A_C26DWACXX_7_2_paired.fq.gz
+####     YAKU0165A_C26DWACXX_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C26DWACXX_7_1.fastq.gz YAKU0165A_C26DWACXX_7_2.fastq.gz YAKU0165A_C26DWACXX_7_1_paired.fq.gz YAKU0165A_C26DWACXX_7_1_unpaired.fq.gz YAKU0165A_C26DWACXX_7_2_paired.fq.gz YAKU0165A_C26DWACXX_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C2F4CACXX_4
+####   inputs:
+####     YAKU0165A_C2F4CACXX_4_1.fastq.gz (from concat-readset_C2F4CACXX_4_1)
+####     YAKU0165A_C2F4CACXX_4_2.fastq.gz (from concat-readset_C2F4CACXX_4_2)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_4_1_paired.fq.gz
+####     YAKU0165A_C2F4CACXX_4_1_unpaired.fq.gz
+####     YAKU0165A_C2F4CACXX_4_2_paired.fq.gz
+####     YAKU0165A_C2F4CACXX_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F4CACXX_4_1.fastq.gz YAKU0165A_C2F4CACXX_4_2.fastq.gz YAKU0165A_C2F4CACXX_4_1_paired.fq.gz YAKU0165A_C2F4CACXX_4_1_unpaired.fq.gz YAKU0165A_C2F4CACXX_4_2_paired.fq.gz YAKU0165A_C2F4CACXX_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: concat-readset_C2F3GACXX_4_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_4_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_004.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_005.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_006.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_4_2_001.fq.gz YAKU0165A_C2F3GACXX_4_2_002.fq.gz YAKU0165A_C2F3GACXX_4_2_003.fq.gz YAKU0165A_C2F3GACXX_4_2_004.fq.gz YAKU0165A_C2F3GACXX_4_2_005.fq.gz YAKU0165A_C2F3GACXX_4_2_006.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F4CACXX_4_1
+####   inputs:
+####     YAKU0165A_C2F4CACXX_4_1.fq.gz (from concat-readset_C2F4CACXX_4_1)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_4_1_fastqc.html
+####     YAKU0165A_C2F4CACXX_4_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F4CACXX_4_1.fq.gz 
+
+
+########
+#### stage: trim_C2F3GACXX_4
+####   inputs:
+####     YAKU0165A_C2F3GACXX_4_1.fastq.gz (from concat-readset_C2F3GACXX_4_1)
+####     YAKU0165A_C2F3GACXX_4_2.fastq.gz (from concat-readset_C2F3GACXX_4_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_4_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_4_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_4_1.fastq.gz YAKU0165A_C2F3GACXX_4_2.fastq.gz YAKU0165A_C2F3GACXX_4_1_paired.fq.gz YAKU0165A_C2F3GACXX_4_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_4_2_paired.fq.gz YAKU0165A_C2F3GACXX_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_C2F4CACXX_4_2
+####   inputs:
+####     YAKU0165A_C2F4CACXX_4_2.fq.gz (from concat-readset_C2F4CACXX_4_2)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_4_2_fastqc.html
+####     YAKU0165A_C2F4CACXX_4_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F4CACXX_4_2.fq.gz 
+
+
+########
+#### stage: concat-readset_C26DWACXX_8_2
+####   inputs:
+####     YAKU0165A_C26DWACXX_8_2_001.fq.gz
+####     YAKU0165A_C26DWACXX_8_2_002.fq.gz
+####     YAKU0165A_C26DWACXX_8_2_003.fq.gz
+####     YAKU0165A_C26DWACXX_8_2_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C26DWACXX_8_2_001.fq.gz YAKU0165A_C26DWACXX_8_2_002.fq.gz YAKU0165A_C26DWACXX_8_2_003.fq.gz YAKU0165A_C26DWACXX_8_2_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_D2CMCACXX_8_2
+####   inputs:
+####     YAKU0165A_D2CMCACXX_8_2.fq.gz (from concat-readset_D2CMCACXX_8_2)
+####   outputs:
+####     YAKU0165A_D2CMCACXX_8_2_fastqc.html
+####     YAKU0165A_D2CMCACXX_8_2_fastqc.zip
+
+fastqc  YAKU0165A_D2CMCACXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_8_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_8_1.fq.gz (from concat-readset_C2F3GACXX_8_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_8_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_8_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_8_1.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_7_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_7_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_7_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_7_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_7_2_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_7_2_001.fq.gz YAKU0165A_C2F3GACXX_7_2_002.fq.gz YAKU0165A_C2F3GACXX_7_2_003.fq.gz YAKU0165A_C2F3GACXX_7_2_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: trim_C2F3GACXX_7
+####   inputs:
+####     YAKU0165A_C2F3GACXX_7_1.fastq.gz (from concat-readset_C2F3GACXX_7_1)
+####     YAKU0165A_C2F3GACXX_7_2.fastq.gz (from concat-readset_C2F3GACXX_7_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_7_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_7_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_7_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_7_1.fastq.gz YAKU0165A_C2F3GACXX_7_2.fastq.gz YAKU0165A_C2F3GACXX_7_1_paired.fq.gz YAKU0165A_C2F3GACXX_7_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_7_2_paired.fq.gz YAKU0165A_C2F3GACXX_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: concat-readset_C2F3GACXX_6_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_6_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_6_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_6_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_6_2_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_6_2_001.fq.gz YAKU0165A_C2F3GACXX_6_2_002.fq.gz YAKU0165A_C2F3GACXX_6_2_003.fq.gz YAKU0165A_C2F3GACXX_6_2_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C293UACXX_8_1
+####   inputs:
+####     YAKU0165A_C293UACXX_8_1_001.fq.gz
+####     YAKU0165A_C293UACXX_8_1_002.fq.gz
+####     YAKU0165A_C293UACXX_8_1_003.fq.gz
+####     YAKU0165A_C293UACXX_8_1_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C293UACXX_8_1_001.fq.gz YAKU0165A_C293UACXX_8_1_002.fq.gz YAKU0165A_C293UACXX_8_1_003.fq.gz YAKU0165A_C293UACXX_8_1_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F3GACXX_1_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_1_1.fq.gz (from concat-readset_C2F3GACXX_1_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_1_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_1_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_1_1.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_3_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_3_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_004.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_005.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_006.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_3_2_001.fq.gz YAKU0165A_C2F3GACXX_3_2_002.fq.gz YAKU0165A_C2F3GACXX_3_2_003.fq.gz YAKU0165A_C2F3GACXX_3_2_004.fq.gz YAKU0165A_C2F3GACXX_3_2_005.fq.gz YAKU0165A_C2F3GACXX_3_2_006.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C293UACXX_8_1
+####   inputs:
+####     YAKU0165A_C293UACXX_8_1.fq.gz (from concat-readset_C293UACXX_8_1)
+####   outputs:
+####     YAKU0165A_C293UACXX_8_1_fastqc.html
+####     YAKU0165A_C293UACXX_8_1_fastqc.zip
+
+fastqc  YAKU0165A_C293UACXX_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_7_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_7_2.fq.gz (from concat-readset_C2F3GACXX_7_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_7_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_7_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_2_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_2_2.fq.gz (from concat-readset_C2F3GACXX_2_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_2_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_2_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_2_2.fq.gz 
+
+
+########
+#### stage: fastqc_C26DWACXX_8_2
+####   inputs:
+####     YAKU0165A_C26DWACXX_8_2.fq.gz (from concat-readset_C26DWACXX_8_2)
+####   outputs:
+####     YAKU0165A_C26DWACXX_8_2_fastqc.html
+####     YAKU0165A_C26DWACXX_8_2_fastqc.zip
+
+fastqc  YAKU0165A_C26DWACXX_8_2.fq.gz 
+
+
+########
+#### stage: concat-readset_C293UACXX_8_2
+####   inputs:
+####     YAKU0165A_C293UACXX_8_2_001.fq.gz
+####     YAKU0165A_C293UACXX_8_2_002.fq.gz
+####     YAKU0165A_C293UACXX_8_2_003.fq.gz
+####     YAKU0165A_C293UACXX_8_2_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C293UACXX_8_2_001.fq.gz YAKU0165A_C293UACXX_8_2_002.fq.gz YAKU0165A_C293UACXX_8_2_003.fq.gz YAKU0165A_C293UACXX_8_2_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F3GACXX_6_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_6_2.fq.gz (from concat-readset_C2F3GACXX_6_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_6_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_6_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_6_2.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_1_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_1_2_001.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_002.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_003.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_004.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_005.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_006.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_1_2_001.fq.gz YAKU0165A_C2F3GACXX_1_2_002.fq.gz YAKU0165A_C2F3GACXX_1_2_003.fq.gz YAKU0165A_C2F3GACXX_1_2_004.fq.gz YAKU0165A_C2F3GACXX_1_2_005.fq.gz YAKU0165A_C2F3GACXX_1_2_006.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F4CACXX_3_1
+####   inputs:
+####     YAKU0165A_C2F4CACXX_3_1_001.fq.gz
+####     YAKU0165A_C2F4CACXX_3_1_002.fq.gz
+####     YAKU0165A_C2F4CACXX_3_1_003.fq.gz
+####     YAKU0165A_C2F4CACXX_3_1_004.fq.gz
+####     YAKU0165A_C2F4CACXX_3_1_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F4CACXX_3_1_001.fq.gz YAKU0165A_C2F4CACXX_3_1_002.fq.gz YAKU0165A_C2F4CACXX_3_1_003.fq.gz YAKU0165A_C2F4CACXX_3_1_004.fq.gz YAKU0165A_C2F4CACXX_3_1_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F3GACXX_4_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_4_1.fq.gz (from concat-readset_C2F3GACXX_4_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_4_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_4_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_4_1.fq.gz 
+
+
+########
+#### stage: trim_C293UACXX_8
+####   inputs:
+####     YAKU0165A_C293UACXX_8_1.fastq.gz (from concat-readset_C293UACXX_8_1)
+####     YAKU0165A_C293UACXX_8_2.fastq.gz (from concat-readset_C293UACXX_8_2)
+####   outputs:
+####     YAKU0165A_C293UACXX_8_1_paired.fq.gz
+####     YAKU0165A_C293UACXX_8_1_unpaired.fq.gz
+####     YAKU0165A_C293UACXX_8_2_paired.fq.gz
+####     YAKU0165A_C293UACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C293UACXX_8_1.fastq.gz YAKU0165A_C293UACXX_8_2.fastq.gz YAKU0165A_C293UACXX_8_1_paired.fq.gz YAKU0165A_C293UACXX_8_1_unpaired.fq.gz YAKU0165A_C293UACXX_8_2_paired.fq.gz YAKU0165A_C293UACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: concat-readset_C26DWACXX_8_1
+####   inputs:
+####     YAKU0165A_C26DWACXX_8_1_001.fq.gz
+####     YAKU0165A_C26DWACXX_8_1_002.fq.gz
+####     YAKU0165A_C26DWACXX_8_1_003.fq.gz
+####     YAKU0165A_C26DWACXX_8_1_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C26DWACXX_8_1_001.fq.gz YAKU0165A_C26DWACXX_8_1_002.fq.gz YAKU0165A_C26DWACXX_8_1_003.fq.gz YAKU0165A_C26DWACXX_8_1_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: trim_C26DWACXX_8
+####   inputs:
+####     YAKU0165A_C26DWACXX_8_1.fastq.gz (from concat-readset_C26DWACXX_8_1)
+####     YAKU0165A_C26DWACXX_8_2.fastq.gz (from concat-readset_C26DWACXX_8_2)
+####   outputs:
+####     YAKU0165A_C26DWACXX_8_1_paired.fq.gz
+####     YAKU0165A_C26DWACXX_8_1_unpaired.fq.gz
+####     YAKU0165A_C26DWACXX_8_2_paired.fq.gz
+####     YAKU0165A_C26DWACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C26DWACXX_8_1.fastq.gz YAKU0165A_C26DWACXX_8_2.fastq.gz YAKU0165A_C26DWACXX_8_1_paired.fq.gz YAKU0165A_C26DWACXX_8_1_unpaired.fq.gz YAKU0165A_C26DWACXX_8_2_paired.fq.gz YAKU0165A_C26DWACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_C2F3GACXX_4_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_4_2.fq.gz (from concat-readset_C2F3GACXX_4_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_4_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_4_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_4_2.fq.gz 
+
+
+########
+#### stage: fastqc_C2F4CACXX_3_1
+####   inputs:
+####     YAKU0165A_C2F4CACXX_3_1.fq.gz (from concat-readset_C2F4CACXX_3_1)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_3_1_fastqc.html
+####     YAKU0165A_C2F4CACXX_3_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F4CACXX_3_1.fq.gz 
+
+
+########
+#### stage: fastqc_C293UACXX_8_2
+####   inputs:
+####     YAKU0165A_C293UACXX_8_2.fq.gz (from concat-readset_C293UACXX_8_2)
+####   outputs:
+####     YAKU0165A_C293UACXX_8_2_fastqc.html
+####     YAKU0165A_C293UACXX_8_2_fastqc.zip
+
+fastqc  YAKU0165A_C293UACXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_3_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_3_2.fq.gz (from concat-readset_C2F3GACXX_3_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_3_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_3_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_3_2.fq.gz 
+
+
+########
+#### stage: fastqc_C26DWACXX_8_1
+####   inputs:
+####     YAKU0165A_C26DWACXX_8_1.fq.gz (from concat-readset_C26DWACXX_8_1)
+####   outputs:
+####     YAKU0165A_C26DWACXX_8_1_fastqc.html
+####     YAKU0165A_C26DWACXX_8_1_fastqc.zip
+
+fastqc  YAKU0165A_C26DWACXX_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_8_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_8_2.fq.gz (from concat-readset_C2F3GACXX_8_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_8_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_8_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_D2CMCACXX_8_1
+####   inputs:
+####     YAKU0165A_D2CMCACXX_8_1.fq.gz (from concat-readset_D2CMCACXX_8_1)
+####   outputs:
+####     YAKU0165A_D2CMCACXX_8_1_fastqc.html
+####     YAKU0165A_D2CMCACXX_8_1_fastqc.zip
+
+fastqc  YAKU0165A_D2CMCACXX_8_1.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_3_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_3_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_3_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_3_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_3_1_004.fq.gz
+####     YAKU0165A_C2F3GACXX_3_1_005.fq.gz
+####     YAKU0165A_C2F3GACXX_3_1_006.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_3_1_001.fq.gz YAKU0165A_C2F3GACXX_3_1_002.fq.gz YAKU0165A_C2F3GACXX_3_1_003.fq.gz YAKU0165A_C2F3GACXX_3_1_004.fq.gz YAKU0165A_C2F3GACXX_3_1_005.fq.gz YAKU0165A_C2F3GACXX_3_1_006.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C274JACXX_8_1
+####   inputs:
+####     YAKU0165A_C274JACXX_8_1_001.fq.gz
+####     YAKU0165A_C274JACXX_8_1_002.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C274JACXX_8_1_001.fq.gz YAKU0165A_C274JACXX_8_1_002.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: concat-readset_C2F4CACXX_3_2
+####   inputs:
+####     YAKU0165A_C2F4CACXX_3_2_001.fq.gz
+####     YAKU0165A_C2F4CACXX_3_2_002.fq.gz
+####     YAKU0165A_C2F4CACXX_3_2_003.fq.gz
+####     YAKU0165A_C2F4CACXX_3_2_004.fq.gz
+####     YAKU0165A_C2F4CACXX_3_2_005.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F4CACXX_3_2_001.fq.gz YAKU0165A_C2F4CACXX_3_2_002.fq.gz YAKU0165A_C2F4CACXX_3_2_003.fq.gz YAKU0165A_C2F4CACXX_3_2_004.fq.gz YAKU0165A_C2F4CACXX_3_2_005.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C26DWACXX_7_2
+####   inputs:
+####     YAKU0165A_C26DWACXX_7_2.fq.gz (from concat-readset_C26DWACXX_7_2)
+####   outputs:
+####     YAKU0165A_C26DWACXX_7_2_fastqc.html
+####     YAKU0165A_C26DWACXX_7_2_fastqc.zip
+
+fastqc  YAKU0165A_C26DWACXX_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_C2F4CACXX_3_2
+####   inputs:
+####     YAKU0165A_C2F4CACXX_3_2.fq.gz (from concat-readset_C2F4CACXX_3_2)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_3_2_fastqc.html
+####     YAKU0165A_C2F4CACXX_3_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F4CACXX_3_2.fq.gz 
+
+
+########
+#### stage: concat-readset_C2F3GACXX_6_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_6_1_001.fq.gz
+####     YAKU0165A_C2F3GACXX_6_1_002.fq.gz
+####     YAKU0165A_C2F3GACXX_6_1_003.fq.gz
+####     YAKU0165A_C2F3GACXX_6_1_004.fq.gz
+####   outputs:
+####     YAKU0165A.fastq.gz
+
+cat YAKU0165A_C2F3GACXX_6_1_001.fq.gz YAKU0165A_C2F3GACXX_6_1_002.fq.gz YAKU0165A_C2F3GACXX_6_1_003.fq.gz YAKU0165A_C2F3GACXX_6_1_004.fq.gz > YAKU0165A.fastq.gz
+
+
+########
+#### stage: fastqc_C2F3GACXX_5_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_5_2.fq.gz (from concat-readset_C2F3GACXX_5_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_5_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_5_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_C274JACXX_8_1
+####   inputs:
+####     YAKU0165A_C274JACXX_8_1.fq.gz (from concat-readset_C274JACXX_8_1)
+####   outputs:
+####     YAKU0165A_C274JACXX_8_1_fastqc.html
+####     YAKU0165A_C274JACXX_8_1_fastqc.zip
+
+fastqc  YAKU0165A_C274JACXX_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_3_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_3_1.fq.gz (from concat-readset_C2F3GACXX_3_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_3_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_3_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_3_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_6_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_6_1.fq.gz (from concat-readset_C2F3GACXX_6_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_6_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_6_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_6_1.fq.gz 
+
+
+########
+#### stage: fastqc_C2F3GACXX_1_2
+####   inputs:
+####     YAKU0165A_C2F3GACXX_1_2.fq.gz (from concat-readset_C2F3GACXX_1_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_1_2_fastqc.html
+####     YAKU0165A_C2F3GACXX_1_2_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_1_2.fq.gz 
+
+
+########
+#### stage: trim_C2F4CACXX_3
+####   inputs:
+####     YAKU0165A_C2F4CACXX_3_1.fastq.gz (from concat-readset_C2F4CACXX_3_1)
+####     YAKU0165A_C2F4CACXX_3_2.fastq.gz (from concat-readset_C2F4CACXX_3_2)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_3_1_paired.fq.gz
+####     YAKU0165A_C2F4CACXX_3_1_unpaired.fq.gz
+####     YAKU0165A_C2F4CACXX_3_2_paired.fq.gz
+####     YAKU0165A_C2F4CACXX_3_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F4CACXX_3_1.fastq.gz YAKU0165A_C2F4CACXX_3_2.fastq.gz YAKU0165A_C2F4CACXX_3_1_paired.fq.gz YAKU0165A_C2F4CACXX_3_1_unpaired.fq.gz YAKU0165A_C2F4CACXX_3_2_paired.fq.gz YAKU0165A_C2F4CACXX_3_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C2F3GACXX_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_1_1.fastq.gz (from concat-readset_C2F3GACXX_1_1)
+####     YAKU0165A_C2F3GACXX_1_2.fastq.gz (from concat-readset_C2F3GACXX_1_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_1_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_1_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_1_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_1_1.fastq.gz YAKU0165A_C2F3GACXX_1_2.fastq.gz YAKU0165A_C2F3GACXX_1_1_paired.fq.gz YAKU0165A_C2F3GACXX_1_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_1_2_paired.fq.gz YAKU0165A_C2F3GACXX_1_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C2F3GACXX_3
+####   inputs:
+####     YAKU0165A_C2F3GACXX_3_1.fastq.gz (from concat-readset_C2F3GACXX_3_1)
+####     YAKU0165A_C2F3GACXX_3_2.fastq.gz (from concat-readset_C2F3GACXX_3_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_3_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_3_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_3_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_3_1.fastq.gz YAKU0165A_C2F3GACXX_3_2.fastq.gz YAKU0165A_C2F3GACXX_3_1_paired.fq.gz YAKU0165A_C2F3GACXX_3_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_3_2_paired.fq.gz YAKU0165A_C2F3GACXX_3_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C274JACXX_8
+####   inputs:
+####     YAKU0165A_C274JACXX_8_1.fastq.gz (from concat-readset_C274JACXX_8_1)
+####     YAKU0165A_C274JACXX_8_2.fastq.gz (from concat-readset_C274JACXX_8_2)
+####   outputs:
+####     YAKU0165A_C274JACXX_8_1_paired.fq.gz
+####     YAKU0165A_C274JACXX_8_1_unpaired.fq.gz
+####     YAKU0165A_C274JACXX_8_2_paired.fq.gz
+####     YAKU0165A_C274JACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C274JACXX_8_1.fastq.gz YAKU0165A_C274JACXX_8_2.fastq.gz YAKU0165A_C274JACXX_8_1_paired.fq.gz YAKU0165A_C274JACXX_8_1_unpaired.fq.gz YAKU0165A_C274JACXX_8_2_paired.fq.gz YAKU0165A_C274JACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C274JACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C274JACXX_8_1.fq.gz (from trim_C274JACXX_8)
+####     YAKU0165A_C274JACXX_8_2.fq.gz (from trim_C274JACXX_8)
+####   outputs:
+####     YAKU0165A_C274JACXX_8.sorted.bai
+####     YAKU0165A_C274JACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C274JACXX.8\tLB:C274JACXX.8\tPL:ILLUMINA\tPU:C274JACXX.8.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C274JACXX_8_1.fq.gz YAKU0165A_C274JACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C274JACXX_8.sorted.bam -; samtools index YAKU0165A_C274JACXX_8.sorted.bam YAKU0165A_C274JACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_4_1.fq.gz (from trim_C2F3GACXX_4)
+####     YAKU0165A_C2F3GACXX_4_2.fq.gz (from trim_C2F3GACXX_4)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_4.sorted.bai
+####     YAKU0165A_C2F3GACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.4\tLB:C2F3GACXX.4\tPL:ILLUMINA\tPU:C2F3GACXX.4.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_4_1.fq.gz YAKU0165A_C2F3GACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_4.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_4.sorted.bam YAKU0165A_C2F3GACXX_4.sorted.bai
+
+
+########
+#### stage: bwa_C2F4CACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F4CACXX_4_1.fq.gz (from trim_C2F4CACXX_4)
+####     YAKU0165A_C2F4CACXX_4_2.fq.gz (from trim_C2F4CACXX_4)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_4.sorted.bai
+####     YAKU0165A_C2F4CACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F4CACXX.4\tLB:C2F4CACXX.4\tPL:ILLUMINA\tPU:C2F4CACXX.4.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F4CACXX_4_1.fq.gz YAKU0165A_C2F4CACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F4CACXX_4.sorted.bam -; samtools index YAKU0165A_C2F4CACXX_4.sorted.bam YAKU0165A_C2F4CACXX_4.sorted.bai
+
+
+########
+#### stage: fastqc_C2F3GACXX_7_1
+####   inputs:
+####     YAKU0165A_C2F3GACXX_7_1.fq.gz (from concat-readset_C2F3GACXX_7_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_7_1_fastqc.html
+####     YAKU0165A_C2F3GACXX_7_1_fastqc.zip
+
+fastqc  YAKU0165A_C2F3GACXX_7_1.fq.gz 
+
+
+########
+#### stage: bwa_C26DWACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C26DWACXX_8_1.fq.gz (from trim_C26DWACXX_8)
+####     YAKU0165A_C26DWACXX_8_2.fq.gz (from trim_C26DWACXX_8)
+####   outputs:
+####     YAKU0165A_C26DWACXX_8.sorted.bai
+####     YAKU0165A_C26DWACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C26DWACXX.8\tLB:C26DWACXX.8\tPL:ILLUMINA\tPU:C26DWACXX.8.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C26DWACXX_8_1.fq.gz YAKU0165A_C26DWACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C26DWACXX_8.sorted.bam -; samtools index YAKU0165A_C26DWACXX_8.sorted.bam YAKU0165A_C26DWACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_2_1.fq.gz (from trim_C2F3GACXX_2)
+####     YAKU0165A_C2F3GACXX_2_2.fq.gz (from trim_C2F3GACXX_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_2.sorted.bai
+####     YAKU0165A_C2F3GACXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.2\tLB:C2F3GACXX.2\tPL:ILLUMINA\tPU:C2F3GACXX.2.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_2_1.fq.gz YAKU0165A_C2F3GACXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_2.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_2.sorted.bam YAKU0165A_C2F3GACXX_2.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_5_1.fq.gz (from trim_C2F3GACXX_5)
+####     YAKU0165A_C2F3GACXX_5_2.fq.gz (from trim_C2F3GACXX_5)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_5.sorted.bai
+####     YAKU0165A_C2F3GACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.5\tLB:C2F3GACXX.5\tPL:ILLUMINA\tPU:C2F3GACXX.5.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_5_1.fq.gz YAKU0165A_C2F3GACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_5.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_5.sorted.bam YAKU0165A_C2F3GACXX_5.sorted.bai
+
+
+########
+#### stage: trim_C2F3GACXX_6
+####   inputs:
+####     YAKU0165A_C2F3GACXX_6_1.fastq.gz (from concat-readset_C2F3GACXX_6_1)
+####     YAKU0165A_C2F3GACXX_6_2.fastq.gz (from concat-readset_C2F3GACXX_6_2)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_6_1_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_6_1_unpaired.fq.gz
+####     YAKU0165A_C2F3GACXX_6_2_paired.fq.gz
+####     YAKU0165A_C2F3GACXX_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` YAKU0165A_C2F3GACXX_6_1.fastq.gz YAKU0165A_C2F3GACXX_6_2.fastq.gz YAKU0165A_C2F3GACXX_6_1_paired.fq.gz YAKU0165A_C2F3GACXX_6_1_unpaired.fq.gz YAKU0165A_C2F3GACXX_6_2_paired.fq.gz YAKU0165A_C2F3GACXX_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C2F3GACXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_3_1.fq.gz (from trim_C2F3GACXX_3)
+####     YAKU0165A_C2F3GACXX_3_2.fq.gz (from trim_C2F3GACXX_3)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_3.sorted.bai
+####     YAKU0165A_C2F3GACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.3\tLB:C2F3GACXX.3\tPL:ILLUMINA\tPU:C2F3GACXX.3.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_3_1.fq.gz YAKU0165A_C2F3GACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_3.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_3.sorted.bam YAKU0165A_C2F3GACXX_3.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_8_1.fq.gz (from trim_C2F3GACXX_8)
+####     YAKU0165A_C2F3GACXX_8_2.fq.gz (from trim_C2F3GACXX_8)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_8.sorted.bai
+####     YAKU0165A_C2F3GACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.8\tLB:C2F3GACXX.8\tPL:ILLUMINA\tPU:C2F3GACXX.8.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_8_1.fq.gz YAKU0165A_C2F3GACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_8.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_8.sorted.bam YAKU0165A_C2F3GACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_D2CMCACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_D2CMCACXX_8_1.fq.gz (from trim_D2CMCACXX_8)
+####     YAKU0165A_D2CMCACXX_8_2.fq.gz (from trim_D2CMCACXX_8)
+####   outputs:
+####     YAKU0165A_D2CMCACXX_8.sorted.bai
+####     YAKU0165A_D2CMCACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D2CMCACXX.8\tLB:D2CMCACXX.8\tPL:ILLUMINA\tPU:D2CMCACXX.8.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_D2CMCACXX_8_1.fq.gz YAKU0165A_D2CMCACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_D2CMCACXX_8.sorted.bam -; samtools index YAKU0165A_D2CMCACXX_8.sorted.bam YAKU0165A_D2CMCACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_C2F4CACXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F4CACXX_3_1.fq.gz (from trim_C2F4CACXX_3)
+####     YAKU0165A_C2F4CACXX_3_2.fq.gz (from trim_C2F4CACXX_3)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_3.sorted.bai
+####     YAKU0165A_C2F4CACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F4CACXX.3\tLB:C2F4CACXX.3\tPL:ILLUMINA\tPU:C2F4CACXX.3.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F4CACXX_3_1.fq.gz YAKU0165A_C2F4CACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F4CACXX_3.sorted.bam -; samtools index YAKU0165A_C2F4CACXX_3.sorted.bam YAKU0165A_C2F4CACXX_3.sorted.bai
+
+
+########
+#### stage: bwa_C26DWACXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C26DWACXX_7_1.fq.gz (from trim_C26DWACXX_7)
+####     YAKU0165A_C26DWACXX_7_2.fq.gz (from trim_C26DWACXX_7)
+####   outputs:
+####     YAKU0165A_C26DWACXX_7.sorted.bai
+####     YAKU0165A_C26DWACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C26DWACXX.7\tLB:C26DWACXX.7\tPL:ILLUMINA\tPU:C26DWACXX.7.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C26DWACXX_7_1.fq.gz YAKU0165A_C26DWACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C26DWACXX_7.sorted.bam -; samtools index YAKU0165A_C26DWACXX_7.sorted.bam YAKU0165A_C26DWACXX_7.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_6_1.fq.gz (from trim_C2F3GACXX_6)
+####     YAKU0165A_C2F3GACXX_6_2.fq.gz (from trim_C2F3GACXX_6)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_6.sorted.bai
+####     YAKU0165A_C2F3GACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.6\tLB:C2F3GACXX.6\tPL:ILLUMINA\tPU:C2F3GACXX.6.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_6_1.fq.gz YAKU0165A_C2F3GACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_6.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_6.sorted.bam YAKU0165A_C2F3GACXX_6.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_7_1.fq.gz (from trim_C2F3GACXX_7)
+####     YAKU0165A_C2F3GACXX_7_2.fq.gz (from trim_C2F3GACXX_7)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_7.sorted.bai
+####     YAKU0165A_C2F3GACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.7\tLB:C2F3GACXX.7\tPL:ILLUMINA\tPU:C2F3GACXX.7.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_7_1.fq.gz YAKU0165A_C2F3GACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_7.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_7.sorted.bam YAKU0165A_C2F3GACXX_7.sorted.bai
+
+
+########
+#### stage: bwa_C2BBCACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2BBCACXX_5_1.fq.gz (from trim_C2BBCACXX_5)
+####     YAKU0165A_C2BBCACXX_5_2.fq.gz (from trim_C2BBCACXX_5)
+####   outputs:
+####     YAKU0165A_C2BBCACXX_5.sorted.bai
+####     YAKU0165A_C2BBCACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2BBCACXX.5\tLB:C2BBCACXX.5\tPL:ILLUMINA\tPU:C2BBCACXX.5.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2BBCACXX_5_1.fq.gz YAKU0165A_C2BBCACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2BBCACXX_5.sorted.bam -; samtools index YAKU0165A_C2BBCACXX_5.sorted.bam YAKU0165A_C2BBCACXX_5.sorted.bai
+
+
+########
+#### stage: bwa_C293UACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C293UACXX_8_1.fq.gz (from trim_C293UACXX_8)
+####     YAKU0165A_C293UACXX_8_2.fq.gz (from trim_C293UACXX_8)
+####   outputs:
+####     YAKU0165A_C293UACXX_8.sorted.bai
+####     YAKU0165A_C293UACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C293UACXX.8\tLB:C293UACXX.8\tPL:ILLUMINA\tPU:C293UACXX.8.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C293UACXX_8_1.fq.gz YAKU0165A_C293UACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C293UACXX_8.sorted.bam -; samtools index YAKU0165A_C293UACXX_8.sorted.bam YAKU0165A_C293UACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_C2F4CACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F4CACXX_5_1.fq.gz (from trim_C2F4CACXX_5)
+####     YAKU0165A_C2F4CACXX_5_2.fq.gz (from trim_C2F4CACXX_5)
+####   outputs:
+####     YAKU0165A_C2F4CACXX_5.sorted.bai
+####     YAKU0165A_C2F4CACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F4CACXX.5\tLB:C2F4CACXX.5\tPL:ILLUMINA\tPU:C2F4CACXX.5.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F4CACXX_5_1.fq.gz YAKU0165A_C2F4CACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F4CACXX_5.sorted.bam -; samtools index YAKU0165A_C2F4CACXX_5.sorted.bam YAKU0165A_C2F4CACXX_5.sorted.bai
+
+
+########
+#### stage: bwa_C2F3GACXX_1
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     YAKU0165A_C2F3GACXX_1_1.fq.gz (from trim_C2F3GACXX_1)
+####     YAKU0165A_C2F3GACXX_1_2.fq.gz (from trim_C2F3GACXX_1)
+####   outputs:
+####     YAKU0165A_C2F3GACXX_1.sorted.bai
+####     YAKU0165A_C2F3GACXX_1.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C2F3GACXX.1\tLB:C2F3GACXX.1\tPL:ILLUMINA\tPU:C2F3GACXX.1.UNKNOWN\tSM:YAKU0165A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A_C2F3GACXX_1_1.fq.gz YAKU0165A_C2F3GACXX_1_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o YAKU0165A_C2F3GACXX_1.sorted.bam -; samtools index YAKU0165A_C2F3GACXX_1.sorted.bam YAKU0165A_C2F3GACXX_1.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     YAKU0165A_C26DWACXX_7.bam (from bwa_C26DWACXX_7)
+####     YAKU0165A_C26DWACXX_8.bam (from bwa_C26DWACXX_8)
+####     YAKU0165A_C274JACXX_8.bam (from bwa_C274JACXX_8)
+####     YAKU0165A_C293UACXX_8.bam (from bwa_C293UACXX_8)
+####     YAKU0165A_C2BBCACXX_5.bam (from bwa_C2BBCACXX_5)
+####     YAKU0165A_C2F3GACXX_1.bam (from bwa_C2F3GACXX_1)
+####     YAKU0165A_C2F3GACXX_2.bam (from bwa_C2F3GACXX_2)
+####     YAKU0165A_C2F3GACXX_3.bam (from bwa_C2F3GACXX_3)
+####     YAKU0165A_C2F3GACXX_4.bam (from bwa_C2F3GACXX_4)
+####     YAKU0165A_C2F3GACXX_5.bam (from bwa_C2F3GACXX_5)
+####     YAKU0165A_C2F3GACXX_6.bam (from bwa_C2F3GACXX_6)
+####     YAKU0165A_C2F3GACXX_7.bam (from bwa_C2F3GACXX_7)
+####     YAKU0165A_C2F3GACXX_8.bam (from bwa_C2F3GACXX_8)
+####     YAKU0165A_C2F4CACXX_3.bam (from bwa_C2F4CACXX_3)
+####     YAKU0165A_C2F4CACXX_4.bam (from bwa_C2F4CACXX_4)
+####     YAKU0165A_C2F4CACXX_5.bam (from bwa_C2F4CACXX_5)
+####     YAKU0165A_D2CMCACXX_8.bam (from bwa_D2CMCACXX_8)
+####   outputs:
+####     YAKU0165A.merged.bai
+####     YAKU0165A.merged.bam
+
+samtools merge -@ `nproc` YAKU0165A.merged.bam YAKU0165A_C26DWACXX_8.bam YAKU0165A_C26DWACXX_7.bam YAKU0165A_C274JACXX_8.bam YAKU0165A_C293UACXX_8.bam YAKU0165A_C2BBCACXX_5.bam YAKU0165A_D2CMCACXX_8.bam YAKU0165A_C2F3GACXX_1.bam YAKU0165A_C2F3GACXX_2.bam YAKU0165A_C2F3GACXX_3.bam YAKU0165A_C2F3GACXX_4.bam YAKU0165A_C2F3GACXX_5.bam YAKU0165A_C2F3GACXX_6.bam YAKU0165A_C2F3GACXX_7.bam YAKU0165A_C2F3GACXX_8.bam YAKU0165A_C2F4CACXX_3.bam YAKU0165A_C2F4CACXX_4.bam YAKU0165A_C2F4CACXX_5.bam ; samtools index YAKU0165A.merged.bam YAKU0165A.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     YAKU0165A.bam (from merge_bam)
+####   outputs:
+####     YAKU0165A.markduplicates.bam
+####     YAKU0165A.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=YAKU0165A.bam O=YAKU0165A.markduplicates.bam M=YAKU0165A.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     YAKU0165A.bam (from mark_duplicates)
+####   outputs:
+####     YAKU0165A.bai
+
+samtools index -@ `nproc` YAKU0165A.bam YAKU0165A.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     YAKU0165A.bai (from index_mark_duplicates)
+####     YAKU0165A.bam (from mark_duplicates)
+####   outputs:
+####     YAKU0165A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I YAKU0165A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O YAKU0165A.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     YAKU0165A.bai (from index_mark_duplicates)
+####     YAKU0165A.bam (from mark_duplicates)
+####     YAKU0165A.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     YAKU0165A.recalibrated.bai
+####     YAKU0165A.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I YAKU0165A.bam --bqsr-recal-file YAKU0165A.recalibration.table -O YAKU0165A.recalibrated.bam
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.metrics.alignment_summary_metrics
+####     YAKU0165A.metrics.base_distribution_by_cycle.pdf
+####     YAKU0165A.metrics.base_distribution_by_cycle_metrics
+####     YAKU0165A.metrics.insert_size_histogram.pdf
+####     YAKU0165A.metrics.insert_size_metrics
+####     YAKU0165A.metrics.quality_by_cycle.pdf
+####     YAKU0165A.metrics.quality_by_cycle_metrics
+####     YAKU0165A.metrics.quality_distribution.pdf
+####     YAKU0165A.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=YAKU0165A.bam O=YAKU0165A.metrics
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.coverage.tsv
+
+samtools depth YAKU0165A.bam | depth-of-coverage.py > YAKU0165A.coverage.tsv
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.samtoolsmpileup.vcf.gz
+####     YAKU0165A.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta YAKU0165A.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o YAKU0165A.samtoolsmpileup.vcf.gz ; tabix YAKU0165A.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.unmapped.fq.gz
+
+samtools view  -u -b -f 4 YAKU0165A.bam | samtools fastq - | gzip -c - > YAKU0165A.unmapped.fq.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I YAKU0165A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O YAKU0165A.recalibration.table
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.platypuscallvariants.vcf.gz
+####     YAKU0165A.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=YAKU0165A.bam --output=YAKU0165A.platypuscallvariants.vcf ; bgzip YAKU0165A.platypuscallvariants.vcf ; tabix -p vcf YAKU0165A.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     YAKU0165A.bai (from apply_bsqr)
+####     YAKU0165A.bam (from apply_bsqr)
+####   outputs:
+####     YAKU0165A.gatk_haplotypecaller.vcf.gz
+####     YAKU0165A.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I YAKU0165A.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O YAKU0165A.gatk_haplotypecaller.vcf.gz ; tabix -p vcf YAKU0165A.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     YAKU0165A.BQSR.csv
+####     YAKU0165A.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv YAKU0165A.BQSR.csv -plots YAKU0165A.BQSR.pdf
+
+
+
+#   outputs:
+#     YAKU0165A.bcftools.vcf.gz (from bcftools_mpileup)
+#     YAKU0165A.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     YAKU0165A.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     YAKU0165A.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     YAKU0165A.platypus.vcf.gz (from platypus_callvariants)
+#     YAKU0165A.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     YAKU0165A.recalibrated.bai (from apply_bsqr)
+#     YAKU0165A.recalibrated.bam (from apply_bsqr)
+#     fastqc/YAKU0165A_C26DWACXX_7_1_fastqc.html (from fastqc_C26DWACXX_7_1)
+#     fastqc/YAKU0165A_C26DWACXX_7_1_fastqc.zip (from fastqc_C26DWACXX_7_1)
+#     fastqc/YAKU0165A_C26DWACXX_7_2_fastqc.html (from fastqc_C26DWACXX_7_2)
+#     fastqc/YAKU0165A_C26DWACXX_7_2_fastqc.zip (from fastqc_C26DWACXX_7_2)
+#     fastqc/YAKU0165A_C26DWACXX_8_1_fastqc.html (from fastqc_C26DWACXX_8_1)
+#     fastqc/YAKU0165A_C26DWACXX_8_1_fastqc.zip (from fastqc_C26DWACXX_8_1)
+#     fastqc/YAKU0165A_C26DWACXX_8_2_fastqc.html (from fastqc_C26DWACXX_8_2)
+#     fastqc/YAKU0165A_C26DWACXX_8_2_fastqc.zip (from fastqc_C26DWACXX_8_2)
+#     fastqc/YAKU0165A_C274JACXX_8_1_fastqc.html (from fastqc_C274JACXX_8_1)
+#     fastqc/YAKU0165A_C274JACXX_8_1_fastqc.zip (from fastqc_C274JACXX_8_1)
+#     fastqc/YAKU0165A_C274JACXX_8_2_fastqc.html (from fastqc_C274JACXX_8_2)
+#     fastqc/YAKU0165A_C274JACXX_8_2_fastqc.zip (from fastqc_C274JACXX_8_2)
+#     fastqc/YAKU0165A_C293UACXX_8_1_fastqc.html (from fastqc_C293UACXX_8_1)
+#     fastqc/YAKU0165A_C293UACXX_8_1_fastqc.zip (from fastqc_C293UACXX_8_1)
+#     fastqc/YAKU0165A_C293UACXX_8_2_fastqc.html (from fastqc_C293UACXX_8_2)
+#     fastqc/YAKU0165A_C293UACXX_8_2_fastqc.zip (from fastqc_C293UACXX_8_2)
+#     fastqc/YAKU0165A_C2BBCACXX_5_1_fastqc.html (from fastqc_C2BBCACXX_5_1)
+#     fastqc/YAKU0165A_C2BBCACXX_5_1_fastqc.zip (from fastqc_C2BBCACXX_5_1)
+#     fastqc/YAKU0165A_C2BBCACXX_5_2_fastqc.html (from fastqc_C2BBCACXX_5_2)
+#     fastqc/YAKU0165A_C2BBCACXX_5_2_fastqc.zip (from fastqc_C2BBCACXX_5_2)
+#     fastqc/YAKU0165A_C2F3GACXX_1_1_fastqc.html (from fastqc_C2F3GACXX_1_1)
+#     fastqc/YAKU0165A_C2F3GACXX_1_1_fastqc.zip (from fastqc_C2F3GACXX_1_1)
+#     fastqc/YAKU0165A_C2F3GACXX_1_2_fastqc.html (from fastqc_C2F3GACXX_1_2)
+#     fastqc/YAKU0165A_C2F3GACXX_1_2_fastqc.zip (from fastqc_C2F3GACXX_1_2)
+#     fastqc/YAKU0165A_C2F3GACXX_2_1_fastqc.html (from fastqc_C2F3GACXX_2_1)
+#     fastqc/YAKU0165A_C2F3GACXX_2_1_fastqc.zip (from fastqc_C2F3GACXX_2_1)
+#     fastqc/YAKU0165A_C2F3GACXX_2_2_fastqc.html (from fastqc_C2F3GACXX_2_2)
+#     fastqc/YAKU0165A_C2F3GACXX_2_2_fastqc.zip (from fastqc_C2F3GACXX_2_2)
+#     fastqc/YAKU0165A_C2F3GACXX_3_1_fastqc.html (from fastqc_C2F3GACXX_3_1)
+#     fastqc/YAKU0165A_C2F3GACXX_3_1_fastqc.zip (from fastqc_C2F3GACXX_3_1)
+#     fastqc/YAKU0165A_C2F3GACXX_3_2_fastqc.html (from fastqc_C2F3GACXX_3_2)
+#     fastqc/YAKU0165A_C2F3GACXX_3_2_fastqc.zip (from fastqc_C2F3GACXX_3_2)
+#     fastqc/YAKU0165A_C2F3GACXX_4_1_fastqc.html (from fastqc_C2F3GACXX_4_1)
+#     fastqc/YAKU0165A_C2F3GACXX_4_1_fastqc.zip (from fastqc_C2F3GACXX_4_1)
+#     fastqc/YAKU0165A_C2F3GACXX_4_2_fastqc.html (from fastqc_C2F3GACXX_4_2)
+#     fastqc/YAKU0165A_C2F3GACXX_4_2_fastqc.zip (from fastqc_C2F3GACXX_4_2)
+#     fastqc/YAKU0165A_C2F3GACXX_5_1_fastqc.html (from fastqc_C2F3GACXX_5_1)
+#     fastqc/YAKU0165A_C2F3GACXX_5_1_fastqc.zip (from fastqc_C2F3GACXX_5_1)
+#     fastqc/YAKU0165A_C2F3GACXX_5_2_fastqc.html (from fastqc_C2F3GACXX_5_2)
+#     fastqc/YAKU0165A_C2F3GACXX_5_2_fastqc.zip (from fastqc_C2F3GACXX_5_2)
+#     fastqc/YAKU0165A_C2F3GACXX_6_1_fastqc.html (from fastqc_C2F3GACXX_6_1)
+#     fastqc/YAKU0165A_C2F3GACXX_6_1_fastqc.zip (from fastqc_C2F3GACXX_6_1)
+#     fastqc/YAKU0165A_C2F3GACXX_6_2_fastqc.html (from fastqc_C2F3GACXX_6_2)
+#     fastqc/YAKU0165A_C2F3GACXX_6_2_fastqc.zip (from fastqc_C2F3GACXX_6_2)
+#     fastqc/YAKU0165A_C2F3GACXX_7_1_fastqc.html (from fastqc_C2F3GACXX_7_1)
+#     fastqc/YAKU0165A_C2F3GACXX_7_1_fastqc.zip (from fastqc_C2F3GACXX_7_1)
+#     fastqc/YAKU0165A_C2F3GACXX_7_2_fastqc.html (from fastqc_C2F3GACXX_7_2)
+#     fastqc/YAKU0165A_C2F3GACXX_7_2_fastqc.zip (from fastqc_C2F3GACXX_7_2)
+#     fastqc/YAKU0165A_C2F3GACXX_8_1_fastqc.html (from fastqc_C2F3GACXX_8_1)
+#     fastqc/YAKU0165A_C2F3GACXX_8_1_fastqc.zip (from fastqc_C2F3GACXX_8_1)
+#     fastqc/YAKU0165A_C2F3GACXX_8_2_fastqc.html (from fastqc_C2F3GACXX_8_2)
+#     fastqc/YAKU0165A_C2F3GACXX_8_2_fastqc.zip (from fastqc_C2F3GACXX_8_2)
+#     fastqc/YAKU0165A_C2F4CACXX_3_1_fastqc.html (from fastqc_C2F4CACXX_3_1)
+#     fastqc/YAKU0165A_C2F4CACXX_3_1_fastqc.zip (from fastqc_C2F4CACXX_3_1)
+#     fastqc/YAKU0165A_C2F4CACXX_3_2_fastqc.html (from fastqc_C2F4CACXX_3_2)
+#     fastqc/YAKU0165A_C2F4CACXX_3_2_fastqc.zip (from fastqc_C2F4CACXX_3_2)
+#     fastqc/YAKU0165A_C2F4CACXX_4_1_fastqc.html (from fastqc_C2F4CACXX_4_1)
+#     fastqc/YAKU0165A_C2F4CACXX_4_1_fastqc.zip (from fastqc_C2F4CACXX_4_1)
+#     fastqc/YAKU0165A_C2F4CACXX_4_2_fastqc.html (from fastqc_C2F4CACXX_4_2)
+#     fastqc/YAKU0165A_C2F4CACXX_4_2_fastqc.zip (from fastqc_C2F4CACXX_4_2)
+#     fastqc/YAKU0165A_C2F4CACXX_5_1_fastqc.html (from fastqc_C2F4CACXX_5_1)
+#     fastqc/YAKU0165A_C2F4CACXX_5_1_fastqc.zip (from fastqc_C2F4CACXX_5_1)
+#     fastqc/YAKU0165A_C2F4CACXX_5_2_fastqc.html (from fastqc_C2F4CACXX_5_2)
+#     fastqc/YAKU0165A_C2F4CACXX_5_2_fastqc.zip (from fastqc_C2F4CACXX_5_2)
+#     fastqc/YAKU0165A_D2CMCACXX_8_1_fastqc.html (from fastqc_D2CMCACXX_8_1)
+#     fastqc/YAKU0165A_D2CMCACXX_8_1_fastqc.zip (from fastqc_D2CMCACXX_8_1)
+#     fastqc/YAKU0165A_D2CMCACXX_8_2_fastqc.html (from fastqc_D2CMCACXX_8_2)
+#     fastqc/YAKU0165A_D2CMCACXX_8_2_fastqc.zip (from fastqc_D2CMCACXX_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/YAKU0165A.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/YAKU0165A.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/C26DWACXX_7_1_unpaired.fq.gz (from trim_C26DWACXX_7)
+#     unpaired/C26DWACXX_7_2_unpaired.fq.gz (from trim_C26DWACXX_7)
+#     unpaired/C26DWACXX_8_1_unpaired.fq.gz (from trim_C26DWACXX_8)
+#     unpaired/C26DWACXX_8_2_unpaired.fq.gz (from trim_C26DWACXX_8)
+#     unpaired/C274JACXX_8_1_unpaired.fq.gz (from trim_C274JACXX_8)
+#     unpaired/C274JACXX_8_2_unpaired.fq.gz (from trim_C274JACXX_8)
+#     unpaired/C293UACXX_8_1_unpaired.fq.gz (from trim_C293UACXX_8)
+#     unpaired/C293UACXX_8_2_unpaired.fq.gz (from trim_C293UACXX_8)
+#     unpaired/C2BBCACXX_5_1_unpaired.fq.gz (from trim_C2BBCACXX_5)
+#     unpaired/C2BBCACXX_5_2_unpaired.fq.gz (from trim_C2BBCACXX_5)
+#     unpaired/C2F3GACXX_1_1_unpaired.fq.gz (from trim_C2F3GACXX_1)
+#     unpaired/C2F3GACXX_1_2_unpaired.fq.gz (from trim_C2F3GACXX_1)
+#     unpaired/C2F3GACXX_2_1_unpaired.fq.gz (from trim_C2F3GACXX_2)
+#     unpaired/C2F3GACXX_2_2_unpaired.fq.gz (from trim_C2F3GACXX_2)
+#     unpaired/C2F3GACXX_3_1_unpaired.fq.gz (from trim_C2F3GACXX_3)
+#     unpaired/C2F3GACXX_3_2_unpaired.fq.gz (from trim_C2F3GACXX_3)
+#     unpaired/C2F3GACXX_4_1_unpaired.fq.gz (from trim_C2F3GACXX_4)
+#     unpaired/C2F3GACXX_4_2_unpaired.fq.gz (from trim_C2F3GACXX_4)
+#     unpaired/C2F3GACXX_5_1_unpaired.fq.gz (from trim_C2F3GACXX_5)
+#     unpaired/C2F3GACXX_5_2_unpaired.fq.gz (from trim_C2F3GACXX_5)
+#     unpaired/C2F3GACXX_6_1_unpaired.fq.gz (from trim_C2F3GACXX_6)
+#     unpaired/C2F3GACXX_6_2_unpaired.fq.gz (from trim_C2F3GACXX_6)
+#     unpaired/C2F3GACXX_7_1_unpaired.fq.gz (from trim_C2F3GACXX_7)
+#     unpaired/C2F3GACXX_7_2_unpaired.fq.gz (from trim_C2F3GACXX_7)
+#     unpaired/C2F3GACXX_8_1_unpaired.fq.gz (from trim_C2F3GACXX_8)
+#     unpaired/C2F3GACXX_8_2_unpaired.fq.gz (from trim_C2F3GACXX_8)
+#     unpaired/C2F4CACXX_3_1_unpaired.fq.gz (from trim_C2F4CACXX_3)
+#     unpaired/C2F4CACXX_3_2_unpaired.fq.gz (from trim_C2F4CACXX_3)
+#     unpaired/C2F4CACXX_4_1_unpaired.fq.gz (from trim_C2F4CACXX_4)
+#     unpaired/C2F4CACXX_4_2_unpaired.fq.gz (from trim_C2F4CACXX_4)
+#     unpaired/C2F4CACXX_5_1_unpaired.fq.gz (from trim_C2F4CACXX_5)
+#     unpaired/C2F4CACXX_5_2_unpaired.fq.gz (from trim_C2F4CACXX_5)
+#     unpaired/D2CMCACXX_8_1_unpaired.fq.gz (from trim_D2CMCACXX_8)
+#     unpaired/D2CMCACXX_8_2_unpaired.fq.gz (from trim_D2CMCACXX_8)

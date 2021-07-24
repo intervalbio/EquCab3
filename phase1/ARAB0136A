@@ -1,0 +1,283 @@
+# ARAB0136A
+#
+#   inputs:
+#     ARAB0136A_C1P9RACXX_3_1_1.fq.gz c6a64800e5d78bd8b91b189bd1f870ce
+#     ARAB0136A_C1P9RACXX_3_2_1.fq.gz 4f19e62393fd58e9404d6d1233dde39b
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_C1P9RACXX_3_2
+####   inputs:
+####     ARAB0136A_C1P9RACXX_3_2.fq.gz
+####   outputs:
+####     ARAB0136A_C1P9RACXX_3_2_fastqc.html
+####     ARAB0136A_C1P9RACXX_3_2_fastqc.zip
+
+fastqc  ARAB0136A_C1P9RACXX_3_2.fq.gz 
+
+
+########
+#### stage: fastqc_C1P9RACXX_3_1
+####   inputs:
+####     ARAB0136A_C1P9RACXX_3_1.fq.gz
+####   outputs:
+####     ARAB0136A_C1P9RACXX_3_1_fastqc.html
+####     ARAB0136A_C1P9RACXX_3_1_fastqc.zip
+
+fastqc  ARAB0136A_C1P9RACXX_3_1.fq.gz 
+
+
+########
+#### stage: trim_C1P9RACXX_3
+####   inputs:
+####     ARAB0136A_C1P9RACXX_3_1.fastq.gz
+####     ARAB0136A_C1P9RACXX_3_2.fastq.gz
+####   outputs:
+####     ARAB0136A_C1P9RACXX_3_1_paired.fq.gz
+####     ARAB0136A_C1P9RACXX_3_1_unpaired.fq.gz
+####     ARAB0136A_C1P9RACXX_3_2_paired.fq.gz
+####     ARAB0136A_C1P9RACXX_3_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ARAB0136A_C1P9RACXX_3_1.fastq.gz ARAB0136A_C1P9RACXX_3_2.fastq.gz ARAB0136A_C1P9RACXX_3_1_paired.fq.gz ARAB0136A_C1P9RACXX_3_1_unpaired.fq.gz ARAB0136A_C1P9RACXX_3_2_paired.fq.gz ARAB0136A_C1P9RACXX_3_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C1P9RACXX_3
+####   inputs:
+####     ARAB0136A_C1P9RACXX_3_1.fq.gz (from trim_C1P9RACXX_3)
+####     ARAB0136A_C1P9RACXX_3_2.fq.gz (from trim_C1P9RACXX_3)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     ARAB0136A_C1P9RACXX_3.sorted.bai
+####     ARAB0136A_C1P9RACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1P9RACXX.3\tLB:C1P9RACXX.3\tPL:ILLUMINA\tPU:C1P9RACXX.3.UNKNOWN\tSM:ARAB0136A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ARAB0136A_C1P9RACXX_3_1.fq.gz ARAB0136A_C1P9RACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ARAB0136A_C1P9RACXX_3.sorted.bam -; samtools index ARAB0136A_C1P9RACXX_3.sorted.bam ARAB0136A_C1P9RACXX_3.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     ARAB0136A_C1P9RACXX_3.bam (from bwa_C1P9RACXX_3)
+####   outputs:
+####     ARAB0136A.merged.bai
+####     ARAB0136A.merged.bam
+
+samtools merge -@ `nproc` ARAB0136A.merged.bam ARAB0136A_C1P9RACXX_3.bam ; samtools index ARAB0136A.merged.bam ARAB0136A.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     ARAB0136A.bam (from merge_bam)
+####   outputs:
+####     ARAB0136A.markduplicates.bam
+####     ARAB0136A.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=ARAB0136A.bam O=ARAB0136A.markduplicates.bam M=ARAB0136A.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     ARAB0136A.bam (from mark_duplicates)
+####   outputs:
+####     ARAB0136A.bai
+
+samtools index -@ `nproc` ARAB0136A.bam ARAB0136A.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     ARAB0136A.bai (from index_mark_duplicates)
+####     ARAB0136A.bam (from mark_duplicates)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     ARAB0136A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ARAB0136A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ARAB0136A.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     ARAB0136A.bai (from index_mark_duplicates)
+####     ARAB0136A.bam (from mark_duplicates)
+####     ARAB0136A.recalibration.table (from base_recalibration_table)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####   outputs:
+####     ARAB0136A.recalibrated.bai
+####     ARAB0136A.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ARAB0136A.bam --bqsr-recal-file ARAB0136A.recalibration.table -O ARAB0136A.recalibrated.bam
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     ARAB0136A.platypuscallvariants.vcf.gz
+####     ARAB0136A.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=ARAB0136A.bam --output=ARAB0136A.platypuscallvariants.vcf ; bgzip ARAB0136A.platypuscallvariants.vcf ; tabix -p vcf ARAB0136A.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####   outputs:
+####     ARAB0136A.coverage.tsv
+
+samtools depth ARAB0136A.bam | depth-of-coverage.py > ARAB0136A.coverage.tsv
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     ARAB0136A.gatk_haplotypecaller.vcf.gz
+####     ARAB0136A.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ARAB0136A.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ARAB0136A.gatk_haplotypecaller.vcf.gz ; tabix -p vcf ARAB0136A.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     ARAB0136A.samtoolsmpileup.vcf.gz
+####     ARAB0136A.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ARAB0136A.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o ARAB0136A.samtoolsmpileup.vcf.gz ; tabix ARAB0136A.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     ARAB0136A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ARAB0136A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ARAB0136A.recalibration.table
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####   outputs:
+####     ARAB0136A.unmapped.fq.gz
+
+samtools view  -u -b -f 4 ARAB0136A.bam | samtools fastq - | gzip -c - > ARAB0136A.unmapped.fq.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     ARAB0136A.bai (from apply_bsqr)
+####     ARAB0136A.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####   outputs:
+####     ARAB0136A.metrics.alignment_summary_metrics
+####     ARAB0136A.metrics.base_distribution_by_cycle.pdf
+####     ARAB0136A.metrics.base_distribution_by_cycle_metrics
+####     ARAB0136A.metrics.insert_size_histogram.pdf
+####     ARAB0136A.metrics.insert_size_metrics
+####     ARAB0136A.metrics.quality_by_cycle.pdf
+####     ARAB0136A.metrics.quality_by_cycle_metrics
+####     ARAB0136A.metrics.quality_distribution.pdf
+####     ARAB0136A.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=ARAB0136A.bam O=ARAB0136A.metrics
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     ARAB0136A.BQSR.csv
+####     ARAB0136A.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv ARAB0136A.BQSR.csv -plots ARAB0136A.BQSR.pdf
+
+
+
+#   outputs:
+#     ARAB0136A.bcftools.vcf.gz (from bcftools_mpileup)
+#     ARAB0136A.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     ARAB0136A.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     ARAB0136A.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     ARAB0136A.platypus.vcf.gz (from platypus_callvariants)
+#     ARAB0136A.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     ARAB0136A.recalibrated.bai (from apply_bsqr)
+#     ARAB0136A.recalibrated.bam (from apply_bsqr)
+#     fastqc/ARAB0136A_C1P9RACXX_3_1_fastqc.html (from fastqc_C1P9RACXX_3_1)
+#     fastqc/ARAB0136A_C1P9RACXX_3_1_fastqc.zip (from fastqc_C1P9RACXX_3_1)
+#     fastqc/ARAB0136A_C1P9RACXX_3_2_fastqc.html (from fastqc_C1P9RACXX_3_2)
+#     fastqc/ARAB0136A_C1P9RACXX_3_2_fastqc.zip (from fastqc_C1P9RACXX_3_2)
+#     metrics/ARAB0136A.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/ARAB0136A.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/C1P9RACXX_3_1_unpaired.fq.gz (from trim_C1P9RACXX_3)
+#     unpaired/C1P9RACXX_3_2_unpaired.fq.gz (from trim_C1P9RACXX_3)

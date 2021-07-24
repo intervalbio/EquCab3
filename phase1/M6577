@@ -1,0 +1,539 @@
+# M6577
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     M6577_C289TACXX_4_1_001.fq.gz cf6e99184d94fc2d251d34b90cc6bdbf
+#     M6577_C289TACXX_4_2_001.fq.gz 40d0e6285ec29aa34ac3eca8784960c1
+#     M6577_C289TACXX_5_1_001.fq.gz dd42f632b1821353d91bd22f9d0bb7c7
+#     M6577_C289TACXX_5_2_001.fq.gz 23bd8743f9b533114bd7ec32342f9edf
+#     M6577_C289TACXX_6_1_001.fq.gz 018dd3124f6caa85bc907c933b78fe9e
+#     M6577_C289TACXX_6_2_001.fq.gz 8017c8b6764113c45e1b56ab04c2e0c2
+#     M6577_C289TACXX_7_1_001.fq.gz 136da14ef72ac829ff4e76943c17e0f1
+#     M6577_C289TACXX_7_2_001.fq.gz 990395e1b60ff9a76478d7244aa7f3d2
+#     M6577_C289TACXX_8_1_001.fq.gz 14751dbcbe995e913f4c97664c295c61
+#     M6577_C289TACXX_8_2_001.fq.gz c55111246a82a9c5fd71a01425f5ce51
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_C289TACXX_7_2
+####   inputs:
+####     M6577_C289TACXX_7_2.fq.gz
+####   outputs:
+####     M6577_C289TACXX_7_2_fastqc.html
+####     M6577_C289TACXX_7_2_fastqc.zip
+
+fastqc  M6577_C289TACXX_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_8_2
+####   inputs:
+####     M6577_C289TACXX_8_2.fq.gz
+####   outputs:
+####     M6577_C289TACXX_8_2_fastqc.html
+####     M6577_C289TACXX_8_2_fastqc.zip
+
+fastqc  M6577_C289TACXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_6_1
+####   inputs:
+####     M6577_C289TACXX_6_1.fq.gz
+####   outputs:
+####     M6577_C289TACXX_6_1_fastqc.html
+####     M6577_C289TACXX_6_1_fastqc.zip
+
+fastqc  M6577_C289TACXX_6_1.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_4_1
+####   inputs:
+####     M6577_C289TACXX_4_1.fq.gz
+####   outputs:
+####     M6577_C289TACXX_4_1_fastqc.html
+####     M6577_C289TACXX_4_1_fastqc.zip
+
+fastqc  M6577_C289TACXX_4_1.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_6_2
+####   inputs:
+####     M6577_C289TACXX_6_2.fq.gz
+####   outputs:
+####     M6577_C289TACXX_6_2_fastqc.html
+####     M6577_C289TACXX_6_2_fastqc.zip
+
+fastqc  M6577_C289TACXX_6_2.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_7_1
+####   inputs:
+####     M6577_C289TACXX_7_1.fq.gz
+####   outputs:
+####     M6577_C289TACXX_7_1_fastqc.html
+####     M6577_C289TACXX_7_1_fastqc.zip
+
+fastqc  M6577_C289TACXX_7_1.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_4_2
+####   inputs:
+####     M6577_C289TACXX_4_2.fq.gz
+####   outputs:
+####     M6577_C289TACXX_4_2_fastqc.html
+####     M6577_C289TACXX_4_2_fastqc.zip
+
+fastqc  M6577_C289TACXX_4_2.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_8_1
+####   inputs:
+####     M6577_C289TACXX_8_1.fq.gz
+####   outputs:
+####     M6577_C289TACXX_8_1_fastqc.html
+####     M6577_C289TACXX_8_1_fastqc.zip
+
+fastqc  M6577_C289TACXX_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_5_1
+####   inputs:
+####     M6577_C289TACXX_5_1.fq.gz
+####   outputs:
+####     M6577_C289TACXX_5_1_fastqc.html
+####     M6577_C289TACXX_5_1_fastqc.zip
+
+fastqc  M6577_C289TACXX_5_1.fq.gz 
+
+
+########
+#### stage: fastqc_C289TACXX_5_2
+####   inputs:
+####     M6577_C289TACXX_5_2.fq.gz
+####   outputs:
+####     M6577_C289TACXX_5_2_fastqc.html
+####     M6577_C289TACXX_5_2_fastqc.zip
+
+fastqc  M6577_C289TACXX_5_2.fq.gz 
+
+
+########
+#### stage: trim_C289TACXX_5
+####   inputs:
+####     M6577_C289TACXX_5_1.fastq.gz
+####     M6577_C289TACXX_5_2.fastq.gz
+####   outputs:
+####     M6577_C289TACXX_5_1_paired.fq.gz
+####     M6577_C289TACXX_5_1_unpaired.fq.gz
+####     M6577_C289TACXX_5_2_paired.fq.gz
+####     M6577_C289TACXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6577_C289TACXX_5_1.fastq.gz M6577_C289TACXX_5_2.fastq.gz M6577_C289TACXX_5_1_paired.fq.gz M6577_C289TACXX_5_1_unpaired.fq.gz M6577_C289TACXX_5_2_paired.fq.gz M6577_C289TACXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C289TACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6577_C289TACXX_5_1.fq.gz (from trim_C289TACXX_5)
+####     M6577_C289TACXX_5_2.fq.gz (from trim_C289TACXX_5)
+####   outputs:
+####     M6577_C289TACXX_5.sorted.bai
+####     M6577_C289TACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C289TACXX.5\tLB:C289TACXX.5\tPL:ILLUMINA\tPU:C289TACXX.5.UNKNOWN\tSM:M6577' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6577_C289TACXX_5_1.fq.gz M6577_C289TACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6577_C289TACXX_5.sorted.bam -; samtools index M6577_C289TACXX_5.sorted.bam M6577_C289TACXX_5.sorted.bai
+
+
+########
+#### stage: trim_C289TACXX_8
+####   inputs:
+####     M6577_C289TACXX_8_1.fastq.gz
+####     M6577_C289TACXX_8_2.fastq.gz
+####   outputs:
+####     M6577_C289TACXX_8_1_paired.fq.gz
+####     M6577_C289TACXX_8_1_unpaired.fq.gz
+####     M6577_C289TACXX_8_2_paired.fq.gz
+####     M6577_C289TACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6577_C289TACXX_8_1.fastq.gz M6577_C289TACXX_8_2.fastq.gz M6577_C289TACXX_8_1_paired.fq.gz M6577_C289TACXX_8_1_unpaired.fq.gz M6577_C289TACXX_8_2_paired.fq.gz M6577_C289TACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C289TACXX_4
+####   inputs:
+####     M6577_C289TACXX_4_1.fastq.gz
+####     M6577_C289TACXX_4_2.fastq.gz
+####   outputs:
+####     M6577_C289TACXX_4_1_paired.fq.gz
+####     M6577_C289TACXX_4_1_unpaired.fq.gz
+####     M6577_C289TACXX_4_2_paired.fq.gz
+####     M6577_C289TACXX_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6577_C289TACXX_4_1.fastq.gz M6577_C289TACXX_4_2.fastq.gz M6577_C289TACXX_4_1_paired.fq.gz M6577_C289TACXX_4_1_unpaired.fq.gz M6577_C289TACXX_4_2_paired.fq.gz M6577_C289TACXX_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C289TACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6577_C289TACXX_8_1.fq.gz (from trim_C289TACXX_8)
+####     M6577_C289TACXX_8_2.fq.gz (from trim_C289TACXX_8)
+####   outputs:
+####     M6577_C289TACXX_8.sorted.bai
+####     M6577_C289TACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C289TACXX.8\tLB:C289TACXX.8\tPL:ILLUMINA\tPU:C289TACXX.8.UNKNOWN\tSM:M6577' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6577_C289TACXX_8_1.fq.gz M6577_C289TACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6577_C289TACXX_8.sorted.bam -; samtools index M6577_C289TACXX_8.sorted.bam M6577_C289TACXX_8.sorted.bai
+
+
+########
+#### stage: trim_C289TACXX_7
+####   inputs:
+####     M6577_C289TACXX_7_1.fastq.gz
+####     M6577_C289TACXX_7_2.fastq.gz
+####   outputs:
+####     M6577_C289TACXX_7_1_paired.fq.gz
+####     M6577_C289TACXX_7_1_unpaired.fq.gz
+####     M6577_C289TACXX_7_2_paired.fq.gz
+####     M6577_C289TACXX_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6577_C289TACXX_7_1.fastq.gz M6577_C289TACXX_7_2.fastq.gz M6577_C289TACXX_7_1_paired.fq.gz M6577_C289TACXX_7_1_unpaired.fq.gz M6577_C289TACXX_7_2_paired.fq.gz M6577_C289TACXX_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C289TACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6577_C289TACXX_4_1.fq.gz (from trim_C289TACXX_4)
+####     M6577_C289TACXX_4_2.fq.gz (from trim_C289TACXX_4)
+####   outputs:
+####     M6577_C289TACXX_4.sorted.bai
+####     M6577_C289TACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C289TACXX.4\tLB:C289TACXX.4\tPL:ILLUMINA\tPU:C289TACXX.4.UNKNOWN\tSM:M6577' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6577_C289TACXX_4_1.fq.gz M6577_C289TACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6577_C289TACXX_4.sorted.bam -; samtools index M6577_C289TACXX_4.sorted.bam M6577_C289TACXX_4.sorted.bai
+
+
+########
+#### stage: bwa_C289TACXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6577_C289TACXX_7_1.fq.gz (from trim_C289TACXX_7)
+####     M6577_C289TACXX_7_2.fq.gz (from trim_C289TACXX_7)
+####   outputs:
+####     M6577_C289TACXX_7.sorted.bai
+####     M6577_C289TACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C289TACXX.7\tLB:C289TACXX.7\tPL:ILLUMINA\tPU:C289TACXX.7.UNKNOWN\tSM:M6577' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6577_C289TACXX_7_1.fq.gz M6577_C289TACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6577_C289TACXX_7.sorted.bam -; samtools index M6577_C289TACXX_7.sorted.bam M6577_C289TACXX_7.sorted.bai
+
+
+########
+#### stage: trim_C289TACXX_6
+####   inputs:
+####     M6577_C289TACXX_6_1.fastq.gz
+####     M6577_C289TACXX_6_2.fastq.gz
+####   outputs:
+####     M6577_C289TACXX_6_1_paired.fq.gz
+####     M6577_C289TACXX_6_1_unpaired.fq.gz
+####     M6577_C289TACXX_6_2_paired.fq.gz
+####     M6577_C289TACXX_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6577_C289TACXX_6_1.fastq.gz M6577_C289TACXX_6_2.fastq.gz M6577_C289TACXX_6_1_paired.fq.gz M6577_C289TACXX_6_1_unpaired.fq.gz M6577_C289TACXX_6_2_paired.fq.gz M6577_C289TACXX_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C289TACXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6577_C289TACXX_6_1.fq.gz (from trim_C289TACXX_6)
+####     M6577_C289TACXX_6_2.fq.gz (from trim_C289TACXX_6)
+####   outputs:
+####     M6577_C289TACXX_6.sorted.bai
+####     M6577_C289TACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C289TACXX.6\tLB:C289TACXX.6\tPL:ILLUMINA\tPU:C289TACXX.6.UNKNOWN\tSM:M6577' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6577_C289TACXX_6_1.fq.gz M6577_C289TACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6577_C289TACXX_6.sorted.bam -; samtools index M6577_C289TACXX_6.sorted.bam M6577_C289TACXX_6.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     M6577_C289TACXX_4.bam (from bwa_C289TACXX_4)
+####     M6577_C289TACXX_5.bam (from bwa_C289TACXX_5)
+####     M6577_C289TACXX_6.bam (from bwa_C289TACXX_6)
+####     M6577_C289TACXX_7.bam (from bwa_C289TACXX_7)
+####     M6577_C289TACXX_8.bam (from bwa_C289TACXX_8)
+####   outputs:
+####     M6577.merged.bai
+####     M6577.merged.bam
+
+samtools merge -@ `nproc` M6577.merged.bam M6577_C289TACXX_4.bam M6577_C289TACXX_5.bam M6577_C289TACXX_6.bam M6577_C289TACXX_7.bam M6577_C289TACXX_8.bam ; samtools index M6577.merged.bam M6577.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     M6577.bam (from merge_bam)
+####   outputs:
+####     M6577.markduplicates.bam
+####     M6577.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=M6577.bam O=M6577.markduplicates.bam M=M6577.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     M6577.bam (from mark_duplicates)
+####   outputs:
+####     M6577.bai
+
+samtools index -@ `nproc` M6577.bam M6577.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M6577.bai (from index_mark_duplicates)
+####     M6577.bam (from mark_duplicates)
+####   outputs:
+####     M6577.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6577.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M6577.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     M6577.bai (from index_mark_duplicates)
+####     M6577.bam (from mark_duplicates)
+####     M6577.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     M6577.recalibrated.bai
+####     M6577.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6577.bam --bqsr-recal-file M6577.recalibration.table -O M6577.recalibrated.bam
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.samtoolsmpileup.vcf.gz
+####     M6577.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6577.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o M6577.samtoolsmpileup.vcf.gz ; tabix M6577.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.platypuscallvariants.vcf.gz
+####     M6577.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=M6577.bam --output=M6577.platypuscallvariants.vcf ; bgzip M6577.platypuscallvariants.vcf ; tabix -p vcf M6577.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6577.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M6577.recalibration.table
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.unmapped.fq.gz
+
+samtools view  -u -b -f 4 M6577.bam | samtools fastq - | gzip -c - > M6577.unmapped.fq.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.coverage.tsv
+
+samtools depth M6577.bam | depth-of-coverage.py > M6577.coverage.tsv
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     M6577.BQSR.csv
+####     M6577.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv M6577.BQSR.csv -plots M6577.BQSR.pdf
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.metrics.alignment_summary_metrics
+####     M6577.metrics.base_distribution_by_cycle.pdf
+####     M6577.metrics.base_distribution_by_cycle_metrics
+####     M6577.metrics.insert_size_histogram.pdf
+####     M6577.metrics.insert_size_metrics
+####     M6577.metrics.quality_by_cycle.pdf
+####     M6577.metrics.quality_by_cycle_metrics
+####     M6577.metrics.quality_distribution.pdf
+####     M6577.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=M6577.bam O=M6577.metrics
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M6577.bai (from apply_bsqr)
+####     M6577.bam (from apply_bsqr)
+####   outputs:
+####     M6577.gatk_haplotypecaller.vcf.gz
+####     M6577.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6577.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M6577.gatk_haplotypecaller.vcf.gz ; tabix -p vcf M6577.gatk_haplotypecaller.vcf.gz
+
+
+
+#   outputs:
+#     M6577.bcftools.vcf.gz (from bcftools_mpileup)
+#     M6577.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     M6577.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     M6577.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     M6577.platypus.vcf.gz (from platypus_callvariants)
+#     M6577.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     M6577.recalibrated.bai (from apply_bsqr)
+#     M6577.recalibrated.bam (from apply_bsqr)
+#     fastqc/M6577_C289TACXX_4_1_fastqc.html (from fastqc_C289TACXX_4_1)
+#     fastqc/M6577_C289TACXX_4_1_fastqc.zip (from fastqc_C289TACXX_4_1)
+#     fastqc/M6577_C289TACXX_4_2_fastqc.html (from fastqc_C289TACXX_4_2)
+#     fastqc/M6577_C289TACXX_4_2_fastqc.zip (from fastqc_C289TACXX_4_2)
+#     fastqc/M6577_C289TACXX_5_1_fastqc.html (from fastqc_C289TACXX_5_1)
+#     fastqc/M6577_C289TACXX_5_1_fastqc.zip (from fastqc_C289TACXX_5_1)
+#     fastqc/M6577_C289TACXX_5_2_fastqc.html (from fastqc_C289TACXX_5_2)
+#     fastqc/M6577_C289TACXX_5_2_fastqc.zip (from fastqc_C289TACXX_5_2)
+#     fastqc/M6577_C289TACXX_6_1_fastqc.html (from fastqc_C289TACXX_6_1)
+#     fastqc/M6577_C289TACXX_6_1_fastqc.zip (from fastqc_C289TACXX_6_1)
+#     fastqc/M6577_C289TACXX_6_2_fastqc.html (from fastqc_C289TACXX_6_2)
+#     fastqc/M6577_C289TACXX_6_2_fastqc.zip (from fastqc_C289TACXX_6_2)
+#     fastqc/M6577_C289TACXX_7_1_fastqc.html (from fastqc_C289TACXX_7_1)
+#     fastqc/M6577_C289TACXX_7_1_fastqc.zip (from fastqc_C289TACXX_7_1)
+#     fastqc/M6577_C289TACXX_7_2_fastqc.html (from fastqc_C289TACXX_7_2)
+#     fastqc/M6577_C289TACXX_7_2_fastqc.zip (from fastqc_C289TACXX_7_2)
+#     fastqc/M6577_C289TACXX_8_1_fastqc.html (from fastqc_C289TACXX_8_1)
+#     fastqc/M6577_C289TACXX_8_1_fastqc.zip (from fastqc_C289TACXX_8_1)
+#     fastqc/M6577_C289TACXX_8_2_fastqc.html (from fastqc_C289TACXX_8_2)
+#     fastqc/M6577_C289TACXX_8_2_fastqc.zip (from fastqc_C289TACXX_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/M6577.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6577.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/C289TACXX_4_1_unpaired.fq.gz (from trim_C289TACXX_4)
+#     unpaired/C289TACXX_4_2_unpaired.fq.gz (from trim_C289TACXX_4)
+#     unpaired/C289TACXX_5_1_unpaired.fq.gz (from trim_C289TACXX_5)
+#     unpaired/C289TACXX_5_2_unpaired.fq.gz (from trim_C289TACXX_5)
+#     unpaired/C289TACXX_6_1_unpaired.fq.gz (from trim_C289TACXX_6)
+#     unpaired/C289TACXX_6_2_unpaired.fq.gz (from trim_C289TACXX_6)
+#     unpaired/C289TACXX_7_1_unpaired.fq.gz (from trim_C289TACXX_7)
+#     unpaired/C289TACXX_7_2_unpaired.fq.gz (from trim_C289TACXX_7)
+#     unpaired/C289TACXX_8_1_unpaired.fq.gz (from trim_C289TACXX_8)
+#     unpaired/C289TACXX_8_2_unpaired.fq.gz (from trim_C289TACXX_8)

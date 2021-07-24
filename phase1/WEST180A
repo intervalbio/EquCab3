@@ -1,0 +1,457 @@
+# WEST180A
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+#     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_001.fq.gz 4b454bc58fe8985b9451836a7caf14b4
+#     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_001.fq.gz 29e717a747c998b4d64ff3c9ff10ab4e
+
+
+########
+#### stage: trim_C1DGKACXX_1,2,3,4,5,6,7,8
+####   inputs:
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1.fastq.gz
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2.fastq.gz
+####   outputs:
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_paired.fq.gz
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_unpaired.fq.gz
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_paired.fq.gz
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1.fastq.gz WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2.fastq.gz WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_paired.fq.gz WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_unpaired.fq.gz WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_paired.fq.gz WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_C1DGKACXX_1,2,3,4,5,6,7,8_2
+####   inputs:
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2.fq.gz
+####   outputs:
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_fastqc.html
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_fastqc.zip
+
+fastqc  WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2.fq.gz 
+
+
+########
+#### stage: split_C1DGKACXX_1,2,3,4,5,6,7,8_2
+####   inputs:
+####     WEST180A.fq.gz (from trim_C1DGKACXX_1,2,3,4,5,6,7,8)
+####   outputs:
+####     L1.fq.gz
+####     L2.fq.gz
+####     L3.fq.gz
+####     L4.fq.gz
+####     L5.fq.gz
+####     L6.fq.gz
+####     L7.fq.gz
+####     L8.fq.gz
+
+zcat WEST180A.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: split_C1DGKACXX_1,2,3,4,5,6,7,8_1
+####   inputs:
+####     WEST180A.fq.gz (from trim_C1DGKACXX_1,2,3,4,5,6,7,8)
+####   outputs:
+####     L1.fq.gz
+####     L2.fq.gz
+####     L3.fq.gz
+####     L4.fq.gz
+####     L5.fq.gz
+####     L6.fq.gz
+####     L7.fq.gz
+####     L8.fq.gz
+
+zcat WEST180A.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: fastqc_C1DGKACXX_1,2,3,4,5,6,7,8_1
+####   inputs:
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1.fq.gz
+####   outputs:
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_fastqc.html
+####     WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_fastqc.zip
+
+fastqc  WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1.fq.gz 
+
+
+########
+#### stage: bwa_C1DGKACXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_7_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_7_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_7.sorted.bai
+####     WEST180A_C1DGKACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_7_1.fq.gz WEST180A_C1DGKACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_7.sorted.bam -; samtools index WEST180A_C1DGKACXX_7.sorted.bam WEST180A_C1DGKACXX_7.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_8_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_8_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_8.sorted.bai
+####     WEST180A_C1DGKACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_8_1.fq.gz WEST180A_C1DGKACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_8.sorted.bam -; samtools index WEST180A_C1DGKACXX_8.sorted.bam WEST180A_C1DGKACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_4_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_4_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_4.sorted.bai
+####     WEST180A_C1DGKACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_4_1.fq.gz WEST180A_C1DGKACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_4.sorted.bam -; samtools index WEST180A_C1DGKACXX_4.sorted.bam WEST180A_C1DGKACXX_4.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_1
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_1_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_1_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_1.sorted.bai
+####     WEST180A_C1DGKACXX_1.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_1_1.fq.gz WEST180A_C1DGKACXX_1_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_1.sorted.bam -; samtools index WEST180A_C1DGKACXX_1.sorted.bam WEST180A_C1DGKACXX_1.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_3_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_3_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_3.sorted.bai
+####     WEST180A_C1DGKACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_3_1.fq.gz WEST180A_C1DGKACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_3.sorted.bam -; samtools index WEST180A_C1DGKACXX_3.sorted.bam WEST180A_C1DGKACXX_3.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_2_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_2_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_2.sorted.bai
+####     WEST180A_C1DGKACXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_2_1.fq.gz WEST180A_C1DGKACXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_2.sorted.bam -; samtools index WEST180A_C1DGKACXX_2.sorted.bam WEST180A_C1DGKACXX_2.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_5_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_5_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_5.sorted.bai
+####     WEST180A_C1DGKACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_5_1.fq.gz WEST180A_C1DGKACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_5.sorted.bam -; samtools index WEST180A_C1DGKACXX_5.sorted.bam WEST180A_C1DGKACXX_5.sorted.bai
+
+
+########
+#### stage: bwa_C1DGKACXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     WEST180A_C1DGKACXX_6_1.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+####     WEST180A_C1DGKACXX_6_2.fq.gz (from split_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+####   outputs:
+####     WEST180A_C1DGKACXX_6.sorted.bai
+####     WEST180A_C1DGKACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C1DGKACXX.12345678\tLB:C1DGKACXX.12345678\tPL:ILLUMINA\tPU:C1DGKACXX.12345678.UNKNOWN\tSM:WEST180A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A_C1DGKACXX_6_1.fq.gz WEST180A_C1DGKACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o WEST180A_C1DGKACXX_6.sorted.bam -; samtools index WEST180A_C1DGKACXX_6.sorted.bam WEST180A_C1DGKACXX_6.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     WEST180A_C1DGKACXX_1.bam (from bwa_C1DGKACXX_1)
+####     WEST180A_C1DGKACXX_2.bam (from bwa_C1DGKACXX_2)
+####     WEST180A_C1DGKACXX_3.bam (from bwa_C1DGKACXX_3)
+####     WEST180A_C1DGKACXX_4.bam (from bwa_C1DGKACXX_4)
+####     WEST180A_C1DGKACXX_5.bam (from bwa_C1DGKACXX_5)
+####     WEST180A_C1DGKACXX_6.bam (from bwa_C1DGKACXX_6)
+####     WEST180A_C1DGKACXX_7.bam (from bwa_C1DGKACXX_7)
+####     WEST180A_C1DGKACXX_8.bam (from bwa_C1DGKACXX_8)
+####   outputs:
+####     WEST180A.merged.bai
+####     WEST180A.merged.bam
+
+samtools merge -@ `nproc` WEST180A.merged.bam WEST180A_C1DGKACXX_1.bam WEST180A_C1DGKACXX_2.bam WEST180A_C1DGKACXX_3.bam WEST180A_C1DGKACXX_4.bam WEST180A_C1DGKACXX_5.bam WEST180A_C1DGKACXX_6.bam WEST180A_C1DGKACXX_7.bam WEST180A_C1DGKACXX_8.bam ; samtools index WEST180A.merged.bam WEST180A.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     WEST180A.bam (from merge_bam)
+####   outputs:
+####     WEST180A.markduplicates.bam
+####     WEST180A.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=WEST180A.bam O=WEST180A.markduplicates.bam M=WEST180A.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     WEST180A.bam (from mark_duplicates)
+####   outputs:
+####     WEST180A.bai
+
+samtools index -@ `nproc` WEST180A.bam WEST180A.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     WEST180A.bai (from index_mark_duplicates)
+####     WEST180A.bam (from mark_duplicates)
+####   outputs:
+####     WEST180A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I WEST180A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O WEST180A.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     WEST180A.bai (from index_mark_duplicates)
+####     WEST180A.bam (from mark_duplicates)
+####     WEST180A.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     WEST180A.recalibrated.bai
+####     WEST180A.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I WEST180A.bam --bqsr-recal-file WEST180A.recalibration.table -O WEST180A.recalibrated.bam
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I WEST180A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O WEST180A.recalibration.table
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.gatk_haplotypecaller.vcf.gz
+####     WEST180A.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I WEST180A.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O WEST180A.gatk_haplotypecaller.vcf.gz ; tabix -p vcf WEST180A.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.coverage.tsv
+
+samtools depth WEST180A.bam | depth-of-coverage.py > WEST180A.coverage.tsv
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.metrics.alignment_summary_metrics
+####     WEST180A.metrics.base_distribution_by_cycle.pdf
+####     WEST180A.metrics.base_distribution_by_cycle_metrics
+####     WEST180A.metrics.insert_size_histogram.pdf
+####     WEST180A.metrics.insert_size_metrics
+####     WEST180A.metrics.quality_by_cycle.pdf
+####     WEST180A.metrics.quality_by_cycle_metrics
+####     WEST180A.metrics.quality_distribution.pdf
+####     WEST180A.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=WEST180A.bam O=WEST180A.metrics
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.samtoolsmpileup.vcf.gz
+####     WEST180A.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta WEST180A.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o WEST180A.samtoolsmpileup.vcf.gz ; tabix WEST180A.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.platypuscallvariants.vcf.gz
+####     WEST180A.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=WEST180A.bam --output=WEST180A.platypuscallvariants.vcf ; bgzip WEST180A.platypuscallvariants.vcf ; tabix -p vcf WEST180A.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     WEST180A.bai (from apply_bsqr)
+####     WEST180A.bam (from apply_bsqr)
+####   outputs:
+####     WEST180A.unmapped.fq.gz
+
+samtools view  -u -b -f 4 WEST180A.bam | samtools fastq - | gzip -c - > WEST180A.unmapped.fq.gz
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     WEST180A.BQSR.csv
+####     WEST180A.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv WEST180A.BQSR.csv -plots WEST180A.BQSR.pdf
+
+
+
+#   outputs:
+#     WEST180A.bcftools.vcf.gz (from bcftools_mpileup)
+#     WEST180A.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     WEST180A.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     WEST180A.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     WEST180A.platypus.vcf.gz (from platypus_callvariants)
+#     WEST180A.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     WEST180A.recalibrated.bai (from apply_bsqr)
+#     WEST180A.recalibrated.bam (from apply_bsqr)
+#     fastqc/WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_fastqc.html (from fastqc_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+#     fastqc/WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_1_fastqc.zip (from fastqc_C1DGKACXX_1,2,3,4,5,6,7,8_1)
+#     fastqc/WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_fastqc.html (from fastqc_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+#     fastqc/WEST180A_C1DGKACXX_1,2,3,4,5,6,7,8_2_fastqc.zip (from fastqc_C1DGKACXX_1,2,3,4,5,6,7,8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/WEST180A.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/WEST180A.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/C1DGKACXX_1,2,3,4,5,6,7,8_1_unpaired.fq.gz (from trim_C1DGKACXX_1,2,3,4,5,6,7,8)
+#     unpaired/C1DGKACXX_1,2,3,4,5,6,7,8_2_unpaired.fq.gz (from trim_C1DGKACXX_1,2,3,4,5,6,7,8)

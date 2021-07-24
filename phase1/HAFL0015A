@@ -1,0 +1,457 @@
+# HAFL0015A
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_001.fq.gz fc055ae6c502f70f6ce1bbf5c941453e
+#     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_001.fq.gz b6b68b2a6ff539a1dc5d24d2b7749928
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_D10WJACXX_1,2,3,4,5,6,7,8_2
+####   inputs:
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2.fq.gz
+####   outputs:
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_fastqc.html
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_fastqc.zip
+
+fastqc  HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2.fq.gz 
+
+
+########
+#### stage: fastqc_D10WJACXX_1,2,3,4,5,6,7,8_1
+####   inputs:
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1.fq.gz
+####   outputs:
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_fastqc.html
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_fastqc.zip
+
+fastqc  HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1.fq.gz 
+
+
+########
+#### stage: trim_D10WJACXX_1,2,3,4,5,6,7,8
+####   inputs:
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1.fastq.gz
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2.fastq.gz
+####   outputs:
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_paired.fq.gz
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_unpaired.fq.gz
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_paired.fq.gz
+####     HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1.fastq.gz HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2.fastq.gz HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_paired.fq.gz HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_unpaired.fq.gz HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_paired.fq.gz HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: split_D10WJACXX_1,2,3,4,5,6,7,8_1
+####   inputs:
+####     HAFL0015A.fq.gz (from trim_D10WJACXX_1,2,3,4,5,6,7,8)
+####   outputs:
+####     L1.fq.gz
+####     L2.fq.gz
+####     L3.fq.gz
+####     L4.fq.gz
+####     L5.fq.gz
+####     L6.fq.gz
+####     L7.fq.gz
+####     L8.fq.gz
+
+zcat HAFL0015A.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: split_D10WJACXX_1,2,3,4,5,6,7,8_2
+####   inputs:
+####     HAFL0015A.fq.gz (from trim_D10WJACXX_1,2,3,4,5,6,7,8)
+####   outputs:
+####     L1.fq.gz
+####     L2.fq.gz
+####     L3.fq.gz
+####     L4.fq.gz
+####     L5.fq.gz
+####     L6.fq.gz
+####     L7.fq.gz
+####     L8.fq.gz
+
+zcat HAFL0015A.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: bwa_D10WJACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_5_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_5_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_5.sorted.bai
+####     HAFL0015A_D10WJACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_5_1.fq.gz HAFL0015A_D10WJACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_5.sorted.bam -; samtools index HAFL0015A_D10WJACXX_5.sorted.bam HAFL0015A_D10WJACXX_5.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_8_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_8_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_8.sorted.bai
+####     HAFL0015A_D10WJACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_8_1.fq.gz HAFL0015A_D10WJACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_8.sorted.bam -; samtools index HAFL0015A_D10WJACXX_8.sorted.bam HAFL0015A_D10WJACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_2_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_2_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_2.sorted.bai
+####     HAFL0015A_D10WJACXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_2_1.fq.gz HAFL0015A_D10WJACXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_2.sorted.bam -; samtools index HAFL0015A_D10WJACXX_2.sorted.bam HAFL0015A_D10WJACXX_2.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_7_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_7_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_7.sorted.bai
+####     HAFL0015A_D10WJACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_7_1.fq.gz HAFL0015A_D10WJACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_7.sorted.bam -; samtools index HAFL0015A_D10WJACXX_7.sorted.bam HAFL0015A_D10WJACXX_7.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_1
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_1_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_1_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_1.sorted.bai
+####     HAFL0015A_D10WJACXX_1.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_1_1.fq.gz HAFL0015A_D10WJACXX_1_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_1.sorted.bam -; samtools index HAFL0015A_D10WJACXX_1.sorted.bam HAFL0015A_D10WJACXX_1.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_6_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_6_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_6.sorted.bai
+####     HAFL0015A_D10WJACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_6_1.fq.gz HAFL0015A_D10WJACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_6.sorted.bam -; samtools index HAFL0015A_D10WJACXX_6.sorted.bam HAFL0015A_D10WJACXX_6.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_4_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_4_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_4.sorted.bai
+####     HAFL0015A_D10WJACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_4_1.fq.gz HAFL0015A_D10WJACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_4.sorted.bam -; samtools index HAFL0015A_D10WJACXX_4.sorted.bam HAFL0015A_D10WJACXX_4.sorted.bai
+
+
+########
+#### stage: bwa_D10WJACXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HAFL0015A_D10WJACXX_3_1.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_1)
+####     HAFL0015A_D10WJACXX_3_2.fq.gz (from split_D10WJACXX_1,2,3,4,5,6,7,8_2)
+####   outputs:
+####     HAFL0015A_D10WJACXX_3.sorted.bai
+####     HAFL0015A_D10WJACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D10WJACXX.12345678\tLB:D10WJACXX.12345678\tPL:ILLUMINA\tPU:D10WJACXX.12345678.UNKNOWN\tSM:HAFL0015A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A_D10WJACXX_3_1.fq.gz HAFL0015A_D10WJACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HAFL0015A_D10WJACXX_3.sorted.bam -; samtools index HAFL0015A_D10WJACXX_3.sorted.bam HAFL0015A_D10WJACXX_3.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     HAFL0015A_D10WJACXX_1.bam (from bwa_D10WJACXX_1)
+####     HAFL0015A_D10WJACXX_2.bam (from bwa_D10WJACXX_2)
+####     HAFL0015A_D10WJACXX_3.bam (from bwa_D10WJACXX_3)
+####     HAFL0015A_D10WJACXX_4.bam (from bwa_D10WJACXX_4)
+####     HAFL0015A_D10WJACXX_5.bam (from bwa_D10WJACXX_5)
+####     HAFL0015A_D10WJACXX_6.bam (from bwa_D10WJACXX_6)
+####     HAFL0015A_D10WJACXX_7.bam (from bwa_D10WJACXX_7)
+####     HAFL0015A_D10WJACXX_8.bam (from bwa_D10WJACXX_8)
+####   outputs:
+####     HAFL0015A.merged.bai
+####     HAFL0015A.merged.bam
+
+samtools merge -@ `nproc` HAFL0015A.merged.bam HAFL0015A_D10WJACXX_1.bam HAFL0015A_D10WJACXX_2.bam HAFL0015A_D10WJACXX_3.bam HAFL0015A_D10WJACXX_4.bam HAFL0015A_D10WJACXX_5.bam HAFL0015A_D10WJACXX_6.bam HAFL0015A_D10WJACXX_7.bam HAFL0015A_D10WJACXX_8.bam ; samtools index HAFL0015A.merged.bam HAFL0015A.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     HAFL0015A.bam (from merge_bam)
+####   outputs:
+####     HAFL0015A.markduplicates.bam
+####     HAFL0015A.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=HAFL0015A.bam O=HAFL0015A.markduplicates.bam M=HAFL0015A.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     HAFL0015A.bam (from mark_duplicates)
+####   outputs:
+####     HAFL0015A.bai
+
+samtools index -@ `nproc` HAFL0015A.bam HAFL0015A.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     HAFL0015A.bai (from index_mark_duplicates)
+####     HAFL0015A.bam (from mark_duplicates)
+####   outputs:
+####     HAFL0015A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HAFL0015A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O HAFL0015A.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     HAFL0015A.bai (from index_mark_duplicates)
+####     HAFL0015A.bam (from mark_duplicates)
+####     HAFL0015A.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     HAFL0015A.recalibrated.bai
+####     HAFL0015A.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HAFL0015A.bam --bqsr-recal-file HAFL0015A.recalibration.table -O HAFL0015A.recalibrated.bam
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.coverage.tsv
+
+samtools depth HAFL0015A.bam | depth-of-coverage.py > HAFL0015A.coverage.tsv
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.metrics.alignment_summary_metrics
+####     HAFL0015A.metrics.base_distribution_by_cycle.pdf
+####     HAFL0015A.metrics.base_distribution_by_cycle_metrics
+####     HAFL0015A.metrics.insert_size_histogram.pdf
+####     HAFL0015A.metrics.insert_size_metrics
+####     HAFL0015A.metrics.quality_by_cycle.pdf
+####     HAFL0015A.metrics.quality_by_cycle_metrics
+####     HAFL0015A.metrics.quality_distribution.pdf
+####     HAFL0015A.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=HAFL0015A.bam O=HAFL0015A.metrics
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.gatk_haplotypecaller.vcf.gz
+####     HAFL0015A.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HAFL0015A.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O HAFL0015A.gatk_haplotypecaller.vcf.gz ; tabix -p vcf HAFL0015A.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.unmapped.fq.gz
+
+samtools view  -u -b -f 4 HAFL0015A.bam | samtools fastq - | gzip -c - > HAFL0015A.unmapped.fq.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.platypuscallvariants.vcf.gz
+####     HAFL0015A.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=HAFL0015A.bam --output=HAFL0015A.platypuscallvariants.vcf ; bgzip HAFL0015A.platypuscallvariants.vcf ; tabix -p vcf HAFL0015A.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.samtoolsmpileup.vcf.gz
+####     HAFL0015A.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HAFL0015A.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o HAFL0015A.samtoolsmpileup.vcf.gz ; tabix HAFL0015A.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     HAFL0015A.bai (from apply_bsqr)
+####     HAFL0015A.bam (from apply_bsqr)
+####   outputs:
+####     HAFL0015A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HAFL0015A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O HAFL0015A.recalibration.table
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     HAFL0015A.BQSR.csv
+####     HAFL0015A.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv HAFL0015A.BQSR.csv -plots HAFL0015A.BQSR.pdf
+
+
+
+#   outputs:
+#     HAFL0015A.bcftools.vcf.gz (from bcftools_mpileup)
+#     HAFL0015A.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     HAFL0015A.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     HAFL0015A.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     HAFL0015A.platypus.vcf.gz (from platypus_callvariants)
+#     HAFL0015A.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     HAFL0015A.recalibrated.bai (from apply_bsqr)
+#     HAFL0015A.recalibrated.bam (from apply_bsqr)
+#     fastqc/HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_fastqc.html (from fastqc_D10WJACXX_1,2,3,4,5,6,7,8_1)
+#     fastqc/HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_1_fastqc.zip (from fastqc_D10WJACXX_1,2,3,4,5,6,7,8_1)
+#     fastqc/HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_fastqc.html (from fastqc_D10WJACXX_1,2,3,4,5,6,7,8_2)
+#     fastqc/HAFL0015A_D10WJACXX_1,2,3,4,5,6,7,8_2_fastqc.zip (from fastqc_D10WJACXX_1,2,3,4,5,6,7,8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/HAFL0015A.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/HAFL0015A.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/D10WJACXX_1,2,3,4,5,6,7,8_1_unpaired.fq.gz (from trim_D10WJACXX_1,2,3,4,5,6,7,8)
+#     unpaired/D10WJACXX_1,2,3,4,5,6,7,8_2_unpaired.fq.gz (from trim_D10WJACXX_1,2,3,4,5,6,7,8)

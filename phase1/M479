@@ -1,0 +1,347 @@
+# M479
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     M479_HCWF7DSXX_2,3,4_1_001.fq.gz b87d1ca97ffb45aaaaa8e9110d1ffa4c
+#     M479_HCWF7DSXX_2,3,4_2_001.fq.gz 2d0df2ad654ff8371eaa2f0991fe2299
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_HCWF7DSXX_2,3,4_2
+####   inputs:
+####     M479_HCWF7DSXX_2,3,4_2.fq.gz
+####   outputs:
+####     M479_HCWF7DSXX_2,3,4_2_fastqc.html
+####     M479_HCWF7DSXX_2,3,4_2_fastqc.zip
+
+fastqc  M479_HCWF7DSXX_2,3,4_2.fq.gz 
+
+
+########
+#### stage: fastqc_HCWF7DSXX_2,3,4_1
+####   inputs:
+####     M479_HCWF7DSXX_2,3,4_1.fq.gz
+####   outputs:
+####     M479_HCWF7DSXX_2,3,4_1_fastqc.html
+####     M479_HCWF7DSXX_2,3,4_1_fastqc.zip
+
+fastqc  M479_HCWF7DSXX_2,3,4_1.fq.gz 
+
+
+########
+#### stage: trim_HCWF7DSXX_2,3,4
+####   inputs:
+####     M479_HCWF7DSXX_2,3,4_1.fastq.gz
+####     M479_HCWF7DSXX_2,3,4_2.fastq.gz
+####   outputs:
+####     M479_HCWF7DSXX_2,3,4_1_paired.fq.gz
+####     M479_HCWF7DSXX_2,3,4_1_unpaired.fq.gz
+####     M479_HCWF7DSXX_2,3,4_2_paired.fq.gz
+####     M479_HCWF7DSXX_2,3,4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M479_HCWF7DSXX_2,3,4_1.fastq.gz M479_HCWF7DSXX_2,3,4_2.fastq.gz M479_HCWF7DSXX_2,3,4_1_paired.fq.gz M479_HCWF7DSXX_2,3,4_1_unpaired.fq.gz M479_HCWF7DSXX_2,3,4_2_paired.fq.gz M479_HCWF7DSXX_2,3,4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: split_HCWF7DSXX_2,3,4_1
+####   inputs:
+####     M479.fq.gz (from trim_HCWF7DSXX_2,3,4)
+####   outputs:
+####     L2.fq.gz
+####     L3.fq.gz
+####     L4.fq.gz
+
+zcat M479.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: split_HCWF7DSXX_2,3,4_2
+####   inputs:
+####     M479.fq.gz (from trim_HCWF7DSXX_2,3,4)
+####   outputs:
+####     L2.fq.gz
+####     L3.fq.gz
+####     L4.fq.gz
+
+zcat M479.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: bwa_HCWF7DSXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M479_HCWF7DSXX_4_1.fq.gz (from split_HCWF7DSXX_2,3,4_1)
+####     M479_HCWF7DSXX_4_2.fq.gz (from split_HCWF7DSXX_2,3,4_2)
+####   outputs:
+####     M479_HCWF7DSXX_4.sorted.bai
+####     M479_HCWF7DSXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCWF7DSXX.234\tLB:HCWF7DSXX.234\tPL:ILLUMINA\tPU:HCWF7DSXX.234.UNKNOWN\tSM:M479' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M479_HCWF7DSXX_4_1.fq.gz M479_HCWF7DSXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M479_HCWF7DSXX_4.sorted.bam -; samtools index M479_HCWF7DSXX_4.sorted.bam M479_HCWF7DSXX_4.sorted.bai
+
+
+########
+#### stage: bwa_HCWF7DSXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M479_HCWF7DSXX_3_1.fq.gz (from split_HCWF7DSXX_2,3,4_1)
+####     M479_HCWF7DSXX_3_2.fq.gz (from split_HCWF7DSXX_2,3,4_2)
+####   outputs:
+####     M479_HCWF7DSXX_3.sorted.bai
+####     M479_HCWF7DSXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCWF7DSXX.234\tLB:HCWF7DSXX.234\tPL:ILLUMINA\tPU:HCWF7DSXX.234.UNKNOWN\tSM:M479' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M479_HCWF7DSXX_3_1.fq.gz M479_HCWF7DSXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M479_HCWF7DSXX_3.sorted.bam -; samtools index M479_HCWF7DSXX_3.sorted.bam M479_HCWF7DSXX_3.sorted.bai
+
+
+########
+#### stage: bwa_HCWF7DSXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M479_HCWF7DSXX_2_1.fq.gz (from split_HCWF7DSXX_2,3,4_1)
+####     M479_HCWF7DSXX_2_2.fq.gz (from split_HCWF7DSXX_2,3,4_2)
+####   outputs:
+####     M479_HCWF7DSXX_2.sorted.bai
+####     M479_HCWF7DSXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCWF7DSXX.234\tLB:HCWF7DSXX.234\tPL:ILLUMINA\tPU:HCWF7DSXX.234.UNKNOWN\tSM:M479' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M479_HCWF7DSXX_2_1.fq.gz M479_HCWF7DSXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M479_HCWF7DSXX_2.sorted.bam -; samtools index M479_HCWF7DSXX_2.sorted.bam M479_HCWF7DSXX_2.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     M479_HCWF7DSXX_2.bam (from bwa_HCWF7DSXX_2)
+####     M479_HCWF7DSXX_3.bam (from bwa_HCWF7DSXX_3)
+####     M479_HCWF7DSXX_4.bam (from bwa_HCWF7DSXX_4)
+####   outputs:
+####     M479.merged.bai
+####     M479.merged.bam
+
+samtools merge -@ `nproc` M479.merged.bam M479_HCWF7DSXX_2.bam M479_HCWF7DSXX_3.bam M479_HCWF7DSXX_4.bam ; samtools index M479.merged.bam M479.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     M479.bam (from merge_bam)
+####   outputs:
+####     M479.markduplicates.bam
+####     M479.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=M479.bam O=M479.markduplicates.bam M=M479.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     M479.bam (from mark_duplicates)
+####   outputs:
+####     M479.bai
+
+samtools index -@ `nproc` M479.bam M479.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M479.bai (from index_mark_duplicates)
+####     M479.bam (from mark_duplicates)
+####   outputs:
+####     M479.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M479.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M479.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     M479.bai (from index_mark_duplicates)
+####     M479.bam (from mark_duplicates)
+####     M479.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     M479.recalibrated.bai
+####     M479.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M479.bam --bqsr-recal-file M479.recalibration.table -O M479.recalibrated.bam
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.metrics.alignment_summary_metrics
+####     M479.metrics.base_distribution_by_cycle.pdf
+####     M479.metrics.base_distribution_by_cycle_metrics
+####     M479.metrics.insert_size_histogram.pdf
+####     M479.metrics.insert_size_metrics
+####     M479.metrics.quality_by_cycle.pdf
+####     M479.metrics.quality_by_cycle_metrics
+####     M479.metrics.quality_distribution.pdf
+####     M479.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=M479.bam O=M479.metrics
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.samtoolsmpileup.vcf.gz
+####     M479.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M479.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o M479.samtoolsmpileup.vcf.gz ; tabix M479.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M479.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M479.recalibration.table
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     M479.BQSR.csv
+####     M479.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv M479.BQSR.csv -plots M479.BQSR.pdf
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.gatk_haplotypecaller.vcf.gz
+####     M479.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M479.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M479.gatk_haplotypecaller.vcf.gz ; tabix -p vcf M479.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.coverage.tsv
+
+samtools depth M479.bam | depth-of-coverage.py > M479.coverage.tsv
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.platypuscallvariants.vcf.gz
+####     M479.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=M479.bam --output=M479.platypuscallvariants.vcf ; bgzip M479.platypuscallvariants.vcf ; tabix -p vcf M479.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     M479.bai (from apply_bsqr)
+####     M479.bam (from apply_bsqr)
+####   outputs:
+####     M479.unmapped.fq.gz
+
+samtools view  -u -b -f 4 M479.bam | samtools fastq - | gzip -c - > M479.unmapped.fq.gz
+
+
+
+#   outputs:
+#     M479.bcftools.vcf.gz (from bcftools_mpileup)
+#     M479.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     M479.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     M479.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     M479.platypus.vcf.gz (from platypus_callvariants)
+#     M479.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     M479.recalibrated.bai (from apply_bsqr)
+#     M479.recalibrated.bam (from apply_bsqr)
+#     fastqc/M479_HCWF7DSXX_2,3,4_1_fastqc.html (from fastqc_HCWF7DSXX_2,3,4_1)
+#     fastqc/M479_HCWF7DSXX_2,3,4_1_fastqc.zip (from fastqc_HCWF7DSXX_2,3,4_1)
+#     fastqc/M479_HCWF7DSXX_2,3,4_2_fastqc.html (from fastqc_HCWF7DSXX_2,3,4_2)
+#     fastqc/M479_HCWF7DSXX_2,3,4_2_fastqc.zip (from fastqc_HCWF7DSXX_2,3,4_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/M479.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/M479.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/HCWF7DSXX_2,3,4_1_unpaired.fq.gz (from trim_HCWF7DSXX_2,3,4)
+#     unpaired/HCWF7DSXX_2,3,4_2_unpaired.fq.gz (from trim_HCWF7DSXX_2,3,4)

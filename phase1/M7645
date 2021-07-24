@@ -1,0 +1,347 @@
+# M7645
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     M7645_CALBUANXX_1,2,3_1_001.fq.gz 14a0ebec8c0df4f4f2003fb780278125
+#     M7645_CALBUANXX_1,2,3_2_001.fq.gz ececb97e96d2908d09b52de7b71e3e3a
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: trim_CALBUANXX_1,2,3
+####   inputs:
+####     M7645_CALBUANXX_1,2,3_1.fastq.gz
+####     M7645_CALBUANXX_1,2,3_2.fastq.gz
+####   outputs:
+####     M7645_CALBUANXX_1,2,3_1_paired.fq.gz
+####     M7645_CALBUANXX_1,2,3_1_unpaired.fq.gz
+####     M7645_CALBUANXX_1,2,3_2_paired.fq.gz
+####     M7645_CALBUANXX_1,2,3_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M7645_CALBUANXX_1,2,3_1.fastq.gz M7645_CALBUANXX_1,2,3_2.fastq.gz M7645_CALBUANXX_1,2,3_1_paired.fq.gz M7645_CALBUANXX_1,2,3_1_unpaired.fq.gz M7645_CALBUANXX_1,2,3_2_paired.fq.gz M7645_CALBUANXX_1,2,3_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_CALBUANXX_1,2,3_2
+####   inputs:
+####     M7645_CALBUANXX_1,2,3_2.fq.gz
+####   outputs:
+####     M7645_CALBUANXX_1,2,3_2_fastqc.html
+####     M7645_CALBUANXX_1,2,3_2_fastqc.zip
+
+fastqc  M7645_CALBUANXX_1,2,3_2.fq.gz 
+
+
+########
+#### stage: fastqc_CALBUANXX_1,2,3_1
+####   inputs:
+####     M7645_CALBUANXX_1,2,3_1.fq.gz
+####   outputs:
+####     M7645_CALBUANXX_1,2,3_1_fastqc.html
+####     M7645_CALBUANXX_1,2,3_1_fastqc.zip
+
+fastqc  M7645_CALBUANXX_1,2,3_1.fq.gz 
+
+
+########
+#### stage: split_CALBUANXX_1,2,3_2
+####   inputs:
+####     M7645.fq.gz (from trim_CALBUANXX_1,2,3)
+####   outputs:
+####     L1.fq.gz
+####     L2.fq.gz
+####     L3.fq.gz
+
+zcat M7645.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: split_CALBUANXX_1,2,3_1
+####   inputs:
+####     M7645.fq.gz (from trim_CALBUANXX_1,2,3)
+####   outputs:
+####     L1.fq.gz
+####     L2.fq.gz
+####     L3.fq.gz
+
+zcat M7645.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: bwa_CALBUANXX_1
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M7645_CALBUANXX_1_1.fq.gz (from split_CALBUANXX_1,2,3_2)
+####     M7645_CALBUANXX_1_2.fq.gz (from split_CALBUANXX_1,2,3_1)
+####   outputs:
+####     M7645_CALBUANXX_1.sorted.bai
+####     M7645_CALBUANXX_1.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:CALBUANXX.123\tLB:CALBUANXX.123\tPL:ILLUMINA\tPU:CALBUANXX.123.UNKNOWN\tSM:M7645' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M7645_CALBUANXX_1_1.fq.gz M7645_CALBUANXX_1_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M7645_CALBUANXX_1.sorted.bam -; samtools index M7645_CALBUANXX_1.sorted.bam M7645_CALBUANXX_1.sorted.bai
+
+
+########
+#### stage: bwa_CALBUANXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M7645_CALBUANXX_2_1.fq.gz (from split_CALBUANXX_1,2,3_2)
+####     M7645_CALBUANXX_2_2.fq.gz (from split_CALBUANXX_1,2,3_1)
+####   outputs:
+####     M7645_CALBUANXX_2.sorted.bai
+####     M7645_CALBUANXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:CALBUANXX.123\tLB:CALBUANXX.123\tPL:ILLUMINA\tPU:CALBUANXX.123.UNKNOWN\tSM:M7645' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M7645_CALBUANXX_2_1.fq.gz M7645_CALBUANXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M7645_CALBUANXX_2.sorted.bam -; samtools index M7645_CALBUANXX_2.sorted.bam M7645_CALBUANXX_2.sorted.bai
+
+
+########
+#### stage: bwa_CALBUANXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M7645_CALBUANXX_3_1.fq.gz (from split_CALBUANXX_1,2,3_2)
+####     M7645_CALBUANXX_3_2.fq.gz (from split_CALBUANXX_1,2,3_1)
+####   outputs:
+####     M7645_CALBUANXX_3.sorted.bai
+####     M7645_CALBUANXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:CALBUANXX.123\tLB:CALBUANXX.123\tPL:ILLUMINA\tPU:CALBUANXX.123.UNKNOWN\tSM:M7645' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M7645_CALBUANXX_3_1.fq.gz M7645_CALBUANXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M7645_CALBUANXX_3.sorted.bam -; samtools index M7645_CALBUANXX_3.sorted.bam M7645_CALBUANXX_3.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     M7645_CALBUANXX_1.bam (from bwa_CALBUANXX_1)
+####     M7645_CALBUANXX_2.bam (from bwa_CALBUANXX_2)
+####     M7645_CALBUANXX_3.bam (from bwa_CALBUANXX_3)
+####   outputs:
+####     M7645.merged.bai
+####     M7645.merged.bam
+
+samtools merge -@ `nproc` M7645.merged.bam M7645_CALBUANXX_1.bam M7645_CALBUANXX_2.bam M7645_CALBUANXX_3.bam ; samtools index M7645.merged.bam M7645.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     M7645.bam (from merge_bam)
+####   outputs:
+####     M7645.markduplicates.bam
+####     M7645.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=M7645.bam O=M7645.markduplicates.bam M=M7645.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     M7645.bam (from mark_duplicates)
+####   outputs:
+####     M7645.bai
+
+samtools index -@ `nproc` M7645.bam M7645.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M7645.bai (from index_mark_duplicates)
+####     M7645.bam (from mark_duplicates)
+####   outputs:
+####     M7645.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M7645.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M7645.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     M7645.bai (from index_mark_duplicates)
+####     M7645.bam (from mark_duplicates)
+####     M7645.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     M7645.recalibrated.bai
+####     M7645.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M7645.bam --bqsr-recal-file M7645.recalibration.table -O M7645.recalibrated.bam
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.samtoolsmpileup.vcf.gz
+####     M7645.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M7645.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o M7645.samtoolsmpileup.vcf.gz ; tabix M7645.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.platypuscallvariants.vcf.gz
+####     M7645.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=M7645.bam --output=M7645.platypuscallvariants.vcf ; bgzip M7645.platypuscallvariants.vcf ; tabix -p vcf M7645.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.metrics.alignment_summary_metrics
+####     M7645.metrics.base_distribution_by_cycle.pdf
+####     M7645.metrics.base_distribution_by_cycle_metrics
+####     M7645.metrics.insert_size_histogram.pdf
+####     M7645.metrics.insert_size_metrics
+####     M7645.metrics.quality_by_cycle.pdf
+####     M7645.metrics.quality_by_cycle_metrics
+####     M7645.metrics.quality_distribution.pdf
+####     M7645.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=M7645.bam O=M7645.metrics
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.coverage.tsv
+
+samtools depth M7645.bam | depth-of-coverage.py > M7645.coverage.tsv
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.unmapped.fq.gz
+
+samtools view  -u -b -f 4 M7645.bam | samtools fastq - | gzip -c - > M7645.unmapped.fq.gz
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.gatk_haplotypecaller.vcf.gz
+####     M7645.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M7645.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M7645.gatk_haplotypecaller.vcf.gz ; tabix -p vcf M7645.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M7645.bai (from apply_bsqr)
+####     M7645.bam (from apply_bsqr)
+####   outputs:
+####     M7645.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M7645.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M7645.recalibration.table
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     M7645.BQSR.csv
+####     M7645.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv M7645.BQSR.csv -plots M7645.BQSR.pdf
+
+
+
+#   outputs:
+#     M7645.bcftools.vcf.gz (from bcftools_mpileup)
+#     M7645.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     M7645.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     M7645.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     M7645.platypus.vcf.gz (from platypus_callvariants)
+#     M7645.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     M7645.recalibrated.bai (from apply_bsqr)
+#     M7645.recalibrated.bam (from apply_bsqr)
+#     fastqc/M7645_CALBUANXX_1,2,3_1_fastqc.html (from fastqc_CALBUANXX_1,2,3_1)
+#     fastqc/M7645_CALBUANXX_1,2,3_1_fastqc.zip (from fastqc_CALBUANXX_1,2,3_1)
+#     fastqc/M7645_CALBUANXX_1,2,3_2_fastqc.html (from fastqc_CALBUANXX_1,2,3_2)
+#     fastqc/M7645_CALBUANXX_1,2,3_2_fastqc.zip (from fastqc_CALBUANXX_1,2,3_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/M7645.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/M7645.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/CALBUANXX_1,2,3_1_unpaired.fq.gz (from trim_CALBUANXX_1,2,3)
+#     unpaired/CALBUANXX_1,2,3_2_unpaired.fq.gz (from trim_CALBUANXX_1,2,3)

@@ -1,0 +1,475 @@
+# HF13B
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     HF13B_HCTCVBBXX_5_1_001.fq.gz 253ca2401d7059f43fc3f420d8597cde
+#     HF13B_HCTCVBBXX_5_2_001.fq.gz dfed8b1d9ce8c5ae9aca941da75f144d
+#     HF13B_HCTCVBBXX_6_1_001.fq.gz 6def055cea40f558c8ecb4a209cff78d
+#     HF13B_HCTCVBBXX_6_2_001.fq.gz ca1d26b79e77d005c349dfd10e491b0d
+#     HF13B_HCTCVBBXX_7_1_001.fq.gz 3bdb765a81cb74db9e43e81a249d07db
+#     HF13B_HCTCVBBXX_7_2_001.fq.gz c4660da09bf9836de505e6452ade6ef0
+#     HF13B_HCTCVBBXX_8_1_001.fq.gz 6847e5a02cf0d0cf0614108160c8c1e3
+#     HF13B_HCTCVBBXX_8_2_001.fq.gz 610c26c3f435c29b0aa00d80a4d5acb6
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_HCTCVBBXX_5_1
+####   inputs:
+####     HF13B_HCTCVBBXX_5_1.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_5_1_fastqc.html
+####     HF13B_HCTCVBBXX_5_1_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_5_1.fq.gz 
+
+
+########
+#### stage: fastqc_HCTCVBBXX_5_2
+####   inputs:
+####     HF13B_HCTCVBBXX_5_2.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_5_2_fastqc.html
+####     HF13B_HCTCVBBXX_5_2_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_HCTCVBBXX_8_2
+####   inputs:
+####     HF13B_HCTCVBBXX_8_2.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_8_2_fastqc.html
+####     HF13B_HCTCVBBXX_8_2_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_HCTCVBBXX_6_1
+####   inputs:
+####     HF13B_HCTCVBBXX_6_1.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_6_1_fastqc.html
+####     HF13B_HCTCVBBXX_6_1_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_6_1.fq.gz 
+
+
+########
+#### stage: trim_HCTCVBBXX_8
+####   inputs:
+####     HF13B_HCTCVBBXX_8_1.fastq.gz
+####     HF13B_HCTCVBBXX_8_2.fastq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_8_1_paired.fq.gz
+####     HF13B_HCTCVBBXX_8_1_unpaired.fq.gz
+####     HF13B_HCTCVBBXX_8_2_paired.fq.gz
+####     HF13B_HCTCVBBXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` HF13B_HCTCVBBXX_8_1.fastq.gz HF13B_HCTCVBBXX_8_2.fastq.gz HF13B_HCTCVBBXX_8_1_paired.fq.gz HF13B_HCTCVBBXX_8_1_unpaired.fq.gz HF13B_HCTCVBBXX_8_2_paired.fq.gz HF13B_HCTCVBBXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_HCTCVBBXX_5
+####   inputs:
+####     HF13B_HCTCVBBXX_5_1.fastq.gz
+####     HF13B_HCTCVBBXX_5_2.fastq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_5_1_paired.fq.gz
+####     HF13B_HCTCVBBXX_5_1_unpaired.fq.gz
+####     HF13B_HCTCVBBXX_5_2_paired.fq.gz
+####     HF13B_HCTCVBBXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` HF13B_HCTCVBBXX_5_1.fastq.gz HF13B_HCTCVBBXX_5_2.fastq.gz HF13B_HCTCVBBXX_5_1_paired.fq.gz HF13B_HCTCVBBXX_5_1_unpaired.fq.gz HF13B_HCTCVBBXX_5_2_paired.fq.gz HF13B_HCTCVBBXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_HCTCVBBXX_6
+####   inputs:
+####     HF13B_HCTCVBBXX_6_1.fastq.gz
+####     HF13B_HCTCVBBXX_6_2.fastq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_6_1_paired.fq.gz
+####     HF13B_HCTCVBBXX_6_1_unpaired.fq.gz
+####     HF13B_HCTCVBBXX_6_2_paired.fq.gz
+####     HF13B_HCTCVBBXX_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` HF13B_HCTCVBBXX_6_1.fastq.gz HF13B_HCTCVBBXX_6_2.fastq.gz HF13B_HCTCVBBXX_6_1_paired.fq.gz HF13B_HCTCVBBXX_6_1_unpaired.fq.gz HF13B_HCTCVBBXX_6_2_paired.fq.gz HF13B_HCTCVBBXX_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_HCTCVBBXX_6_2
+####   inputs:
+####     HF13B_HCTCVBBXX_6_2.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_6_2_fastqc.html
+####     HF13B_HCTCVBBXX_6_2_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_6_2.fq.gz 
+
+
+########
+#### stage: fastqc_HCTCVBBXX_7_1
+####   inputs:
+####     HF13B_HCTCVBBXX_7_1.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_7_1_fastqc.html
+####     HF13B_HCTCVBBXX_7_1_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_7_1.fq.gz 
+
+
+########
+#### stage: fastqc_HCTCVBBXX_7_2
+####   inputs:
+####     HF13B_HCTCVBBXX_7_2.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_7_2_fastqc.html
+####     HF13B_HCTCVBBXX_7_2_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_HCTCVBBXX_8_1
+####   inputs:
+####     HF13B_HCTCVBBXX_8_1.fq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_8_1_fastqc.html
+####     HF13B_HCTCVBBXX_8_1_fastqc.zip
+
+fastqc  HF13B_HCTCVBBXX_8_1.fq.gz 
+
+
+########
+#### stage: trim_HCTCVBBXX_7
+####   inputs:
+####     HF13B_HCTCVBBXX_7_1.fastq.gz
+####     HF13B_HCTCVBBXX_7_2.fastq.gz
+####   outputs:
+####     HF13B_HCTCVBBXX_7_1_paired.fq.gz
+####     HF13B_HCTCVBBXX_7_1_unpaired.fq.gz
+####     HF13B_HCTCVBBXX_7_2_paired.fq.gz
+####     HF13B_HCTCVBBXX_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` HF13B_HCTCVBBXX_7_1.fastq.gz HF13B_HCTCVBBXX_7_2.fastq.gz HF13B_HCTCVBBXX_7_1_paired.fq.gz HF13B_HCTCVBBXX_7_1_unpaired.fq.gz HF13B_HCTCVBBXX_7_2_paired.fq.gz HF13B_HCTCVBBXX_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_HCTCVBBXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HF13B_HCTCVBBXX_8_1.fq.gz (from trim_HCTCVBBXX_8)
+####     HF13B_HCTCVBBXX_8_2.fq.gz (from trim_HCTCVBBXX_8)
+####   outputs:
+####     HF13B_HCTCVBBXX_8.sorted.bai
+####     HF13B_HCTCVBBXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCTCVBBXX.8\tLB:HCTCVBBXX.8\tPL:ILLUMINA\tPU:HCTCVBBXX.8.UNKNOWN\tSM:HF13B' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HF13B_HCTCVBBXX_8_1.fq.gz HF13B_HCTCVBBXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HF13B_HCTCVBBXX_8.sorted.bam -; samtools index HF13B_HCTCVBBXX_8.sorted.bam HF13B_HCTCVBBXX_8.sorted.bai
+
+
+########
+#### stage: bwa_HCTCVBBXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HF13B_HCTCVBBXX_5_1.fq.gz (from trim_HCTCVBBXX_5)
+####     HF13B_HCTCVBBXX_5_2.fq.gz (from trim_HCTCVBBXX_5)
+####   outputs:
+####     HF13B_HCTCVBBXX_5.sorted.bai
+####     HF13B_HCTCVBBXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCTCVBBXX.5\tLB:HCTCVBBXX.5\tPL:ILLUMINA\tPU:HCTCVBBXX.5.UNKNOWN\tSM:HF13B' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HF13B_HCTCVBBXX_5_1.fq.gz HF13B_HCTCVBBXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HF13B_HCTCVBBXX_5.sorted.bam -; samtools index HF13B_HCTCVBBXX_5.sorted.bam HF13B_HCTCVBBXX_5.sorted.bai
+
+
+########
+#### stage: bwa_HCTCVBBXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HF13B_HCTCVBBXX_7_1.fq.gz (from trim_HCTCVBBXX_7)
+####     HF13B_HCTCVBBXX_7_2.fq.gz (from trim_HCTCVBBXX_7)
+####   outputs:
+####     HF13B_HCTCVBBXX_7.sorted.bai
+####     HF13B_HCTCVBBXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCTCVBBXX.7\tLB:HCTCVBBXX.7\tPL:ILLUMINA\tPU:HCTCVBBXX.7.UNKNOWN\tSM:HF13B' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HF13B_HCTCVBBXX_7_1.fq.gz HF13B_HCTCVBBXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HF13B_HCTCVBBXX_7.sorted.bam -; samtools index HF13B_HCTCVBBXX_7.sorted.bam HF13B_HCTCVBBXX_7.sorted.bai
+
+
+########
+#### stage: bwa_HCTCVBBXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     HF13B_HCTCVBBXX_6_1.fq.gz (from trim_HCTCVBBXX_6)
+####     HF13B_HCTCVBBXX_6_2.fq.gz (from trim_HCTCVBBXX_6)
+####   outputs:
+####     HF13B_HCTCVBBXX_6.sorted.bai
+####     HF13B_HCTCVBBXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:HCTCVBBXX.6\tLB:HCTCVBBXX.6\tPL:ILLUMINA\tPU:HCTCVBBXX.6.UNKNOWN\tSM:HF13B' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HF13B_HCTCVBBXX_6_1.fq.gz HF13B_HCTCVBBXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o HF13B_HCTCVBBXX_6.sorted.bam -; samtools index HF13B_HCTCVBBXX_6.sorted.bam HF13B_HCTCVBBXX_6.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     HF13B_HCTCVBBXX_5.bam (from bwa_HCTCVBBXX_5)
+####     HF13B_HCTCVBBXX_6.bam (from bwa_HCTCVBBXX_6)
+####     HF13B_HCTCVBBXX_7.bam (from bwa_HCTCVBBXX_7)
+####     HF13B_HCTCVBBXX_8.bam (from bwa_HCTCVBBXX_8)
+####   outputs:
+####     HF13B.merged.bai
+####     HF13B.merged.bam
+
+samtools merge -@ `nproc` HF13B.merged.bam HF13B_HCTCVBBXX_5.bam HF13B_HCTCVBBXX_6.bam HF13B_HCTCVBBXX_7.bam HF13B_HCTCVBBXX_8.bam ; samtools index HF13B.merged.bam HF13B.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     HF13B.bam (from merge_bam)
+####   outputs:
+####     HF13B.markduplicates.bam
+####     HF13B.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=HF13B.bam O=HF13B.markduplicates.bam M=HF13B.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     HF13B.bam (from mark_duplicates)
+####   outputs:
+####     HF13B.bai
+
+samtools index -@ `nproc` HF13B.bam HF13B.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     HF13B.bai (from index_mark_duplicates)
+####     HF13B.bam (from mark_duplicates)
+####   outputs:
+####     HF13B.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HF13B.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O HF13B.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     HF13B.bai (from index_mark_duplicates)
+####     HF13B.bam (from mark_duplicates)
+####     HF13B.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     HF13B.recalibrated.bai
+####     HF13B.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HF13B.bam --bqsr-recal-file HF13B.recalibration.table -O HF13B.recalibrated.bam
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.gatk_haplotypecaller.vcf.gz
+####     HF13B.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HF13B.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O HF13B.gatk_haplotypecaller.vcf.gz ; tabix -p vcf HF13B.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.samtoolsmpileup.vcf.gz
+####     HF13B.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta HF13B.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o HF13B.samtoolsmpileup.vcf.gz ; tabix HF13B.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.coverage.tsv
+
+samtools depth HF13B.bam | depth-of-coverage.py > HF13B.coverage.tsv
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I HF13B.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O HF13B.recalibration.table
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     HF13B.BQSR.csv
+####     HF13B.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv HF13B.BQSR.csv -plots HF13B.BQSR.pdf
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.unmapped.fq.gz
+
+samtools view  -u -b -f 4 HF13B.bam | samtools fastq - | gzip -c - > HF13B.unmapped.fq.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.platypuscallvariants.vcf.gz
+####     HF13B.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=HF13B.bam --output=HF13B.platypuscallvariants.vcf ; bgzip HF13B.platypuscallvariants.vcf ; tabix -p vcf HF13B.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     HF13B.bai (from apply_bsqr)
+####     HF13B.bam (from apply_bsqr)
+####   outputs:
+####     HF13B.metrics.alignment_summary_metrics
+####     HF13B.metrics.base_distribution_by_cycle.pdf
+####     HF13B.metrics.base_distribution_by_cycle_metrics
+####     HF13B.metrics.insert_size_histogram.pdf
+####     HF13B.metrics.insert_size_metrics
+####     HF13B.metrics.quality_by_cycle.pdf
+####     HF13B.metrics.quality_by_cycle_metrics
+####     HF13B.metrics.quality_distribution.pdf
+####     HF13B.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=HF13B.bam O=HF13B.metrics
+
+
+
+#   outputs:
+#     HF13B.bcftools.vcf.gz (from bcftools_mpileup)
+#     HF13B.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     HF13B.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     HF13B.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     HF13B.platypus.vcf.gz (from platypus_callvariants)
+#     HF13B.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     HF13B.recalibrated.bai (from apply_bsqr)
+#     HF13B.recalibrated.bam (from apply_bsqr)
+#     fastqc/HF13B_HCTCVBBXX_5_1_fastqc.html (from fastqc_HCTCVBBXX_5_1)
+#     fastqc/HF13B_HCTCVBBXX_5_1_fastqc.zip (from fastqc_HCTCVBBXX_5_1)
+#     fastqc/HF13B_HCTCVBBXX_5_2_fastqc.html (from fastqc_HCTCVBBXX_5_2)
+#     fastqc/HF13B_HCTCVBBXX_5_2_fastqc.zip (from fastqc_HCTCVBBXX_5_2)
+#     fastqc/HF13B_HCTCVBBXX_6_1_fastqc.html (from fastqc_HCTCVBBXX_6_1)
+#     fastqc/HF13B_HCTCVBBXX_6_1_fastqc.zip (from fastqc_HCTCVBBXX_6_1)
+#     fastqc/HF13B_HCTCVBBXX_6_2_fastqc.html (from fastqc_HCTCVBBXX_6_2)
+#     fastqc/HF13B_HCTCVBBXX_6_2_fastqc.zip (from fastqc_HCTCVBBXX_6_2)
+#     fastqc/HF13B_HCTCVBBXX_7_1_fastqc.html (from fastqc_HCTCVBBXX_7_1)
+#     fastqc/HF13B_HCTCVBBXX_7_1_fastqc.zip (from fastqc_HCTCVBBXX_7_1)
+#     fastqc/HF13B_HCTCVBBXX_7_2_fastqc.html (from fastqc_HCTCVBBXX_7_2)
+#     fastqc/HF13B_HCTCVBBXX_7_2_fastqc.zip (from fastqc_HCTCVBBXX_7_2)
+#     fastqc/HF13B_HCTCVBBXX_8_1_fastqc.html (from fastqc_HCTCVBBXX_8_1)
+#     fastqc/HF13B_HCTCVBBXX_8_1_fastqc.zip (from fastqc_HCTCVBBXX_8_1)
+#     fastqc/HF13B_HCTCVBBXX_8_2_fastqc.html (from fastqc_HCTCVBBXX_8_2)
+#     fastqc/HF13B_HCTCVBBXX_8_2_fastqc.zip (from fastqc_HCTCVBBXX_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/HF13B.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/HF13B.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/HCTCVBBXX_5_1_unpaired.fq.gz (from trim_HCTCVBBXX_5)
+#     unpaired/HCTCVBBXX_5_2_unpaired.fq.gz (from trim_HCTCVBBXX_5)
+#     unpaired/HCTCVBBXX_6_1_unpaired.fq.gz (from trim_HCTCVBBXX_6)
+#     unpaired/HCTCVBBXX_6_2_unpaired.fq.gz (from trim_HCTCVBBXX_6)
+#     unpaired/HCTCVBBXX_7_1_unpaired.fq.gz (from trim_HCTCVBBXX_7)
+#     unpaired/HCTCVBBXX_7_2_unpaired.fq.gz (from trim_HCTCVBBXX_7)
+#     unpaired/HCTCVBBXX_8_1_unpaired.fq.gz (from trim_HCTCVBBXX_8)
+#     unpaired/HCTCVBBXX_8_2_unpaired.fq.gz (from trim_HCTCVBBXX_8)

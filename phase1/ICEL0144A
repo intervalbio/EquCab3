@@ -1,0 +1,539 @@
+# ICEL0144A
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     ICEL0144A_unknown_4_1_001.fq.gz 94d7c402303a69b3f2298b8dd84d65af
+#     ICEL0144A_unknown_4_2_001.fq.gz 0fa3a119900ba2c621dbf2bebae98f99
+#     ICEL0144A_unknown_5_1_001.fq.gz cdb99715bfa6426fcc60b72c0b32a243
+#     ICEL0144A_unknown_5_2_001.fq.gz fef9cf276434fec85cae4bcbcf283e21
+#     ICEL0144A_unknown_6_1_001.fq.gz 8bb1ee4cf545858e06498e048546a68e
+#     ICEL0144A_unknown_6_2_001.fq.gz 3eef893a73ffe30a44017e202e923a3c
+#     ICEL0144A_unknown_7_1_001.fq.gz 0dc1972c3e142437b7704464ce693461
+#     ICEL0144A_unknown_7_2_001.fq.gz 9ebc7dc3a02477159b17d5b6772b352e
+#     ICEL0144A_unknown_8_1_001.fq.gz b538ea5e1c8880ca5ed1d2295b5a5baa
+#     ICEL0144A_unknown_8_2_001.fq.gz d89e9b8f51d4b1094cfde2ee6bd17ba4
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_unknown_8_1
+####   inputs:
+####     ICEL0144A_unknown_8_1.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_8_1_fastqc.html
+####     ICEL0144A_unknown_8_1_fastqc.zip
+
+fastqc  ICEL0144A_unknown_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_4_2
+####   inputs:
+####     ICEL0144A_unknown_4_2.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_4_2_fastqc.html
+####     ICEL0144A_unknown_4_2_fastqc.zip
+
+fastqc  ICEL0144A_unknown_4_2.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_5_1
+####   inputs:
+####     ICEL0144A_unknown_5_1.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_5_1_fastqc.html
+####     ICEL0144A_unknown_5_1_fastqc.zip
+
+fastqc  ICEL0144A_unknown_5_1.fq.gz 
+
+
+########
+#### stage: trim_unknown_5
+####   inputs:
+####     ICEL0144A_unknown_5_1.fastq.gz
+####     ICEL0144A_unknown_5_2.fastq.gz
+####   outputs:
+####     ICEL0144A_unknown_5_1_paired.fq.gz
+####     ICEL0144A_unknown_5_1_unpaired.fq.gz
+####     ICEL0144A_unknown_5_2_paired.fq.gz
+####     ICEL0144A_unknown_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ICEL0144A_unknown_5_1.fastq.gz ICEL0144A_unknown_5_2.fastq.gz ICEL0144A_unknown_5_1_paired.fq.gz ICEL0144A_unknown_5_1_unpaired.fq.gz ICEL0144A_unknown_5_2_paired.fq.gz ICEL0144A_unknown_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_unknown_6
+####   inputs:
+####     ICEL0144A_unknown_6_1.fastq.gz
+####     ICEL0144A_unknown_6_2.fastq.gz
+####   outputs:
+####     ICEL0144A_unknown_6_1_paired.fq.gz
+####     ICEL0144A_unknown_6_1_unpaired.fq.gz
+####     ICEL0144A_unknown_6_2_paired.fq.gz
+####     ICEL0144A_unknown_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ICEL0144A_unknown_6_1.fastq.gz ICEL0144A_unknown_6_2.fastq.gz ICEL0144A_unknown_6_1_paired.fq.gz ICEL0144A_unknown_6_1_unpaired.fq.gz ICEL0144A_unknown_6_2_paired.fq.gz ICEL0144A_unknown_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_unknown_8
+####   inputs:
+####     ICEL0144A_unknown_8_1.fastq.gz
+####     ICEL0144A_unknown_8_2.fastq.gz
+####   outputs:
+####     ICEL0144A_unknown_8_1_paired.fq.gz
+####     ICEL0144A_unknown_8_1_unpaired.fq.gz
+####     ICEL0144A_unknown_8_2_paired.fq.gz
+####     ICEL0144A_unknown_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ICEL0144A_unknown_8_1.fastq.gz ICEL0144A_unknown_8_2.fastq.gz ICEL0144A_unknown_8_1_paired.fq.gz ICEL0144A_unknown_8_1_unpaired.fq.gz ICEL0144A_unknown_8_2_paired.fq.gz ICEL0144A_unknown_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_unknown_7
+####   inputs:
+####     ICEL0144A_unknown_7_1.fastq.gz
+####     ICEL0144A_unknown_7_2.fastq.gz
+####   outputs:
+####     ICEL0144A_unknown_7_1_paired.fq.gz
+####     ICEL0144A_unknown_7_1_unpaired.fq.gz
+####     ICEL0144A_unknown_7_2_paired.fq.gz
+####     ICEL0144A_unknown_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ICEL0144A_unknown_7_1.fastq.gz ICEL0144A_unknown_7_2.fastq.gz ICEL0144A_unknown_7_1_paired.fq.gz ICEL0144A_unknown_7_1_unpaired.fq.gz ICEL0144A_unknown_7_2_paired.fq.gz ICEL0144A_unknown_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_unknown_7_1
+####   inputs:
+####     ICEL0144A_unknown_7_1.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_7_1_fastqc.html
+####     ICEL0144A_unknown_7_1_fastqc.zip
+
+fastqc  ICEL0144A_unknown_7_1.fq.gz 
+
+
+########
+#### stage: trim_unknown_4
+####   inputs:
+####     ICEL0144A_unknown_4_1.fastq.gz
+####     ICEL0144A_unknown_4_2.fastq.gz
+####   outputs:
+####     ICEL0144A_unknown_4_1_paired.fq.gz
+####     ICEL0144A_unknown_4_1_unpaired.fq.gz
+####     ICEL0144A_unknown_4_2_paired.fq.gz
+####     ICEL0144A_unknown_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ICEL0144A_unknown_4_1.fastq.gz ICEL0144A_unknown_4_2.fastq.gz ICEL0144A_unknown_4_1_paired.fq.gz ICEL0144A_unknown_4_1_unpaired.fq.gz ICEL0144A_unknown_4_2_paired.fq.gz ICEL0144A_unknown_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_unknown_4_1
+####   inputs:
+####     ICEL0144A_unknown_4_1.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_4_1_fastqc.html
+####     ICEL0144A_unknown_4_1_fastqc.zip
+
+fastqc  ICEL0144A_unknown_4_1.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_7_2
+####   inputs:
+####     ICEL0144A_unknown_7_2.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_7_2_fastqc.html
+####     ICEL0144A_unknown_7_2_fastqc.zip
+
+fastqc  ICEL0144A_unknown_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_5_2
+####   inputs:
+####     ICEL0144A_unknown_5_2.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_5_2_fastqc.html
+####     ICEL0144A_unknown_5_2_fastqc.zip
+
+fastqc  ICEL0144A_unknown_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_6_1
+####   inputs:
+####     ICEL0144A_unknown_6_1.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_6_1_fastqc.html
+####     ICEL0144A_unknown_6_1_fastqc.zip
+
+fastqc  ICEL0144A_unknown_6_1.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_8_2
+####   inputs:
+####     ICEL0144A_unknown_8_2.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_8_2_fastqc.html
+####     ICEL0144A_unknown_8_2_fastqc.zip
+
+fastqc  ICEL0144A_unknown_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_unknown_6_2
+####   inputs:
+####     ICEL0144A_unknown_6_2.fq.gz
+####   outputs:
+####     ICEL0144A_unknown_6_2_fastqc.html
+####     ICEL0144A_unknown_6_2_fastqc.zip
+
+fastqc  ICEL0144A_unknown_6_2.fq.gz 
+
+
+########
+#### stage: bwa_unknown_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     ICEL0144A_unknown_8_1.fq.gz (from trim_unknown_8)
+####     ICEL0144A_unknown_8_2.fq.gz (from trim_unknown_8)
+####   outputs:
+####     ICEL0144A_unknown_8.sorted.bai
+####     ICEL0144A_unknown_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.8\tLB:unknown.8\tPL:ILLUMINA\tPU:unknown.8.UNKNOWN\tSM:ICEL0144A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ICEL0144A_unknown_8_1.fq.gz ICEL0144A_unknown_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ICEL0144A_unknown_8.sorted.bam -; samtools index ICEL0144A_unknown_8.sorted.bam ICEL0144A_unknown_8.sorted.bai
+
+
+########
+#### stage: bwa_unknown_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     ICEL0144A_unknown_4_1.fq.gz (from trim_unknown_4)
+####     ICEL0144A_unknown_4_2.fq.gz (from trim_unknown_4)
+####   outputs:
+####     ICEL0144A_unknown_4.sorted.bai
+####     ICEL0144A_unknown_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.4\tLB:unknown.4\tPL:ILLUMINA\tPU:unknown.4.UNKNOWN\tSM:ICEL0144A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ICEL0144A_unknown_4_1.fq.gz ICEL0144A_unknown_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ICEL0144A_unknown_4.sorted.bam -; samtools index ICEL0144A_unknown_4.sorted.bam ICEL0144A_unknown_4.sorted.bai
+
+
+########
+#### stage: bwa_unknown_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     ICEL0144A_unknown_7_1.fq.gz (from trim_unknown_7)
+####     ICEL0144A_unknown_7_2.fq.gz (from trim_unknown_7)
+####   outputs:
+####     ICEL0144A_unknown_7.sorted.bai
+####     ICEL0144A_unknown_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.7\tLB:unknown.7\tPL:ILLUMINA\tPU:unknown.7.UNKNOWN\tSM:ICEL0144A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ICEL0144A_unknown_7_1.fq.gz ICEL0144A_unknown_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ICEL0144A_unknown_7.sorted.bam -; samtools index ICEL0144A_unknown_7.sorted.bam ICEL0144A_unknown_7.sorted.bai
+
+
+########
+#### stage: bwa_unknown_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     ICEL0144A_unknown_6_1.fq.gz (from trim_unknown_6)
+####     ICEL0144A_unknown_6_2.fq.gz (from trim_unknown_6)
+####   outputs:
+####     ICEL0144A_unknown_6.sorted.bai
+####     ICEL0144A_unknown_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.6\tLB:unknown.6\tPL:ILLUMINA\tPU:unknown.6.UNKNOWN\tSM:ICEL0144A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ICEL0144A_unknown_6_1.fq.gz ICEL0144A_unknown_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ICEL0144A_unknown_6.sorted.bam -; samtools index ICEL0144A_unknown_6.sorted.bam ICEL0144A_unknown_6.sorted.bai
+
+
+########
+#### stage: bwa_unknown_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     ICEL0144A_unknown_5_1.fq.gz (from trim_unknown_5)
+####     ICEL0144A_unknown_5_2.fq.gz (from trim_unknown_5)
+####   outputs:
+####     ICEL0144A_unknown_5.sorted.bai
+####     ICEL0144A_unknown_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown.5\tLB:unknown.5\tPL:ILLUMINA\tPU:unknown.5.UNKNOWN\tSM:ICEL0144A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ICEL0144A_unknown_5_1.fq.gz ICEL0144A_unknown_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ICEL0144A_unknown_5.sorted.bam -; samtools index ICEL0144A_unknown_5.sorted.bam ICEL0144A_unknown_5.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     ICEL0144A_unknown_4.bam (from bwa_unknown_4)
+####     ICEL0144A_unknown_5.bam (from bwa_unknown_5)
+####     ICEL0144A_unknown_6.bam (from bwa_unknown_6)
+####     ICEL0144A_unknown_7.bam (from bwa_unknown_7)
+####     ICEL0144A_unknown_8.bam (from bwa_unknown_8)
+####   outputs:
+####     ICEL0144A.merged.bai
+####     ICEL0144A.merged.bam
+
+samtools merge -@ `nproc` ICEL0144A.merged.bam ICEL0144A_unknown_4.bam ICEL0144A_unknown_5.bam ICEL0144A_unknown_6.bam ICEL0144A_unknown_7.bam ICEL0144A_unknown_8.bam ; samtools index ICEL0144A.merged.bam ICEL0144A.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     ICEL0144A.bam (from merge_bam)
+####   outputs:
+####     ICEL0144A.markduplicates.bam
+####     ICEL0144A.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=ICEL0144A.bam O=ICEL0144A.markduplicates.bam M=ICEL0144A.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     ICEL0144A.bam (from mark_duplicates)
+####   outputs:
+####     ICEL0144A.bai
+
+samtools index -@ `nproc` ICEL0144A.bam ICEL0144A.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     ICEL0144A.bai (from index_mark_duplicates)
+####     ICEL0144A.bam (from mark_duplicates)
+####   outputs:
+####     ICEL0144A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ICEL0144A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ICEL0144A.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     ICEL0144A.bai (from index_mark_duplicates)
+####     ICEL0144A.bam (from mark_duplicates)
+####     ICEL0144A.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     ICEL0144A.recalibrated.bai
+####     ICEL0144A.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ICEL0144A.bam --bqsr-recal-file ICEL0144A.recalibration.table -O ICEL0144A.recalibrated.bam
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ICEL0144A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ICEL0144A.recalibration.table
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.samtoolsmpileup.vcf.gz
+####     ICEL0144A.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ICEL0144A.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o ICEL0144A.samtoolsmpileup.vcf.gz ; tabix ICEL0144A.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.unmapped.fq.gz
+
+samtools view  -u -b -f 4 ICEL0144A.bam | samtools fastq - | gzip -c - > ICEL0144A.unmapped.fq.gz
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.gatk_haplotypecaller.vcf.gz
+####     ICEL0144A.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ICEL0144A.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ICEL0144A.gatk_haplotypecaller.vcf.gz ; tabix -p vcf ICEL0144A.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.platypuscallvariants.vcf.gz
+####     ICEL0144A.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=ICEL0144A.bam --output=ICEL0144A.platypuscallvariants.vcf ; bgzip ICEL0144A.platypuscallvariants.vcf ; tabix -p vcf ICEL0144A.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.metrics.alignment_summary_metrics
+####     ICEL0144A.metrics.base_distribution_by_cycle.pdf
+####     ICEL0144A.metrics.base_distribution_by_cycle_metrics
+####     ICEL0144A.metrics.insert_size_histogram.pdf
+####     ICEL0144A.metrics.insert_size_metrics
+####     ICEL0144A.metrics.quality_by_cycle.pdf
+####     ICEL0144A.metrics.quality_by_cycle_metrics
+####     ICEL0144A.metrics.quality_distribution.pdf
+####     ICEL0144A.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=ICEL0144A.bam O=ICEL0144A.metrics
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     ICEL0144A.bai (from apply_bsqr)
+####     ICEL0144A.bam (from apply_bsqr)
+####   outputs:
+####     ICEL0144A.coverage.tsv
+
+samtools depth ICEL0144A.bam | depth-of-coverage.py > ICEL0144A.coverage.tsv
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     ICEL0144A.BQSR.csv
+####     ICEL0144A.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv ICEL0144A.BQSR.csv -plots ICEL0144A.BQSR.pdf
+
+
+
+#   outputs:
+#     ICEL0144A.bcftools.vcf.gz (from bcftools_mpileup)
+#     ICEL0144A.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     ICEL0144A.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     ICEL0144A.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     ICEL0144A.platypus.vcf.gz (from platypus_callvariants)
+#     ICEL0144A.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     ICEL0144A.recalibrated.bai (from apply_bsqr)
+#     ICEL0144A.recalibrated.bam (from apply_bsqr)
+#     fastqc/ICEL0144A_unknown_4_1_fastqc.html (from fastqc_unknown_4_1)
+#     fastqc/ICEL0144A_unknown_4_1_fastqc.zip (from fastqc_unknown_4_1)
+#     fastqc/ICEL0144A_unknown_4_2_fastqc.html (from fastqc_unknown_4_2)
+#     fastqc/ICEL0144A_unknown_4_2_fastqc.zip (from fastqc_unknown_4_2)
+#     fastqc/ICEL0144A_unknown_5_1_fastqc.html (from fastqc_unknown_5_1)
+#     fastqc/ICEL0144A_unknown_5_1_fastqc.zip (from fastqc_unknown_5_1)
+#     fastqc/ICEL0144A_unknown_5_2_fastqc.html (from fastqc_unknown_5_2)
+#     fastqc/ICEL0144A_unknown_5_2_fastqc.zip (from fastqc_unknown_5_2)
+#     fastqc/ICEL0144A_unknown_6_1_fastqc.html (from fastqc_unknown_6_1)
+#     fastqc/ICEL0144A_unknown_6_1_fastqc.zip (from fastqc_unknown_6_1)
+#     fastqc/ICEL0144A_unknown_6_2_fastqc.html (from fastqc_unknown_6_2)
+#     fastqc/ICEL0144A_unknown_6_2_fastqc.zip (from fastqc_unknown_6_2)
+#     fastqc/ICEL0144A_unknown_7_1_fastqc.html (from fastqc_unknown_7_1)
+#     fastqc/ICEL0144A_unknown_7_1_fastqc.zip (from fastqc_unknown_7_1)
+#     fastqc/ICEL0144A_unknown_7_2_fastqc.html (from fastqc_unknown_7_2)
+#     fastqc/ICEL0144A_unknown_7_2_fastqc.zip (from fastqc_unknown_7_2)
+#     fastqc/ICEL0144A_unknown_8_1_fastqc.html (from fastqc_unknown_8_1)
+#     fastqc/ICEL0144A_unknown_8_1_fastqc.zip (from fastqc_unknown_8_1)
+#     fastqc/ICEL0144A_unknown_8_2_fastqc.html (from fastqc_unknown_8_2)
+#     fastqc/ICEL0144A_unknown_8_2_fastqc.zip (from fastqc_unknown_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/ICEL0144A.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/ICEL0144A.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/unknown_4_1_unpaired.fq.gz (from trim_unknown_4)
+#     unpaired/unknown_4_2_unpaired.fq.gz (from trim_unknown_4)
+#     unpaired/unknown_5_1_unpaired.fq.gz (from trim_unknown_5)
+#     unpaired/unknown_5_2_unpaired.fq.gz (from trim_unknown_5)
+#     unpaired/unknown_6_1_unpaired.fq.gz (from trim_unknown_6)
+#     unpaired/unknown_6_2_unpaired.fq.gz (from trim_unknown_6)
+#     unpaired/unknown_7_1_unpaired.fq.gz (from trim_unknown_7)
+#     unpaired/unknown_7_2_unpaired.fq.gz (from trim_unknown_7)
+#     unpaired/unknown_8_1_unpaired.fq.gz (from trim_unknown_8)
+#     unpaired/unknown_8_2_unpaired.fq.gz (from trim_unknown_8)

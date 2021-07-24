@@ -1,0 +1,966 @@
+# SRR641366
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic_NW.fna.bed
+#     SRR641366.gatk.gvcf.gz
+#     SRR641366.gatk.gvcf.gz.tbi
+#     SRR641366.recalibrated.bai
+#     SRR641366.recalibrated.bam
+
+
+########
+#### stage: NC_009149_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009149.3.vcf.gz
+####     SRR641366.NC_009149.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009149.3  SRR641366.vcf.gz > SRR641366.NC_009149.3.vcf; bgzip SRR641366.NC_009149.3.vcf; tabix SRR641366.NC_009149.3.vcf.gz
+
+
+########
+#### stage: NC_009170_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009170.3.vcf.gz
+####     SRR641366.NC_009170.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009170.3  SRR641366.vcf.gz > SRR641366.NC_009170.3.vcf; bgzip SRR641366.NC_009170.3.vcf; tabix SRR641366.NC_009170.3.vcf.gz
+
+
+########
+#### stage: NC_009170_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009170.3.bai
+####     SRR641366.NC_009170.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009170.3   > SRR641366.NC_009170.3.bam; samtools index SRR641366.NC_009170.3.bam SRR641366.NC_009170.3.bai
+
+
+########
+#### stage: NC_009151_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009151.3.vcf.gz
+####     SRR641366.NC_009151.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009151.3  SRR641366.vcf.gz > SRR641366.NC_009151.3.vcf; bgzip SRR641366.NC_009151.3.vcf; tabix SRR641366.NC_009151.3.vcf.gz
+
+
+########
+#### stage: NC_009171_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009171.3.vcf.gz
+####     SRR641366.NC_009171.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009171.3  SRR641366.vcf.gz > SRR641366.NC_009171.3.vcf; bgzip SRR641366.NC_009171.3.vcf; tabix SRR641366.NC_009171.3.vcf.gz
+
+
+########
+#### stage: NC_009173_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009173.3.vcf.gz
+####     SRR641366.NC_009173.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009173.3  SRR641366.vcf.gz > SRR641366.NC_009173.3.vcf; bgzip SRR641366.NC_009173.3.vcf; tabix SRR641366.NC_009173.3.vcf.gz
+
+
+########
+#### stage: NC_009152_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009152.3.bai
+####     SRR641366.NC_009152.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009152.3   > SRR641366.NC_009152.3.bam; samtools index SRR641366.NC_009152.3.bam SRR641366.NC_009152.3.bai
+
+
+########
+#### stage: NC_009148_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009148.3.vcf.gz
+####     SRR641366.NC_009148.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009148.3  SRR641366.vcf.gz > SRR641366.NC_009148.3.vcf; bgzip SRR641366.NC_009148.3.vcf; tabix SRR641366.NC_009148.3.vcf.gz
+
+
+########
+#### stage: NC_009165_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009165.3.vcf.gz
+####     SRR641366.NC_009165.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009165.3  SRR641366.vcf.gz > SRR641366.NC_009165.3.vcf; bgzip SRR641366.NC_009165.3.vcf; tabix SRR641366.NC_009165.3.vcf.gz
+
+
+########
+#### stage: NC_009159_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009159.3.vcf.gz
+####     SRR641366.NC_009159.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009159.3  SRR641366.vcf.gz > SRR641366.NC_009159.3.vcf; bgzip SRR641366.NC_009159.3.vcf; tabix SRR641366.NC_009159.3.vcf.gz
+
+
+########
+#### stage: NC_009160_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009160.3.bai
+####     SRR641366.NC_009160.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009160.3   > SRR641366.NC_009160.3.bam; samtools index SRR641366.NC_009160.3.bam SRR641366.NC_009160.3.bai
+
+
+########
+#### stage: NC_009175_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009175.3.bai
+####     SRR641366.NC_009175.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009175.3   > SRR641366.NC_009175.3.bam; samtools index SRR641366.NC_009175.3.bam SRR641366.NC_009175.3.bai
+
+
+########
+#### stage: NC_009173_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009173.3.bai
+####     SRR641366.NC_009173.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009173.3   > SRR641366.NC_009173.3.bam; samtools index SRR641366.NC_009173.3.bam SRR641366.NC_009173.3.bai
+
+
+########
+#### stage: NC_009150_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009150.3.bai
+####     SRR641366.NC_009150.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009150.3   > SRR641366.NC_009150.3.bam; samtools index SRR641366.NC_009150.3.bam SRR641366.NC_009150.3.bai
+
+
+########
+#### stage: NC_009144_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009144.3.bai
+####     SRR641366.NC_009144.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009144.3   > SRR641366.NC_009144.3.bam; samtools index SRR641366.NC_009144.3.bam SRR641366.NC_009144.3.bai
+
+
+########
+#### stage: NC_009161_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009161.3.bai
+####     SRR641366.NC_009161.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009161.3   > SRR641366.NC_009161.3.bam; samtools index SRR641366.NC_009161.3.bam SRR641366.NC_009161.3.bai
+
+
+########
+#### stage: NC_001640_1_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_001640.1.vcf.gz
+####     SRR641366.NC_001640.1.vcf.gz.tbi
+
+bcftools filter  -r NC_001640.1  SRR641366.vcf.gz > SRR641366.NC_001640.1.vcf; bgzip SRR641366.NC_001640.1.vcf; tabix SRR641366.NC_001640.1.vcf.gz
+
+
+########
+#### stage: NC_009150_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009150.3.vcf.gz
+####     SRR641366.NC_009150.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009150.3  SRR641366.vcf.gz > SRR641366.NC_009150.3.vcf; bgzip SRR641366.NC_009150.3.vcf; tabix SRR641366.NC_009150.3.vcf.gz
+
+
+########
+#### stage: NC_009152_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009152.3.vcf.gz
+####     SRR641366.NC_009152.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009152.3  SRR641366.vcf.gz > SRR641366.NC_009152.3.vcf; bgzip SRR641366.NC_009152.3.vcf; tabix SRR641366.NC_009152.3.vcf.gz
+
+
+########
+#### stage: NC_009167_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009167.3.vcf.gz
+####     SRR641366.NC_009167.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009167.3  SRR641366.vcf.gz > SRR641366.NC_009167.3.vcf; bgzip SRR641366.NC_009167.3.vcf; tabix SRR641366.NC_009167.3.vcf.gz
+
+
+########
+#### stage: NC_009163_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009163.3.vcf.gz
+####     SRR641366.NC_009163.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009163.3  SRR641366.vcf.gz > SRR641366.NC_009163.3.vcf; bgzip SRR641366.NC_009163.3.vcf; tabix SRR641366.NC_009163.3.vcf.gz
+
+
+########
+#### stage: NC_009175_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009175.3.vcf.gz
+####     SRR641366.NC_009175.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009175.3  SRR641366.vcf.gz > SRR641366.NC_009175.3.vcf; bgzip SRR641366.NC_009175.3.vcf; tabix SRR641366.NC_009175.3.vcf.gz
+
+
+########
+#### stage: NC_009162_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009162.3.vcf.gz
+####     SRR641366.NC_009162.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009162.3  SRR641366.vcf.gz > SRR641366.NC_009162.3.vcf; bgzip SRR641366.NC_009162.3.vcf; tabix SRR641366.NC_009162.3.vcf.gz
+
+
+########
+#### stage: NC_009151_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009151.3.bai
+####     SRR641366.NC_009151.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009151.3   > SRR641366.NC_009151.3.bam; samtools index SRR641366.NC_009151.3.bam SRR641366.NC_009151.3.bai
+
+
+########
+#### stage: NC_009144_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009144.3.vcf.gz
+####     SRR641366.NC_009144.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009144.3  SRR641366.vcf.gz > SRR641366.NC_009144.3.vcf; bgzip SRR641366.NC_009144.3.vcf; tabix SRR641366.NC_009144.3.vcf.gz
+
+
+########
+#### stage: NC_009159_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009159.3.bai
+####     SRR641366.NC_009159.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009159.3   > SRR641366.NC_009159.3.bam; samtools index SRR641366.NC_009159.3.bam SRR641366.NC_009159.3.bai
+
+
+########
+#### stage: NC_009172_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009172.3.vcf.gz
+####     SRR641366.NC_009172.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009172.3  SRR641366.vcf.gz > SRR641366.NC_009172.3.vcf; bgzip SRR641366.NC_009172.3.vcf; tabix SRR641366.NC_009172.3.vcf.gz
+
+
+########
+#### stage: NC_009166_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009166.3.bai
+####     SRR641366.NC_009166.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009166.3   > SRR641366.NC_009166.3.bam; samtools index SRR641366.NC_009166.3.bam SRR641366.NC_009166.3.bai
+
+
+########
+#### stage: NC_009157_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009157.3.bai
+####     SRR641366.NC_009157.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009157.3   > SRR641366.NC_009157.3.bam; samtools index SRR641366.NC_009157.3.bam SRR641366.NC_009157.3.bai
+
+
+########
+#### stage: NC_009146_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009146.3.vcf.gz
+####     SRR641366.NC_009146.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009146.3  SRR641366.vcf.gz > SRR641366.NC_009146.3.vcf; bgzip SRR641366.NC_009146.3.vcf; tabix SRR641366.NC_009146.3.vcf.gz
+
+
+########
+#### stage: NC_009165_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009165.3.bai
+####     SRR641366.NC_009165.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009165.3   > SRR641366.NC_009165.3.bam; samtools index SRR641366.NC_009165.3.bam SRR641366.NC_009165.3.bai
+
+
+########
+#### stage: NC_009172_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009172.3.bai
+####     SRR641366.NC_009172.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009172.3   > SRR641366.NC_009172.3.bam; samtools index SRR641366.NC_009172.3.bam SRR641366.NC_009172.3.bai
+
+
+########
+#### stage: NC_009174_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009174.3.vcf.gz
+####     SRR641366.NC_009174.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009174.3  SRR641366.vcf.gz > SRR641366.NC_009174.3.vcf; bgzip SRR641366.NC_009174.3.vcf; tabix SRR641366.NC_009174.3.vcf.gz
+
+
+########
+#### stage: NC_001640_1_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_001640.1.bai
+####     SRR641366.NC_001640.1.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_001640.1   > SRR641366.NC_001640.1.bam; samtools index SRR641366.NC_001640.1.bam SRR641366.NC_001640.1.bai
+
+
+########
+#### stage: NC_009155_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009155.3.vcf.gz
+####     SRR641366.NC_009155.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009155.3  SRR641366.vcf.gz > SRR641366.NC_009155.3.vcf; bgzip SRR641366.NC_009155.3.vcf; tabix SRR641366.NC_009155.3.vcf.gz
+
+
+########
+#### stage: NC_009153_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009153.3.vcf.gz
+####     SRR641366.NC_009153.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009153.3  SRR641366.vcf.gz > SRR641366.NC_009153.3.vcf; bgzip SRR641366.NC_009153.3.vcf; tabix SRR641366.NC_009153.3.vcf.gz
+
+
+########
+#### stage: NC_009154_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009154.3.vcf.gz
+####     SRR641366.NC_009154.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009154.3  SRR641366.vcf.gz > SRR641366.NC_009154.3.vcf; bgzip SRR641366.NC_009154.3.vcf; tabix SRR641366.NC_009154.3.vcf.gz
+
+
+########
+#### stage: NC_009168_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009168.3.vcf.gz
+####     SRR641366.NC_009168.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009168.3  SRR641366.vcf.gz > SRR641366.NC_009168.3.vcf; bgzip SRR641366.NC_009168.3.vcf; tabix SRR641366.NC_009168.3.vcf.gz
+
+
+########
+#### stage: NC_009160_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009160.3.vcf.gz
+####     SRR641366.NC_009160.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009160.3  SRR641366.vcf.gz > SRR641366.NC_009160.3.vcf; bgzip SRR641366.NC_009160.3.vcf; tabix SRR641366.NC_009160.3.vcf.gz
+
+
+########
+#### stage: NC_009156_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009156.3.bai
+####     SRR641366.NC_009156.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009156.3   > SRR641366.NC_009156.3.bam; samtools index SRR641366.NC_009156.3.bam SRR641366.NC_009156.3.bai
+
+
+########
+#### stage: NC_009157_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009157.3.vcf.gz
+####     SRR641366.NC_009157.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009157.3  SRR641366.vcf.gz > SRR641366.NC_009157.3.vcf; bgzip SRR641366.NC_009157.3.vcf; tabix SRR641366.NC_009157.3.vcf.gz
+
+
+########
+#### stage: NC_009168_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009168.3.bai
+####     SRR641366.NC_009168.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009168.3   > SRR641366.NC_009168.3.bam; samtools index SRR641366.NC_009168.3.bam SRR641366.NC_009168.3.bai
+
+
+########
+#### stage: NC_009156_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009156.3.vcf.gz
+####     SRR641366.NC_009156.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009156.3  SRR641366.vcf.gz > SRR641366.NC_009156.3.vcf; bgzip SRR641366.NC_009156.3.vcf; tabix SRR641366.NC_009156.3.vcf.gz
+
+
+########
+#### stage: NC_009171_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009171.3.bai
+####     SRR641366.NC_009171.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009171.3   > SRR641366.NC_009171.3.bam; samtools index SRR641366.NC_009171.3.bam SRR641366.NC_009171.3.bai
+
+
+########
+#### stage: NC_009147_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009147.3.bai
+####     SRR641366.NC_009147.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009147.3   > SRR641366.NC_009147.3.bam; samtools index SRR641366.NC_009147.3.bam SRR641366.NC_009147.3.bai
+
+
+########
+#### stage: NC_009158_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009158.3.bai
+####     SRR641366.NC_009158.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009158.3   > SRR641366.NC_009158.3.bam; samtools index SRR641366.NC_009158.3.bam SRR641366.NC_009158.3.bai
+
+
+########
+#### stage: NC_009166_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009166.3.vcf.gz
+####     SRR641366.NC_009166.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009166.3  SRR641366.vcf.gz > SRR641366.NC_009166.3.vcf; bgzip SRR641366.NC_009166.3.vcf; tabix SRR641366.NC_009166.3.vcf.gz
+
+
+########
+#### stage: NC_009162_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009162.3.bai
+####     SRR641366.NC_009162.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009162.3   > SRR641366.NC_009162.3.bam; samtools index SRR641366.NC_009162.3.bam SRR641366.NC_009162.3.bai
+
+
+########
+#### stage: NC_009174_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009174.3.bai
+####     SRR641366.NC_009174.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009174.3   > SRR641366.NC_009174.3.bam; samtools index SRR641366.NC_009174.3.bam SRR641366.NC_009174.3.bai
+
+
+########
+#### stage: unplaced_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####     regions.bed
+####   outputs:
+####     SRR641366.regions.vcf.gz
+####     SRR641366.regions.vcf.gz.tbi
+
+bcftools filter   -R regions.bed SRR641366.vcf.gz > SRR641366.regions.vcf; bgzip SRR641366.regions.vcf; tabix SRR641366.regions.vcf.gz
+
+
+########
+#### stage: NC_009169_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009169.3.vcf.gz
+####     SRR641366.NC_009169.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009169.3  SRR641366.vcf.gz > SRR641366.NC_009169.3.vcf; bgzip SRR641366.NC_009169.3.vcf; tabix SRR641366.NC_009169.3.vcf.gz
+
+
+########
+#### stage: NC_009164_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009164.3.bai
+####     SRR641366.NC_009164.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009164.3   > SRR641366.NC_009164.3.bam; samtools index SRR641366.NC_009164.3.bam SRR641366.NC_009164.3.bai
+
+
+########
+#### stage: NC_009147_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009147.3.vcf.gz
+####     SRR641366.NC_009147.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009147.3  SRR641366.vcf.gz > SRR641366.NC_009147.3.vcf; bgzip SRR641366.NC_009147.3.vcf; tabix SRR641366.NC_009147.3.vcf.gz
+
+
+########
+#### stage: unplaced_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####     regions.bed
+####   outputs:
+####     SRR641366.regions.bai
+####     SRR641366.regions.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam  -L regions.bed > SRR641366.regions.bam; samtools index SRR641366.regions.bam SRR641366.regions.bai
+
+
+########
+#### stage: NC_009158_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009158.3.vcf.gz
+####     SRR641366.NC_009158.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009158.3  SRR641366.vcf.gz > SRR641366.NC_009158.3.vcf; bgzip SRR641366.NC_009158.3.vcf; tabix SRR641366.NC_009158.3.vcf.gz
+
+
+########
+#### stage: NC_009145_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009145.3.vcf.gz
+####     SRR641366.NC_009145.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009145.3  SRR641366.vcf.gz > SRR641366.NC_009145.3.vcf; bgzip SRR641366.NC_009145.3.vcf; tabix SRR641366.NC_009145.3.vcf.gz
+
+
+########
+#### stage: NC_009146_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009146.3.bai
+####     SRR641366.NC_009146.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009146.3   > SRR641366.NC_009146.3.bam; samtools index SRR641366.NC_009146.3.bam SRR641366.NC_009146.3.bai
+
+
+########
+#### stage: NC_009163_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009163.3.bai
+####     SRR641366.NC_009163.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009163.3   > SRR641366.NC_009163.3.bam; samtools index SRR641366.NC_009163.3.bam SRR641366.NC_009163.3.bai
+
+
+########
+#### stage: NC_009161_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009161.3.vcf.gz
+####     SRR641366.NC_009161.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009161.3  SRR641366.vcf.gz > SRR641366.NC_009161.3.vcf; bgzip SRR641366.NC_009161.3.vcf; tabix SRR641366.NC_009161.3.vcf.gz
+
+
+########
+#### stage: NC_009149_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009149.3.bai
+####     SRR641366.NC_009149.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009149.3   > SRR641366.NC_009149.3.bam; samtools index SRR641366.NC_009149.3.bam SRR641366.NC_009149.3.bai
+
+
+########
+#### stage: NC_009154_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009154.3.bai
+####     SRR641366.NC_009154.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009154.3   > SRR641366.NC_009154.3.bam; samtools index SRR641366.NC_009154.3.bam SRR641366.NC_009154.3.bai
+
+
+########
+#### stage: NC_009155_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009155.3.bai
+####     SRR641366.NC_009155.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009155.3   > SRR641366.NC_009155.3.bam; samtools index SRR641366.NC_009155.3.bam SRR641366.NC_009155.3.bai
+
+
+########
+#### stage: NC_009169_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009169.3.bai
+####     SRR641366.NC_009169.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009169.3   > SRR641366.NC_009169.3.bam; samtools index SRR641366.NC_009169.3.bam SRR641366.NC_009169.3.bai
+
+
+########
+#### stage: NC_009145_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009145.3.bai
+####     SRR641366.NC_009145.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009145.3   > SRR641366.NC_009145.3.bam; samtools index SRR641366.NC_009145.3.bam SRR641366.NC_009145.3.bai
+
+
+########
+#### stage: NC_009167_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009167.3.bai
+####     SRR641366.NC_009167.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009167.3   > SRR641366.NC_009167.3.bam; samtools index SRR641366.NC_009167.3.bam SRR641366.NC_009167.3.bai
+
+
+########
+#### stage: NC_009164_3_vcf
+####   inputs:
+####     SRR641366.vcf.gz
+####     SRR641366.vcf.gz.tbi
+####   outputs:
+####     SRR641366.NC_009164.3.vcf.gz
+####     SRR641366.NC_009164.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009164.3  SRR641366.vcf.gz > SRR641366.NC_009164.3.vcf; bgzip SRR641366.NC_009164.3.vcf; tabix SRR641366.NC_009164.3.vcf.gz
+
+
+########
+#### stage: NC_009153_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009153.3.bai
+####     SRR641366.NC_009153.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009153.3   > SRR641366.NC_009153.3.bam; samtools index SRR641366.NC_009153.3.bam SRR641366.NC_009153.3.bai
+
+
+########
+#### stage: NC_009148_3_bam
+####   inputs:
+####     SRR641366.bai
+####     SRR641366.bam
+####   outputs:
+####     SRR641366.NC_009148.3.bai
+####     SRR641366.NC_009148.3.bam
+
+samtools view -bh -@ `nproc` SRR641366.bam NC_009148.3   > SRR641366.NC_009148.3.bam; samtools index SRR641366.NC_009148.3.bam SRR641366.NC_009148.3.bai
+
+
+
+#   outputs:
+#     SRR641366/SRR641366.NC_001640.1.bai (from NC_001640_1_bam)
+#     SRR641366/SRR641366.NC_001640.1.bam (from NC_001640_1_bam)
+#     SRR641366/SRR641366.NC_001640.1.vcf.gz (from NC_001640_1_vcf)
+#     SRR641366/SRR641366.NC_001640.1.vcf.gz.tbi (from NC_001640_1_vcf)
+#     SRR641366/SRR641366.NC_009144.3.bai (from NC_009144_3_bam)
+#     SRR641366/SRR641366.NC_009144.3.bam (from NC_009144_3_bam)
+#     SRR641366/SRR641366.NC_009144.3.vcf.gz (from NC_009144_3_vcf)
+#     SRR641366/SRR641366.NC_009144.3.vcf.gz.tbi (from NC_009144_3_vcf)
+#     SRR641366/SRR641366.NC_009145.3.bai (from NC_009145_3_bam)
+#     SRR641366/SRR641366.NC_009145.3.bam (from NC_009145_3_bam)
+#     SRR641366/SRR641366.NC_009145.3.vcf.gz (from NC_009145_3_vcf)
+#     SRR641366/SRR641366.NC_009145.3.vcf.gz.tbi (from NC_009145_3_vcf)
+#     SRR641366/SRR641366.NC_009146.3.bai (from NC_009146_3_bam)
+#     SRR641366/SRR641366.NC_009146.3.bam (from NC_009146_3_bam)
+#     SRR641366/SRR641366.NC_009146.3.vcf.gz (from NC_009146_3_vcf)
+#     SRR641366/SRR641366.NC_009146.3.vcf.gz.tbi (from NC_009146_3_vcf)
+#     SRR641366/SRR641366.NC_009147.3.bai (from NC_009147_3_bam)
+#     SRR641366/SRR641366.NC_009147.3.bam (from NC_009147_3_bam)
+#     SRR641366/SRR641366.NC_009147.3.vcf.gz (from NC_009147_3_vcf)
+#     SRR641366/SRR641366.NC_009147.3.vcf.gz.tbi (from NC_009147_3_vcf)
+#     SRR641366/SRR641366.NC_009148.3.bai (from NC_009148_3_bam)
+#     SRR641366/SRR641366.NC_009148.3.bam (from NC_009148_3_bam)
+#     SRR641366/SRR641366.NC_009148.3.vcf.gz (from NC_009148_3_vcf)
+#     SRR641366/SRR641366.NC_009148.3.vcf.gz.tbi (from NC_009148_3_vcf)
+#     SRR641366/SRR641366.NC_009149.3.bai (from NC_009149_3_bam)
+#     SRR641366/SRR641366.NC_009149.3.bam (from NC_009149_3_bam)
+#     SRR641366/SRR641366.NC_009149.3.vcf.gz (from NC_009149_3_vcf)
+#     SRR641366/SRR641366.NC_009149.3.vcf.gz.tbi (from NC_009149_3_vcf)
+#     SRR641366/SRR641366.NC_009150.3.bai (from NC_009150_3_bam)
+#     SRR641366/SRR641366.NC_009150.3.bam (from NC_009150_3_bam)
+#     SRR641366/SRR641366.NC_009150.3.vcf.gz (from NC_009150_3_vcf)
+#     SRR641366/SRR641366.NC_009150.3.vcf.gz.tbi (from NC_009150_3_vcf)
+#     SRR641366/SRR641366.NC_009151.3.bai (from NC_009151_3_bam)
+#     SRR641366/SRR641366.NC_009151.3.bam (from NC_009151_3_bam)
+#     SRR641366/SRR641366.NC_009151.3.vcf.gz (from NC_009151_3_vcf)
+#     SRR641366/SRR641366.NC_009151.3.vcf.gz.tbi (from NC_009151_3_vcf)
+#     SRR641366/SRR641366.NC_009152.3.bai (from NC_009152_3_bam)
+#     SRR641366/SRR641366.NC_009152.3.bam (from NC_009152_3_bam)
+#     SRR641366/SRR641366.NC_009152.3.vcf.gz (from NC_009152_3_vcf)
+#     SRR641366/SRR641366.NC_009152.3.vcf.gz.tbi (from NC_009152_3_vcf)
+#     SRR641366/SRR641366.NC_009153.3.bai (from NC_009153_3_bam)
+#     SRR641366/SRR641366.NC_009153.3.bam (from NC_009153_3_bam)
+#     SRR641366/SRR641366.NC_009153.3.vcf.gz (from NC_009153_3_vcf)
+#     SRR641366/SRR641366.NC_009153.3.vcf.gz.tbi (from NC_009153_3_vcf)
+#     SRR641366/SRR641366.NC_009154.3.bai (from NC_009154_3_bam)
+#     SRR641366/SRR641366.NC_009154.3.bam (from NC_009154_3_bam)
+#     SRR641366/SRR641366.NC_009154.3.vcf.gz (from NC_009154_3_vcf)
+#     SRR641366/SRR641366.NC_009154.3.vcf.gz.tbi (from NC_009154_3_vcf)
+#     SRR641366/SRR641366.NC_009155.3.bai (from NC_009155_3_bam)
+#     SRR641366/SRR641366.NC_009155.3.bam (from NC_009155_3_bam)
+#     SRR641366/SRR641366.NC_009155.3.vcf.gz (from NC_009155_3_vcf)
+#     SRR641366/SRR641366.NC_009155.3.vcf.gz.tbi (from NC_009155_3_vcf)
+#     SRR641366/SRR641366.NC_009156.3.bai (from NC_009156_3_bam)
+#     SRR641366/SRR641366.NC_009156.3.bam (from NC_009156_3_bam)
+#     SRR641366/SRR641366.NC_009156.3.vcf.gz (from NC_009156_3_vcf)
+#     SRR641366/SRR641366.NC_009156.3.vcf.gz.tbi (from NC_009156_3_vcf)
+#     SRR641366/SRR641366.NC_009157.3.bai (from NC_009157_3_bam)
+#     SRR641366/SRR641366.NC_009157.3.bam (from NC_009157_3_bam)
+#     SRR641366/SRR641366.NC_009157.3.vcf.gz (from NC_009157_3_vcf)
+#     SRR641366/SRR641366.NC_009157.3.vcf.gz.tbi (from NC_009157_3_vcf)
+#     SRR641366/SRR641366.NC_009158.3.bai (from NC_009158_3_bam)
+#     SRR641366/SRR641366.NC_009158.3.bam (from NC_009158_3_bam)
+#     SRR641366/SRR641366.NC_009158.3.vcf.gz (from NC_009158_3_vcf)
+#     SRR641366/SRR641366.NC_009158.3.vcf.gz.tbi (from NC_009158_3_vcf)
+#     SRR641366/SRR641366.NC_009159.3.bai (from NC_009159_3_bam)
+#     SRR641366/SRR641366.NC_009159.3.bam (from NC_009159_3_bam)
+#     SRR641366/SRR641366.NC_009159.3.vcf.gz (from NC_009159_3_vcf)
+#     SRR641366/SRR641366.NC_009159.3.vcf.gz.tbi (from NC_009159_3_vcf)
+#     SRR641366/SRR641366.NC_009160.3.bai (from NC_009160_3_bam)
+#     SRR641366/SRR641366.NC_009160.3.bam (from NC_009160_3_bam)
+#     SRR641366/SRR641366.NC_009160.3.vcf.gz (from NC_009160_3_vcf)
+#     SRR641366/SRR641366.NC_009160.3.vcf.gz.tbi (from NC_009160_3_vcf)
+#     SRR641366/SRR641366.NC_009161.3.bai (from NC_009161_3_bam)
+#     SRR641366/SRR641366.NC_009161.3.bam (from NC_009161_3_bam)
+#     SRR641366/SRR641366.NC_009161.3.vcf.gz (from NC_009161_3_vcf)
+#     SRR641366/SRR641366.NC_009161.3.vcf.gz.tbi (from NC_009161_3_vcf)
+#     SRR641366/SRR641366.NC_009162.3.bai (from NC_009162_3_bam)
+#     SRR641366/SRR641366.NC_009162.3.bam (from NC_009162_3_bam)
+#     SRR641366/SRR641366.NC_009162.3.vcf.gz (from NC_009162_3_vcf)
+#     SRR641366/SRR641366.NC_009162.3.vcf.gz.tbi (from NC_009162_3_vcf)
+#     SRR641366/SRR641366.NC_009163.3.bai (from NC_009163_3_bam)
+#     SRR641366/SRR641366.NC_009163.3.bam (from NC_009163_3_bam)
+#     SRR641366/SRR641366.NC_009163.3.vcf.gz (from NC_009163_3_vcf)
+#     SRR641366/SRR641366.NC_009163.3.vcf.gz.tbi (from NC_009163_3_vcf)
+#     SRR641366/SRR641366.NC_009164.3.bai (from NC_009164_3_bam)
+#     SRR641366/SRR641366.NC_009164.3.bam (from NC_009164_3_bam)
+#     SRR641366/SRR641366.NC_009164.3.vcf.gz (from NC_009164_3_vcf)
+#     SRR641366/SRR641366.NC_009164.3.vcf.gz.tbi (from NC_009164_3_vcf)
+#     SRR641366/SRR641366.NC_009165.3.bai (from NC_009165_3_bam)
+#     SRR641366/SRR641366.NC_009165.3.bam (from NC_009165_3_bam)
+#     SRR641366/SRR641366.NC_009165.3.vcf.gz (from NC_009165_3_vcf)
+#     SRR641366/SRR641366.NC_009165.3.vcf.gz.tbi (from NC_009165_3_vcf)
+#     SRR641366/SRR641366.NC_009166.3.bai (from NC_009166_3_bam)
+#     SRR641366/SRR641366.NC_009166.3.bam (from NC_009166_3_bam)
+#     SRR641366/SRR641366.NC_009166.3.vcf.gz (from NC_009166_3_vcf)
+#     SRR641366/SRR641366.NC_009166.3.vcf.gz.tbi (from NC_009166_3_vcf)
+#     SRR641366/SRR641366.NC_009167.3.bai (from NC_009167_3_bam)
+#     SRR641366/SRR641366.NC_009167.3.bam (from NC_009167_3_bam)
+#     SRR641366/SRR641366.NC_009167.3.vcf.gz (from NC_009167_3_vcf)
+#     SRR641366/SRR641366.NC_009167.3.vcf.gz.tbi (from NC_009167_3_vcf)
+#     SRR641366/SRR641366.NC_009168.3.bai (from NC_009168_3_bam)
+#     SRR641366/SRR641366.NC_009168.3.bam (from NC_009168_3_bam)
+#     SRR641366/SRR641366.NC_009168.3.vcf.gz (from NC_009168_3_vcf)
+#     SRR641366/SRR641366.NC_009168.3.vcf.gz.tbi (from NC_009168_3_vcf)
+#     SRR641366/SRR641366.NC_009169.3.bai (from NC_009169_3_bam)
+#     SRR641366/SRR641366.NC_009169.3.bam (from NC_009169_3_bam)
+#     SRR641366/SRR641366.NC_009169.3.vcf.gz (from NC_009169_3_vcf)
+#     SRR641366/SRR641366.NC_009169.3.vcf.gz.tbi (from NC_009169_3_vcf)
+#     SRR641366/SRR641366.NC_009170.3.bai (from NC_009170_3_bam)
+#     SRR641366/SRR641366.NC_009170.3.bam (from NC_009170_3_bam)
+#     SRR641366/SRR641366.NC_009170.3.vcf.gz (from NC_009170_3_vcf)
+#     SRR641366/SRR641366.NC_009170.3.vcf.gz.tbi (from NC_009170_3_vcf)
+#     SRR641366/SRR641366.NC_009171.3.bai (from NC_009171_3_bam)
+#     SRR641366/SRR641366.NC_009171.3.bam (from NC_009171_3_bam)
+#     SRR641366/SRR641366.NC_009171.3.vcf.gz (from NC_009171_3_vcf)
+#     SRR641366/SRR641366.NC_009171.3.vcf.gz.tbi (from NC_009171_3_vcf)
+#     SRR641366/SRR641366.NC_009172.3.bai (from NC_009172_3_bam)
+#     SRR641366/SRR641366.NC_009172.3.bam (from NC_009172_3_bam)
+#     SRR641366/SRR641366.NC_009172.3.vcf.gz (from NC_009172_3_vcf)
+#     SRR641366/SRR641366.NC_009172.3.vcf.gz.tbi (from NC_009172_3_vcf)
+#     SRR641366/SRR641366.NC_009173.3.bai (from NC_009173_3_bam)
+#     SRR641366/SRR641366.NC_009173.3.bam (from NC_009173_3_bam)
+#     SRR641366/SRR641366.NC_009173.3.vcf.gz (from NC_009173_3_vcf)
+#     SRR641366/SRR641366.NC_009173.3.vcf.gz.tbi (from NC_009173_3_vcf)
+#     SRR641366/SRR641366.NC_009174.3.bai (from NC_009174_3_bam)
+#     SRR641366/SRR641366.NC_009174.3.bam (from NC_009174_3_bam)
+#     SRR641366/SRR641366.NC_009174.3.vcf.gz (from NC_009174_3_vcf)
+#     SRR641366/SRR641366.NC_009174.3.vcf.gz.tbi (from NC_009174_3_vcf)
+#     SRR641366/SRR641366.NC_009175.3.bai (from NC_009175_3_bam)
+#     SRR641366/SRR641366.NC_009175.3.bam (from NC_009175_3_bam)
+#     SRR641366/SRR641366.NC_009175.3.vcf.gz (from NC_009175_3_vcf)
+#     SRR641366/SRR641366.NC_009175.3.vcf.gz.tbi (from NC_009175_3_vcf)
+#     SRR641366/SRR641366.NW_unplaced.bai (from unplaced_bam)
+#     SRR641366/SRR641366.NW_unplaced.bam (from unplaced_bam)
+#     SRR641366/SRR641366.unplaced.vcf.gz (from unplaced_vcf)
+#     SRR641366/SRR641366.unplaced.vcf.gz.tbi (from unplaced_vcf)

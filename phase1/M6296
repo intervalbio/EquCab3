@@ -1,0 +1,731 @@
+# M6296
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     M6296_D1UVMACXX_1_1_001.fq.gz 8c48646353384320497cb7771f393534
+#     M6296_D1UVMACXX_1_2_001.fq.gz efda7ab6af4459544a7c9f81d3811303
+#     M6296_D1UVMACXX_2_1_001.fq.gz d5c83ad38c53ad8428d2ecd92f1ff513
+#     M6296_D1UVMACXX_2_2_001.fq.gz b9938b503d8803f2285ee7286c70b52a
+#     M6296_D1UVMACXX_3_1_001.fq.gz 1494f1f96f49f83fdc3e8855ce677c45
+#     M6296_D1UVMACXX_3_2_001.fq.gz cb2ff85fc60c95d4d77403d10f243623
+#     M6296_D1UVMACXX_4_1_001.fq.gz 51d59fcf8876c057a3c351e05beca455
+#     M6296_D1UVMACXX_4_2_001.fq.gz 79942976e9b449b05133bf6555b64842
+#     M6296_D1UVMACXX_5_1_001.fq.gz 461d9f547bd426e19f63e08c81177037
+#     M6296_D1UVMACXX_5_2_001.fq.gz 0951f920f6ed789195f6d713f76e5270
+#     M6296_D1UVMACXX_6_1_001.fq.gz 6db4fac1e56f4ddb22c8c14df5eba8b2
+#     M6296_D1UVMACXX_6_2_001.fq.gz 7790ad4dc337d82b60f15049e2a848e0
+#     M6296_D1UVMACXX_7_1_001.fq.gz d65e5a9ef48b71f89b492fc56e1d5414
+#     M6296_D1UVMACXX_7_2_001.fq.gz ef1b0cabb1939a997ffed1cd50af17fb
+#     M6296_D1UVMACXX_8_1_001.fq.gz 2a7e3c29887d6caaae344ce124dc7983
+#     M6296_D1UVMACXX_8_2_001.fq.gz bc9e0f9ba7e84005f2363103a1744d71
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: trim_D1UVMACXX_8
+####   inputs:
+####     M6296_D1UVMACXX_8_1.fastq.gz
+####     M6296_D1UVMACXX_8_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_8_1_paired.fq.gz
+####     M6296_D1UVMACXX_8_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_8_2_paired.fq.gz
+####     M6296_D1UVMACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_8_1.fastq.gz M6296_D1UVMACXX_8_2.fastq.gz M6296_D1UVMACXX_8_1_paired.fq.gz M6296_D1UVMACXX_8_1_unpaired.fq.gz M6296_D1UVMACXX_8_2_paired.fq.gz M6296_D1UVMACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_D1UVMACXX_4
+####   inputs:
+####     M6296_D1UVMACXX_4_1.fastq.gz
+####     M6296_D1UVMACXX_4_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_4_1_paired.fq.gz
+####     M6296_D1UVMACXX_4_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_4_2_paired.fq.gz
+####     M6296_D1UVMACXX_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_4_1.fastq.gz M6296_D1UVMACXX_4_2.fastq.gz M6296_D1UVMACXX_4_1_paired.fq.gz M6296_D1UVMACXX_4_1_unpaired.fq.gz M6296_D1UVMACXX_4_2_paired.fq.gz M6296_D1UVMACXX_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_D1UVMACXX_7_2
+####   inputs:
+####     M6296_D1UVMACXX_7_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_7_2_fastqc.html
+####     M6296_D1UVMACXX_7_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_3_1
+####   inputs:
+####     M6296_D1UVMACXX_3_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_3_1_fastqc.html
+####     M6296_D1UVMACXX_3_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_3_1.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_4_2
+####   inputs:
+####     M6296_D1UVMACXX_4_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_4_2_fastqc.html
+####     M6296_D1UVMACXX_4_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_4_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_4_1
+####   inputs:
+####     M6296_D1UVMACXX_4_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_4_1_fastqc.html
+####     M6296_D1UVMACXX_4_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_4_1.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_3_2
+####   inputs:
+####     M6296_D1UVMACXX_3_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_3_2_fastqc.html
+####     M6296_D1UVMACXX_3_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_3_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_5_2
+####   inputs:
+####     M6296_D1UVMACXX_5_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_5_2_fastqc.html
+####     M6296_D1UVMACXX_5_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_1_1
+####   inputs:
+####     M6296_D1UVMACXX_1_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_1_1_fastqc.html
+####     M6296_D1UVMACXX_1_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_1_1.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_1_2
+####   inputs:
+####     M6296_D1UVMACXX_1_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_1_2_fastqc.html
+####     M6296_D1UVMACXX_1_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_1_2.fq.gz 
+
+
+########
+#### stage: trim_D1UVMACXX_2
+####   inputs:
+####     M6296_D1UVMACXX_2_1.fastq.gz
+####     M6296_D1UVMACXX_2_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_2_1_paired.fq.gz
+####     M6296_D1UVMACXX_2_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_2_2_paired.fq.gz
+####     M6296_D1UVMACXX_2_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_2_1.fastq.gz M6296_D1UVMACXX_2_2.fastq.gz M6296_D1UVMACXX_2_1_paired.fq.gz M6296_D1UVMACXX_2_1_unpaired.fq.gz M6296_D1UVMACXX_2_2_paired.fq.gz M6296_D1UVMACXX_2_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_D1UVMACXX_8_2
+####   inputs:
+####     M6296_D1UVMACXX_8_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_8_2_fastqc.html
+####     M6296_D1UVMACXX_8_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_6_2
+####   inputs:
+####     M6296_D1UVMACXX_6_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_6_2_fastqc.html
+####     M6296_D1UVMACXX_6_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_6_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_5_1
+####   inputs:
+####     M6296_D1UVMACXX_5_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_5_1_fastqc.html
+####     M6296_D1UVMACXX_5_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_5_1.fq.gz 
+
+
+########
+#### stage: bwa_D1UVMACXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_2_1.fq.gz (from trim_D1UVMACXX_2)
+####     M6296_D1UVMACXX_2_2.fq.gz (from trim_D1UVMACXX_2)
+####   outputs:
+####     M6296_D1UVMACXX_2.sorted.bai
+####     M6296_D1UVMACXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.2\tLB:D1UVMACXX.2\tPL:ILLUMINA\tPU:D1UVMACXX.2.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_2_1.fq.gz M6296_D1UVMACXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_2.sorted.bam -; samtools index M6296_D1UVMACXX_2.sorted.bam M6296_D1UVMACXX_2.sorted.bai
+
+
+########
+#### stage: fastqc_D1UVMACXX_7_1
+####   inputs:
+####     M6296_D1UVMACXX_7_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_7_1_fastqc.html
+####     M6296_D1UVMACXX_7_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_7_1.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_2_2
+####   inputs:
+####     M6296_D1UVMACXX_2_2.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_2_2_fastqc.html
+####     M6296_D1UVMACXX_2_2_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_2_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_6_1
+####   inputs:
+####     M6296_D1UVMACXX_6_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_6_1_fastqc.html
+####     M6296_D1UVMACXX_6_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_6_1.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_8_1
+####   inputs:
+####     M6296_D1UVMACXX_8_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_8_1_fastqc.html
+####     M6296_D1UVMACXX_8_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_D1UVMACXX_2_1
+####   inputs:
+####     M6296_D1UVMACXX_2_1.fq.gz
+####   outputs:
+####     M6296_D1UVMACXX_2_1_fastqc.html
+####     M6296_D1UVMACXX_2_1_fastqc.zip
+
+fastqc  M6296_D1UVMACXX_2_1.fq.gz 
+
+
+########
+#### stage: trim_D1UVMACXX_5
+####   inputs:
+####     M6296_D1UVMACXX_5_1.fastq.gz
+####     M6296_D1UVMACXX_5_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_5_1_paired.fq.gz
+####     M6296_D1UVMACXX_5_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_5_2_paired.fq.gz
+####     M6296_D1UVMACXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_5_1.fastq.gz M6296_D1UVMACXX_5_2.fastq.gz M6296_D1UVMACXX_5_1_paired.fq.gz M6296_D1UVMACXX_5_1_unpaired.fq.gz M6296_D1UVMACXX_5_2_paired.fq.gz M6296_D1UVMACXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_D1UVMACXX_7
+####   inputs:
+####     M6296_D1UVMACXX_7_1.fastq.gz
+####     M6296_D1UVMACXX_7_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_7_1_paired.fq.gz
+####     M6296_D1UVMACXX_7_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_7_2_paired.fq.gz
+####     M6296_D1UVMACXX_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_7_1.fastq.gz M6296_D1UVMACXX_7_2.fastq.gz M6296_D1UVMACXX_7_1_paired.fq.gz M6296_D1UVMACXX_7_1_unpaired.fq.gz M6296_D1UVMACXX_7_2_paired.fq.gz M6296_D1UVMACXX_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_D1UVMACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_8_1.fq.gz (from trim_D1UVMACXX_8)
+####     M6296_D1UVMACXX_8_2.fq.gz (from trim_D1UVMACXX_8)
+####   outputs:
+####     M6296_D1UVMACXX_8.sorted.bai
+####     M6296_D1UVMACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.8\tLB:D1UVMACXX.8\tPL:ILLUMINA\tPU:D1UVMACXX.8.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_8_1.fq.gz M6296_D1UVMACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_8.sorted.bam -; samtools index M6296_D1UVMACXX_8.sorted.bam M6296_D1UVMACXX_8.sorted.bai
+
+
+########
+#### stage: trim_D1UVMACXX_1
+####   inputs:
+####     M6296_D1UVMACXX_1_1.fastq.gz
+####     M6296_D1UVMACXX_1_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_1_1_paired.fq.gz
+####     M6296_D1UVMACXX_1_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_1_2_paired.fq.gz
+####     M6296_D1UVMACXX_1_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_1_1.fastq.gz M6296_D1UVMACXX_1_2.fastq.gz M6296_D1UVMACXX_1_1_paired.fq.gz M6296_D1UVMACXX_1_1_unpaired.fq.gz M6296_D1UVMACXX_1_2_paired.fq.gz M6296_D1UVMACXX_1_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_D1UVMACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_4_1.fq.gz (from trim_D1UVMACXX_4)
+####     M6296_D1UVMACXX_4_2.fq.gz (from trim_D1UVMACXX_4)
+####   outputs:
+####     M6296_D1UVMACXX_4.sorted.bai
+####     M6296_D1UVMACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.4\tLB:D1UVMACXX.4\tPL:ILLUMINA\tPU:D1UVMACXX.4.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_4_1.fq.gz M6296_D1UVMACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_4.sorted.bam -; samtools index M6296_D1UVMACXX_4.sorted.bam M6296_D1UVMACXX_4.sorted.bai
+
+
+########
+#### stage: bwa_D1UVMACXX_7
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_7_1.fq.gz (from trim_D1UVMACXX_7)
+####     M6296_D1UVMACXX_7_2.fq.gz (from trim_D1UVMACXX_7)
+####   outputs:
+####     M6296_D1UVMACXX_7.sorted.bai
+####     M6296_D1UVMACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.7\tLB:D1UVMACXX.7\tPL:ILLUMINA\tPU:D1UVMACXX.7.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_7_1.fq.gz M6296_D1UVMACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_7.sorted.bam -; samtools index M6296_D1UVMACXX_7.sorted.bam M6296_D1UVMACXX_7.sorted.bai
+
+
+########
+#### stage: trim_D1UVMACXX_3
+####   inputs:
+####     M6296_D1UVMACXX_3_1.fastq.gz
+####     M6296_D1UVMACXX_3_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_3_1_paired.fq.gz
+####     M6296_D1UVMACXX_3_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_3_2_paired.fq.gz
+####     M6296_D1UVMACXX_3_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_3_1.fastq.gz M6296_D1UVMACXX_3_2.fastq.gz M6296_D1UVMACXX_3_1_paired.fq.gz M6296_D1UVMACXX_3_1_unpaired.fq.gz M6296_D1UVMACXX_3_2_paired.fq.gz M6296_D1UVMACXX_3_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_D1UVMACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_5_1.fq.gz (from trim_D1UVMACXX_5)
+####     M6296_D1UVMACXX_5_2.fq.gz (from trim_D1UVMACXX_5)
+####   outputs:
+####     M6296_D1UVMACXX_5.sorted.bai
+####     M6296_D1UVMACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.5\tLB:D1UVMACXX.5\tPL:ILLUMINA\tPU:D1UVMACXX.5.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_5_1.fq.gz M6296_D1UVMACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_5.sorted.bam -; samtools index M6296_D1UVMACXX_5.sorted.bam M6296_D1UVMACXX_5.sorted.bai
+
+
+########
+#### stage: bwa_D1UVMACXX_1
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_1_1.fq.gz (from trim_D1UVMACXX_1)
+####     M6296_D1UVMACXX_1_2.fq.gz (from trim_D1UVMACXX_1)
+####   outputs:
+####     M6296_D1UVMACXX_1.sorted.bai
+####     M6296_D1UVMACXX_1.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.1\tLB:D1UVMACXX.1\tPL:ILLUMINA\tPU:D1UVMACXX.1.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_1_1.fq.gz M6296_D1UVMACXX_1_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_1.sorted.bam -; samtools index M6296_D1UVMACXX_1.sorted.bam M6296_D1UVMACXX_1.sorted.bai
+
+
+########
+#### stage: bwa_D1UVMACXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_3_1.fq.gz (from trim_D1UVMACXX_3)
+####     M6296_D1UVMACXX_3_2.fq.gz (from trim_D1UVMACXX_3)
+####   outputs:
+####     M6296_D1UVMACXX_3.sorted.bai
+####     M6296_D1UVMACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.3\tLB:D1UVMACXX.3\tPL:ILLUMINA\tPU:D1UVMACXX.3.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_3_1.fq.gz M6296_D1UVMACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_3.sorted.bam -; samtools index M6296_D1UVMACXX_3.sorted.bam M6296_D1UVMACXX_3.sorted.bai
+
+
+########
+#### stage: trim_D1UVMACXX_6
+####   inputs:
+####     M6296_D1UVMACXX_6_1.fastq.gz
+####     M6296_D1UVMACXX_6_2.fastq.gz
+####   outputs:
+####     M6296_D1UVMACXX_6_1_paired.fq.gz
+####     M6296_D1UVMACXX_6_1_unpaired.fq.gz
+####     M6296_D1UVMACXX_6_2_paired.fq.gz
+####     M6296_D1UVMACXX_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M6296_D1UVMACXX_6_1.fastq.gz M6296_D1UVMACXX_6_2.fastq.gz M6296_D1UVMACXX_6_1_paired.fq.gz M6296_D1UVMACXX_6_1_unpaired.fq.gz M6296_D1UVMACXX_6_2_paired.fq.gz M6296_D1UVMACXX_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_D1UVMACXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M6296_D1UVMACXX_6_1.fq.gz (from trim_D1UVMACXX_6)
+####     M6296_D1UVMACXX_6_2.fq.gz (from trim_D1UVMACXX_6)
+####   outputs:
+####     M6296_D1UVMACXX_6.sorted.bai
+####     M6296_D1UVMACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1UVMACXX.6\tLB:D1UVMACXX.6\tPL:ILLUMINA\tPU:D1UVMACXX.6.UNKNOWN\tSM:M6296' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296_D1UVMACXX_6_1.fq.gz M6296_D1UVMACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M6296_D1UVMACXX_6.sorted.bam -; samtools index M6296_D1UVMACXX_6.sorted.bam M6296_D1UVMACXX_6.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     M6296_D1UVMACXX_1.bam (from bwa_D1UVMACXX_1)
+####     M6296_D1UVMACXX_2.bam (from bwa_D1UVMACXX_2)
+####     M6296_D1UVMACXX_3.bam (from bwa_D1UVMACXX_3)
+####     M6296_D1UVMACXX_4.bam (from bwa_D1UVMACXX_4)
+####     M6296_D1UVMACXX_5.bam (from bwa_D1UVMACXX_5)
+####     M6296_D1UVMACXX_6.bam (from bwa_D1UVMACXX_6)
+####     M6296_D1UVMACXX_7.bam (from bwa_D1UVMACXX_7)
+####     M6296_D1UVMACXX_8.bam (from bwa_D1UVMACXX_8)
+####   outputs:
+####     M6296.merged.bai
+####     M6296.merged.bam
+
+samtools merge -@ `nproc` M6296.merged.bam M6296_D1UVMACXX_1.bam M6296_D1UVMACXX_2.bam M6296_D1UVMACXX_3.bam M6296_D1UVMACXX_4.bam M6296_D1UVMACXX_5.bam M6296_D1UVMACXX_6.bam M6296_D1UVMACXX_7.bam M6296_D1UVMACXX_8.bam ; samtools index M6296.merged.bam M6296.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     M6296.bam (from merge_bam)
+####   outputs:
+####     M6296.markduplicates.bam
+####     M6296.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=M6296.bam O=M6296.markduplicates.bam M=M6296.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     M6296.bam (from mark_duplicates)
+####   outputs:
+####     M6296.bai
+
+samtools index -@ `nproc` M6296.bam M6296.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M6296.bai (from index_mark_duplicates)
+####     M6296.bam (from mark_duplicates)
+####   outputs:
+####     M6296.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6296.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M6296.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     M6296.bai (from index_mark_duplicates)
+####     M6296.bam (from mark_duplicates)
+####     M6296.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     M6296.recalibrated.bai
+####     M6296.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6296.bam --bqsr-recal-file M6296.recalibration.table -O M6296.recalibrated.bam
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.gatk_haplotypecaller.vcf.gz
+####     M6296.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6296.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M6296.gatk_haplotypecaller.vcf.gz ; tabix -p vcf M6296.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.unmapped.fq.gz
+
+samtools view  -u -b -f 4 M6296.bam | samtools fastq - | gzip -c - > M6296.unmapped.fq.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M6296.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M6296.recalibration.table
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.metrics.alignment_summary_metrics
+####     M6296.metrics.base_distribution_by_cycle.pdf
+####     M6296.metrics.base_distribution_by_cycle_metrics
+####     M6296.metrics.insert_size_histogram.pdf
+####     M6296.metrics.insert_size_metrics
+####     M6296.metrics.quality_by_cycle.pdf
+####     M6296.metrics.quality_by_cycle_metrics
+####     M6296.metrics.quality_distribution.pdf
+####     M6296.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=M6296.bam O=M6296.metrics
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.coverage.tsv
+
+samtools depth M6296.bam | depth-of-coverage.py > M6296.coverage.tsv
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.samtoolsmpileup.vcf.gz
+####     M6296.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M6296.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o M6296.samtoolsmpileup.vcf.gz ; tabix M6296.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     M6296.BQSR.csv
+####     M6296.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv M6296.BQSR.csv -plots M6296.BQSR.pdf
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M6296.bai (from apply_bsqr)
+####     M6296.bam (from apply_bsqr)
+####   outputs:
+####     M6296.platypuscallvariants.vcf.gz
+####     M6296.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=M6296.bam --output=M6296.platypuscallvariants.vcf ; bgzip M6296.platypuscallvariants.vcf ; tabix -p vcf M6296.platypuscallvariants.vcf.gz
+
+
+
+#   outputs:
+#     M6296.bcftools.vcf.gz (from bcftools_mpileup)
+#     M6296.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     M6296.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     M6296.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     M6296.platypus.vcf.gz (from platypus_callvariants)
+#     M6296.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     M6296.recalibrated.bai (from apply_bsqr)
+#     M6296.recalibrated.bam (from apply_bsqr)
+#     fastqc/M6296_D1UVMACXX_1_1_fastqc.html (from fastqc_D1UVMACXX_1_1)
+#     fastqc/M6296_D1UVMACXX_1_1_fastqc.zip (from fastqc_D1UVMACXX_1_1)
+#     fastqc/M6296_D1UVMACXX_1_2_fastqc.html (from fastqc_D1UVMACXX_1_2)
+#     fastqc/M6296_D1UVMACXX_1_2_fastqc.zip (from fastqc_D1UVMACXX_1_2)
+#     fastqc/M6296_D1UVMACXX_2_1_fastqc.html (from fastqc_D1UVMACXX_2_1)
+#     fastqc/M6296_D1UVMACXX_2_1_fastqc.zip (from fastqc_D1UVMACXX_2_1)
+#     fastqc/M6296_D1UVMACXX_2_2_fastqc.html (from fastqc_D1UVMACXX_2_2)
+#     fastqc/M6296_D1UVMACXX_2_2_fastqc.zip (from fastqc_D1UVMACXX_2_2)
+#     fastqc/M6296_D1UVMACXX_3_1_fastqc.html (from fastqc_D1UVMACXX_3_1)
+#     fastqc/M6296_D1UVMACXX_3_1_fastqc.zip (from fastqc_D1UVMACXX_3_1)
+#     fastqc/M6296_D1UVMACXX_3_2_fastqc.html (from fastqc_D1UVMACXX_3_2)
+#     fastqc/M6296_D1UVMACXX_3_2_fastqc.zip (from fastqc_D1UVMACXX_3_2)
+#     fastqc/M6296_D1UVMACXX_4_1_fastqc.html (from fastqc_D1UVMACXX_4_1)
+#     fastqc/M6296_D1UVMACXX_4_1_fastqc.zip (from fastqc_D1UVMACXX_4_1)
+#     fastqc/M6296_D1UVMACXX_4_2_fastqc.html (from fastqc_D1UVMACXX_4_2)
+#     fastqc/M6296_D1UVMACXX_4_2_fastqc.zip (from fastqc_D1UVMACXX_4_2)
+#     fastqc/M6296_D1UVMACXX_5_1_fastqc.html (from fastqc_D1UVMACXX_5_1)
+#     fastqc/M6296_D1UVMACXX_5_1_fastqc.zip (from fastqc_D1UVMACXX_5_1)
+#     fastqc/M6296_D1UVMACXX_5_2_fastqc.html (from fastqc_D1UVMACXX_5_2)
+#     fastqc/M6296_D1UVMACXX_5_2_fastqc.zip (from fastqc_D1UVMACXX_5_2)
+#     fastqc/M6296_D1UVMACXX_6_1_fastqc.html (from fastqc_D1UVMACXX_6_1)
+#     fastqc/M6296_D1UVMACXX_6_1_fastqc.zip (from fastqc_D1UVMACXX_6_1)
+#     fastqc/M6296_D1UVMACXX_6_2_fastqc.html (from fastqc_D1UVMACXX_6_2)
+#     fastqc/M6296_D1UVMACXX_6_2_fastqc.zip (from fastqc_D1UVMACXX_6_2)
+#     fastqc/M6296_D1UVMACXX_7_1_fastqc.html (from fastqc_D1UVMACXX_7_1)
+#     fastqc/M6296_D1UVMACXX_7_1_fastqc.zip (from fastqc_D1UVMACXX_7_1)
+#     fastqc/M6296_D1UVMACXX_7_2_fastqc.html (from fastqc_D1UVMACXX_7_2)
+#     fastqc/M6296_D1UVMACXX_7_2_fastqc.zip (from fastqc_D1UVMACXX_7_2)
+#     fastqc/M6296_D1UVMACXX_8_1_fastqc.html (from fastqc_D1UVMACXX_8_1)
+#     fastqc/M6296_D1UVMACXX_8_1_fastqc.zip (from fastqc_D1UVMACXX_8_1)
+#     fastqc/M6296_D1UVMACXX_8_2_fastqc.html (from fastqc_D1UVMACXX_8_2)
+#     fastqc/M6296_D1UVMACXX_8_2_fastqc.zip (from fastqc_D1UVMACXX_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/M6296.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/M6296.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/D1UVMACXX_1_1_unpaired.fq.gz (from trim_D1UVMACXX_1)
+#     unpaired/D1UVMACXX_1_2_unpaired.fq.gz (from trim_D1UVMACXX_1)
+#     unpaired/D1UVMACXX_2_1_unpaired.fq.gz (from trim_D1UVMACXX_2)
+#     unpaired/D1UVMACXX_2_2_unpaired.fq.gz (from trim_D1UVMACXX_2)
+#     unpaired/D1UVMACXX_3_1_unpaired.fq.gz (from trim_D1UVMACXX_3)
+#     unpaired/D1UVMACXX_3_2_unpaired.fq.gz (from trim_D1UVMACXX_3)
+#     unpaired/D1UVMACXX_4_1_unpaired.fq.gz (from trim_D1UVMACXX_4)
+#     unpaired/D1UVMACXX_4_2_unpaired.fq.gz (from trim_D1UVMACXX_4)
+#     unpaired/D1UVMACXX_5_1_unpaired.fq.gz (from trim_D1UVMACXX_5)
+#     unpaired/D1UVMACXX_5_2_unpaired.fq.gz (from trim_D1UVMACXX_5)
+#     unpaired/D1UVMACXX_6_1_unpaired.fq.gz (from trim_D1UVMACXX_6)
+#     unpaired/D1UVMACXX_6_2_unpaired.fq.gz (from trim_D1UVMACXX_6)
+#     unpaired/D1UVMACXX_7_1_unpaired.fq.gz (from trim_D1UVMACXX_7)
+#     unpaired/D1UVMACXX_7_2_unpaired.fq.gz (from trim_D1UVMACXX_7)
+#     unpaired/D1UVMACXX_8_1_unpaired.fq.gz (from trim_D1UVMACXX_8)
+#     unpaired/D1UVMACXX_8_2_unpaired.fq.gz (from trim_D1UVMACXX_8)

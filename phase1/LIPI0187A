@@ -1,0 +1,411 @@
+# LIPI0187A
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     LIPI0187A_unknown186_4_1_001.fq.gz 6a5fa64a236759803d7b89ed4eabc3cd
+#     LIPI0187A_unknown186_4_2_001.fq.gz f64883cc576203778914c79bacb58c58
+#     LIPI0187A_unknown186_5_1_001.fq.gz cb9b9f103bd8a86f6ec312de21e36ec6
+#     LIPI0187A_unknown186_5_2_001.fq.gz 715fe0e98e2c2b3f5c48591e7ff52f0c
+#     LIPI0187A_unknown481_4_1_001.fq.gz 7043cdca67941d351aa294a7b21fd3b7
+#     LIPI0187A_unknown481_4_2_001.fq.gz c5c12f2f7c3a4c168ca096d08477e04a
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_unknown186_5_2
+####   inputs:
+####     LIPI0187A_unknown186_5_2.fq.gz
+####   outputs:
+####     LIPI0187A_unknown186_5_2_fastqc.html
+####     LIPI0187A_unknown186_5_2_fastqc.zip
+
+fastqc  LIPI0187A_unknown186_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_unknown186_4_1
+####   inputs:
+####     LIPI0187A_unknown186_4_1.fq.gz
+####   outputs:
+####     LIPI0187A_unknown186_4_1_fastqc.html
+####     LIPI0187A_unknown186_4_1_fastqc.zip
+
+fastqc  LIPI0187A_unknown186_4_1.fq.gz 
+
+
+########
+#### stage: fastqc_unknown186_5_1
+####   inputs:
+####     LIPI0187A_unknown186_5_1.fq.gz
+####   outputs:
+####     LIPI0187A_unknown186_5_1_fastqc.html
+####     LIPI0187A_unknown186_5_1_fastqc.zip
+
+fastqc  LIPI0187A_unknown186_5_1.fq.gz 
+
+
+########
+#### stage: fastqc_unknown481_4_1
+####   inputs:
+####     LIPI0187A_unknown481_4_1.fq.gz
+####   outputs:
+####     LIPI0187A_unknown481_4_1_fastqc.html
+####     LIPI0187A_unknown481_4_1_fastqc.zip
+
+fastqc  LIPI0187A_unknown481_4_1.fq.gz 
+
+
+########
+#### stage: trim_unknown481_4
+####   inputs:
+####     LIPI0187A_unknown481_4_1.fastq.gz
+####     LIPI0187A_unknown481_4_2.fastq.gz
+####   outputs:
+####     LIPI0187A_unknown481_4_1_paired.fq.gz
+####     LIPI0187A_unknown481_4_1_unpaired.fq.gz
+####     LIPI0187A_unknown481_4_2_paired.fq.gz
+####     LIPI0187A_unknown481_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` LIPI0187A_unknown481_4_1.fastq.gz LIPI0187A_unknown481_4_2.fastq.gz LIPI0187A_unknown481_4_1_paired.fq.gz LIPI0187A_unknown481_4_1_unpaired.fq.gz LIPI0187A_unknown481_4_2_paired.fq.gz LIPI0187A_unknown481_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 TOPHRED33
+
+
+########
+#### stage: trim_unknown186_4
+####   inputs:
+####     LIPI0187A_unknown186_4_1.fastq.gz
+####     LIPI0187A_unknown186_4_2.fastq.gz
+####   outputs:
+####     LIPI0187A_unknown186_4_1_paired.fq.gz
+####     LIPI0187A_unknown186_4_1_unpaired.fq.gz
+####     LIPI0187A_unknown186_4_2_paired.fq.gz
+####     LIPI0187A_unknown186_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` LIPI0187A_unknown186_4_1.fastq.gz LIPI0187A_unknown186_4_2.fastq.gz LIPI0187A_unknown186_4_1_paired.fq.gz LIPI0187A_unknown186_4_1_unpaired.fq.gz LIPI0187A_unknown186_4_2_paired.fq.gz LIPI0187A_unknown186_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 TOPHRED33
+
+
+########
+#### stage: fastqc_unknown186_4_2
+####   inputs:
+####     LIPI0187A_unknown186_4_2.fq.gz
+####   outputs:
+####     LIPI0187A_unknown186_4_2_fastqc.html
+####     LIPI0187A_unknown186_4_2_fastqc.zip
+
+fastqc  LIPI0187A_unknown186_4_2.fq.gz 
+
+
+########
+#### stage: trim_unknown186_5
+####   inputs:
+####     LIPI0187A_unknown186_5_1.fastq.gz
+####     LIPI0187A_unknown186_5_2.fastq.gz
+####   outputs:
+####     LIPI0187A_unknown186_5_1_paired.fq.gz
+####     LIPI0187A_unknown186_5_1_unpaired.fq.gz
+####     LIPI0187A_unknown186_5_2_paired.fq.gz
+####     LIPI0187A_unknown186_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` LIPI0187A_unknown186_5_1.fastq.gz LIPI0187A_unknown186_5_2.fastq.gz LIPI0187A_unknown186_5_1_paired.fq.gz LIPI0187A_unknown186_5_1_unpaired.fq.gz LIPI0187A_unknown186_5_2_paired.fq.gz LIPI0187A_unknown186_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50 TOPHRED33
+
+
+########
+#### stage: fastqc_unknown481_4_2
+####   inputs:
+####     LIPI0187A_unknown481_4_2.fq.gz
+####   outputs:
+####     LIPI0187A_unknown481_4_2_fastqc.html
+####     LIPI0187A_unknown481_4_2_fastqc.zip
+
+fastqc  LIPI0187A_unknown481_4_2.fq.gz 
+
+
+########
+#### stage: bwa_unknown186_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     LIPI0187A_unknown186_4_1.fq.gz (from trim_unknown186_4)
+####     LIPI0187A_unknown186_4_2.fq.gz (from trim_unknown186_4)
+####   outputs:
+####     LIPI0187A_unknown186_4.sorted.bai
+####     LIPI0187A_unknown186_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown186.4\tLB:unknown186.4\tPL:ILLUMINA\tPU:unknown186.4.UNKNOWN\tSM:LIPI0187A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta LIPI0187A_unknown186_4_1.fq.gz LIPI0187A_unknown186_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o LIPI0187A_unknown186_4.sorted.bam -; samtools index LIPI0187A_unknown186_4.sorted.bam LIPI0187A_unknown186_4.sorted.bai
+
+
+########
+#### stage: bwa_unknown186_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     LIPI0187A_unknown186_5_1.fq.gz (from trim_unknown186_5)
+####     LIPI0187A_unknown186_5_2.fq.gz (from trim_unknown186_5)
+####   outputs:
+####     LIPI0187A_unknown186_5.sorted.bai
+####     LIPI0187A_unknown186_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown186.5\tLB:unknown186.5\tPL:ILLUMINA\tPU:unknown186.5.UNKNOWN\tSM:LIPI0187A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta LIPI0187A_unknown186_5_1.fq.gz LIPI0187A_unknown186_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o LIPI0187A_unknown186_5.sorted.bam -; samtools index LIPI0187A_unknown186_5.sorted.bam LIPI0187A_unknown186_5.sorted.bai
+
+
+########
+#### stage: bwa_unknown481_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     LIPI0187A_unknown481_4_1.fq.gz (from trim_unknown481_4)
+####     LIPI0187A_unknown481_4_2.fq.gz (from trim_unknown481_4)
+####   outputs:
+####     LIPI0187A_unknown481_4.sorted.bai
+####     LIPI0187A_unknown481_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:unknown481.4\tLB:unknown481.4\tPL:ILLUMINA\tPU:unknown481.4.UNKNOWN\tSM:LIPI0187A' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta LIPI0187A_unknown481_4_1.fq.gz LIPI0187A_unknown481_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o LIPI0187A_unknown481_4.sorted.bam -; samtools index LIPI0187A_unknown481_4.sorted.bam LIPI0187A_unknown481_4.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     LIPI0187A_unknown186_4.bam (from bwa_unknown186_4)
+####     LIPI0187A_unknown186_5.bam (from bwa_unknown186_5)
+####     LIPI0187A_unknown481_4.bam (from bwa_unknown481_4)
+####   outputs:
+####     LIPI0187A.merged.bai
+####     LIPI0187A.merged.bam
+
+samtools merge -@ `nproc` LIPI0187A.merged.bam LIPI0187A_unknown481_4.bam LIPI0187A_unknown186_4.bam LIPI0187A_unknown186_5.bam ; samtools index LIPI0187A.merged.bam LIPI0187A.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     LIPI0187A.bam (from merge_bam)
+####   outputs:
+####     LIPI0187A.markduplicates.bam
+####     LIPI0187A.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=LIPI0187A.bam O=LIPI0187A.markduplicates.bam M=LIPI0187A.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     LIPI0187A.bam (from mark_duplicates)
+####   outputs:
+####     LIPI0187A.bai
+
+samtools index -@ `nproc` LIPI0187A.bam LIPI0187A.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     LIPI0187A.bai (from index_mark_duplicates)
+####     LIPI0187A.bam (from mark_duplicates)
+####   outputs:
+####     LIPI0187A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I LIPI0187A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O LIPI0187A.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     LIPI0187A.bai (from index_mark_duplicates)
+####     LIPI0187A.bam (from mark_duplicates)
+####     LIPI0187A.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     LIPI0187A.recalibrated.bai
+####     LIPI0187A.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I LIPI0187A.bam --bqsr-recal-file LIPI0187A.recalibration.table -O LIPI0187A.recalibrated.bam
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.platypuscallvariants.vcf.gz
+####     LIPI0187A.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=LIPI0187A.bam --output=LIPI0187A.platypuscallvariants.vcf ; bgzip LIPI0187A.platypuscallvariants.vcf ; tabix -p vcf LIPI0187A.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.coverage.tsv
+
+samtools depth LIPI0187A.bam | depth-of-coverage.py > LIPI0187A.coverage.tsv
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.gatk_haplotypecaller.vcf.gz
+####     LIPI0187A.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I LIPI0187A.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O LIPI0187A.gatk_haplotypecaller.vcf.gz ; tabix -p vcf LIPI0187A.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I LIPI0187A.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O LIPI0187A.recalibration.table
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.samtoolsmpileup.vcf.gz
+####     LIPI0187A.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta LIPI0187A.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o LIPI0187A.samtoolsmpileup.vcf.gz ; tabix LIPI0187A.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.metrics.alignment_summary_metrics
+####     LIPI0187A.metrics.base_distribution_by_cycle.pdf
+####     LIPI0187A.metrics.base_distribution_by_cycle_metrics
+####     LIPI0187A.metrics.insert_size_histogram.pdf
+####     LIPI0187A.metrics.insert_size_metrics
+####     LIPI0187A.metrics.quality_by_cycle.pdf
+####     LIPI0187A.metrics.quality_by_cycle_metrics
+####     LIPI0187A.metrics.quality_distribution.pdf
+####     LIPI0187A.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=LIPI0187A.bam O=LIPI0187A.metrics
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     LIPI0187A.bai (from apply_bsqr)
+####     LIPI0187A.bam (from apply_bsqr)
+####   outputs:
+####     LIPI0187A.unmapped.fq.gz
+
+samtools view  -u -b -f 4 LIPI0187A.bam | samtools fastq - | gzip -c - > LIPI0187A.unmapped.fq.gz
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     LIPI0187A.BQSR.csv
+####     LIPI0187A.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv LIPI0187A.BQSR.csv -plots LIPI0187A.BQSR.pdf
+
+
+
+#   outputs:
+#     LIPI0187A.bcftools.vcf.gz (from bcftools_mpileup)
+#     LIPI0187A.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     LIPI0187A.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     LIPI0187A.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     LIPI0187A.platypus.vcf.gz (from platypus_callvariants)
+#     LIPI0187A.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     LIPI0187A.recalibrated.bai (from apply_bsqr)
+#     LIPI0187A.recalibrated.bam (from apply_bsqr)
+#     fastqc/LIPI0187A_unknown186_4_1_fastqc.html (from fastqc_unknown186_4_1)
+#     fastqc/LIPI0187A_unknown186_4_1_fastqc.zip (from fastqc_unknown186_4_1)
+#     fastqc/LIPI0187A_unknown186_4_2_fastqc.html (from fastqc_unknown186_4_2)
+#     fastqc/LIPI0187A_unknown186_4_2_fastqc.zip (from fastqc_unknown186_4_2)
+#     fastqc/LIPI0187A_unknown186_5_1_fastqc.html (from fastqc_unknown186_5_1)
+#     fastqc/LIPI0187A_unknown186_5_1_fastqc.zip (from fastqc_unknown186_5_1)
+#     fastqc/LIPI0187A_unknown186_5_2_fastqc.html (from fastqc_unknown186_5_2)
+#     fastqc/LIPI0187A_unknown186_5_2_fastqc.zip (from fastqc_unknown186_5_2)
+#     fastqc/LIPI0187A_unknown481_4_1_fastqc.html (from fastqc_unknown481_4_1)
+#     fastqc/LIPI0187A_unknown481_4_1_fastqc.zip (from fastqc_unknown481_4_1)
+#     fastqc/LIPI0187A_unknown481_4_2_fastqc.html (from fastqc_unknown481_4_2)
+#     fastqc/LIPI0187A_unknown481_4_2_fastqc.zip (from fastqc_unknown481_4_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/LIPI0187A.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/LIPI0187A.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/unknown186_4_1_unpaired.fq.gz (from trim_unknown186_4)
+#     unpaired/unknown186_4_2_unpaired.fq.gz (from trim_unknown186_4)
+#     unpaired/unknown186_5_1_unpaired.fq.gz (from trim_unknown186_5)
+#     unpaired/unknown186_5_2_unpaired.fq.gz (from trim_unknown186_5)
+#     unpaired/unknown481_4_1_unpaired.fq.gz (from trim_unknown481_4)
+#     unpaired/unknown481_4_2_unpaired.fq.gz (from trim_unknown481_4)

@@ -1,0 +1,667 @@
+# M1555
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     M1555_C3DR5ACXX_1_1_001.fq.gz ce619a93281170b93d4c48aa94169ad7
+#     M1555_C3DR5ACXX_1_2_001.fq.gz 5ab81688bed35da5689f4b49a153fdc0
+#     M1555_C3DR5ACXX_2_1_001.fq.gz df28115e9971e15686de3f99d902206d
+#     M1555_C3DR5ACXX_2_2_001.fq.gz 96a93e49c9b18b20fcd882e42c156b81
+#     M1555_C3DR5ACXX_3_1_001.fq.gz e742f55b08d7d779c1294a3e7b32ac83
+#     M1555_C3DR5ACXX_3_2_001.fq.gz f1e30cbb0bbbddb4c69156292127416b
+#     M1555_C3DR5ACXX_4_1_001.fq.gz 663d5ee12884c1bf7ab34b7a0bd370df
+#     M1555_C3DR5ACXX_4_2_001.fq.gz bd9191e4ac3ef6cefff5983319f6f308
+#     M1555_C3DR5ACXX_5_1_001.fq.gz 375075fb372c083c4db25df94edaf755
+#     M1555_C3DR5ACXX_5_2_001.fq.gz 41b81411cd9fe14396606d4c0667d302
+#     M1555_C3DR5ACXX_6_1_001.fq.gz 4f23c7e9825ba1c962ad9c84021f6423
+#     M1555_C3DR5ACXX_6_2_001.fq.gz fa4016402e7d352210b609d6891e4859
+#     M1555_C3KD4ACXX_8_1_001.fq.gz 20b23d0a1904349d8d9fc7fedf8f91df
+#     M1555_C3KD4ACXX_8_2_001.fq.gz 3ef5224c88bc9526c40a674632760f87
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: trim_C3KD4ACXX_8
+####   inputs:
+####     M1555_C3KD4ACXX_8_1.fastq.gz
+####     M1555_C3KD4ACXX_8_2.fastq.gz
+####   outputs:
+####     M1555_C3KD4ACXX_8_1_paired.fq.gz
+####     M1555_C3KD4ACXX_8_1_unpaired.fq.gz
+####     M1555_C3KD4ACXX_8_2_paired.fq.gz
+####     M1555_C3KD4ACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3KD4ACXX_8_1.fastq.gz M1555_C3KD4ACXX_8_2.fastq.gz M1555_C3KD4ACXX_8_1_paired.fq.gz M1555_C3KD4ACXX_8_1_unpaired.fq.gz M1555_C3KD4ACXX_8_2_paired.fq.gz M1555_C3KD4ACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_C3DR5ACXX_3_2
+####   inputs:
+####     M1555_C3DR5ACXX_3_2.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_3_2_fastqc.html
+####     M1555_C3DR5ACXX_3_2_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_3_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_2_1
+####   inputs:
+####     M1555_C3DR5ACXX_2_1.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_2_1_fastqc.html
+####     M1555_C3DR5ACXX_2_1_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_2_1.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_6_2
+####   inputs:
+####     M1555_C3DR5ACXX_6_2.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_6_2_fastqc.html
+####     M1555_C3DR5ACXX_6_2_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_6_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_4_1
+####   inputs:
+####     M1555_C3DR5ACXX_4_1.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_4_1_fastqc.html
+####     M1555_C3DR5ACXX_4_1_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_4_1.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_2_2
+####   inputs:
+####     M1555_C3DR5ACXX_2_2.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_2_2_fastqc.html
+####     M1555_C3DR5ACXX_2_2_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_2_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_6_1
+####   inputs:
+####     M1555_C3DR5ACXX_6_1.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_6_1_fastqc.html
+####     M1555_C3DR5ACXX_6_1_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_6_1.fq.gz 
+
+
+########
+#### stage: fastqc_C3KD4ACXX_8_1
+####   inputs:
+####     M1555_C3KD4ACXX_8_1.fq.gz
+####   outputs:
+####     M1555_C3KD4ACXX_8_1_fastqc.html
+####     M1555_C3KD4ACXX_8_1_fastqc.zip
+
+fastqc  M1555_C3KD4ACXX_8_1.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_4_2
+####   inputs:
+####     M1555_C3DR5ACXX_4_2.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_4_2_fastqc.html
+####     M1555_C3DR5ACXX_4_2_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_4_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_3_1
+####   inputs:
+####     M1555_C3DR5ACXX_3_1.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_3_1_fastqc.html
+####     M1555_C3DR5ACXX_3_1_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_3_1.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_5_2
+####   inputs:
+####     M1555_C3DR5ACXX_5_2.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_5_2_fastqc.html
+####     M1555_C3DR5ACXX_5_2_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_5_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_5_1
+####   inputs:
+####     M1555_C3DR5ACXX_5_1.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_5_1_fastqc.html
+####     M1555_C3DR5ACXX_5_1_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_5_1.fq.gz 
+
+
+########
+#### stage: fastqc_C3KD4ACXX_8_2
+####   inputs:
+####     M1555_C3KD4ACXX_8_2.fq.gz
+####   outputs:
+####     M1555_C3KD4ACXX_8_2_fastqc.html
+####     M1555_C3KD4ACXX_8_2_fastqc.zip
+
+fastqc  M1555_C3KD4ACXX_8_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_1_2
+####   inputs:
+####     M1555_C3DR5ACXX_1_2.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_1_2_fastqc.html
+####     M1555_C3DR5ACXX_1_2_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_1_2.fq.gz 
+
+
+########
+#### stage: fastqc_C3DR5ACXX_1_1
+####   inputs:
+####     M1555_C3DR5ACXX_1_1.fq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_1_1_fastqc.html
+####     M1555_C3DR5ACXX_1_1_fastqc.zip
+
+fastqc  M1555_C3DR5ACXX_1_1.fq.gz 
+
+
+########
+#### stage: trim_C3DR5ACXX_2
+####   inputs:
+####     M1555_C3DR5ACXX_2_1.fastq.gz
+####     M1555_C3DR5ACXX_2_2.fastq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_2_1_paired.fq.gz
+####     M1555_C3DR5ACXX_2_1_unpaired.fq.gz
+####     M1555_C3DR5ACXX_2_2_paired.fq.gz
+####     M1555_C3DR5ACXX_2_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3DR5ACXX_2_1.fastq.gz M1555_C3DR5ACXX_2_2.fastq.gz M1555_C3DR5ACXX_2_1_paired.fq.gz M1555_C3DR5ACXX_2_1_unpaired.fq.gz M1555_C3DR5ACXX_2_2_paired.fq.gz M1555_C3DR5ACXX_2_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C3DR5ACXX_1
+####   inputs:
+####     M1555_C3DR5ACXX_1_1.fastq.gz
+####     M1555_C3DR5ACXX_1_2.fastq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_1_1_paired.fq.gz
+####     M1555_C3DR5ACXX_1_1_unpaired.fq.gz
+####     M1555_C3DR5ACXX_1_2_paired.fq.gz
+####     M1555_C3DR5ACXX_1_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3DR5ACXX_1_1.fastq.gz M1555_C3DR5ACXX_1_2.fastq.gz M1555_C3DR5ACXX_1_1_paired.fq.gz M1555_C3DR5ACXX_1_1_unpaired.fq.gz M1555_C3DR5ACXX_1_2_paired.fq.gz M1555_C3DR5ACXX_1_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C3DR5ACXX_5
+####   inputs:
+####     M1555_C3DR5ACXX_5_1.fastq.gz
+####     M1555_C3DR5ACXX_5_2.fastq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_5_1_paired.fq.gz
+####     M1555_C3DR5ACXX_5_1_unpaired.fq.gz
+####     M1555_C3DR5ACXX_5_2_paired.fq.gz
+####     M1555_C3DR5ACXX_5_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3DR5ACXX_5_1.fastq.gz M1555_C3DR5ACXX_5_2.fastq.gz M1555_C3DR5ACXX_5_1_paired.fq.gz M1555_C3DR5ACXX_5_1_unpaired.fq.gz M1555_C3DR5ACXX_5_2_paired.fq.gz M1555_C3DR5ACXX_5_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C3DR5ACXX_6
+####   inputs:
+####     M1555_C3DR5ACXX_6_1.fastq.gz
+####     M1555_C3DR5ACXX_6_2.fastq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_6_1_paired.fq.gz
+####     M1555_C3DR5ACXX_6_1_unpaired.fq.gz
+####     M1555_C3DR5ACXX_6_2_paired.fq.gz
+####     M1555_C3DR5ACXX_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3DR5ACXX_6_1.fastq.gz M1555_C3DR5ACXX_6_2.fastq.gz M1555_C3DR5ACXX_6_1_paired.fq.gz M1555_C3DR5ACXX_6_1_unpaired.fq.gz M1555_C3DR5ACXX_6_2_paired.fq.gz M1555_C3DR5ACXX_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: trim_C3DR5ACXX_4
+####   inputs:
+####     M1555_C3DR5ACXX_4_1.fastq.gz
+####     M1555_C3DR5ACXX_4_2.fastq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_4_1_paired.fq.gz
+####     M1555_C3DR5ACXX_4_1_unpaired.fq.gz
+####     M1555_C3DR5ACXX_4_2_paired.fq.gz
+####     M1555_C3DR5ACXX_4_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3DR5ACXX_4_1.fastq.gz M1555_C3DR5ACXX_4_2.fastq.gz M1555_C3DR5ACXX_4_1_paired.fq.gz M1555_C3DR5ACXX_4_1_unpaired.fq.gz M1555_C3DR5ACXX_4_2_paired.fq.gz M1555_C3DR5ACXX_4_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C3DR5ACXX_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3DR5ACXX_2_1.fq.gz (from trim_C3DR5ACXX_2)
+####     M1555_C3DR5ACXX_2_2.fq.gz (from trim_C3DR5ACXX_2)
+####   outputs:
+####     M1555_C3DR5ACXX_2.sorted.bai
+####     M1555_C3DR5ACXX_2.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3DR5ACXX.2\tLB:C3DR5ACXX.2\tPL:ILLUMINA\tPU:C3DR5ACXX.2.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3DR5ACXX_2_1.fq.gz M1555_C3DR5ACXX_2_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3DR5ACXX_2.sorted.bam -; samtools index M1555_C3DR5ACXX_2.sorted.bam M1555_C3DR5ACXX_2.sorted.bai
+
+
+########
+#### stage: bwa_C3DR5ACXX_1
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3DR5ACXX_1_1.fq.gz (from trim_C3DR5ACXX_1)
+####     M1555_C3DR5ACXX_1_2.fq.gz (from trim_C3DR5ACXX_1)
+####   outputs:
+####     M1555_C3DR5ACXX_1.sorted.bai
+####     M1555_C3DR5ACXX_1.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3DR5ACXX.1\tLB:C3DR5ACXX.1\tPL:ILLUMINA\tPU:C3DR5ACXX.1.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3DR5ACXX_1_1.fq.gz M1555_C3DR5ACXX_1_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3DR5ACXX_1.sorted.bam -; samtools index M1555_C3DR5ACXX_1.sorted.bam M1555_C3DR5ACXX_1.sorted.bai
+
+
+########
+#### stage: bwa_C3DR5ACXX_4
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3DR5ACXX_4_1.fq.gz (from trim_C3DR5ACXX_4)
+####     M1555_C3DR5ACXX_4_2.fq.gz (from trim_C3DR5ACXX_4)
+####   outputs:
+####     M1555_C3DR5ACXX_4.sorted.bai
+####     M1555_C3DR5ACXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3DR5ACXX.4\tLB:C3DR5ACXX.4\tPL:ILLUMINA\tPU:C3DR5ACXX.4.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3DR5ACXX_4_1.fq.gz M1555_C3DR5ACXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3DR5ACXX_4.sorted.bam -; samtools index M1555_C3DR5ACXX_4.sorted.bam M1555_C3DR5ACXX_4.sorted.bai
+
+
+########
+#### stage: bwa_C3DR5ACXX_6
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3DR5ACXX_6_1.fq.gz (from trim_C3DR5ACXX_6)
+####     M1555_C3DR5ACXX_6_2.fq.gz (from trim_C3DR5ACXX_6)
+####   outputs:
+####     M1555_C3DR5ACXX_6.sorted.bai
+####     M1555_C3DR5ACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3DR5ACXX.6\tLB:C3DR5ACXX.6\tPL:ILLUMINA\tPU:C3DR5ACXX.6.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3DR5ACXX_6_1.fq.gz M1555_C3DR5ACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3DR5ACXX_6.sorted.bam -; samtools index M1555_C3DR5ACXX_6.sorted.bam M1555_C3DR5ACXX_6.sorted.bai
+
+
+########
+#### stage: bwa_C3KD4ACXX_8
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3KD4ACXX_8_1.fq.gz (from trim_C3KD4ACXX_8)
+####     M1555_C3KD4ACXX_8_2.fq.gz (from trim_C3KD4ACXX_8)
+####   outputs:
+####     M1555_C3KD4ACXX_8.sorted.bai
+####     M1555_C3KD4ACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3KD4ACXX.8\tLB:C3KD4ACXX.8\tPL:ILLUMINA\tPU:C3KD4ACXX.8.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3KD4ACXX_8_1.fq.gz M1555_C3KD4ACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3KD4ACXX_8.sorted.bam -; samtools index M1555_C3KD4ACXX_8.sorted.bam M1555_C3KD4ACXX_8.sorted.bai
+
+
+########
+#### stage: bwa_C3DR5ACXX_5
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3DR5ACXX_5_1.fq.gz (from trim_C3DR5ACXX_5)
+####     M1555_C3DR5ACXX_5_2.fq.gz (from trim_C3DR5ACXX_5)
+####   outputs:
+####     M1555_C3DR5ACXX_5.sorted.bai
+####     M1555_C3DR5ACXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3DR5ACXX.5\tLB:C3DR5ACXX.5\tPL:ILLUMINA\tPU:C3DR5ACXX.5.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3DR5ACXX_5_1.fq.gz M1555_C3DR5ACXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3DR5ACXX_5.sorted.bam -; samtools index M1555_C3DR5ACXX_5.sorted.bam M1555_C3DR5ACXX_5.sorted.bai
+
+
+########
+#### stage: trim_C3DR5ACXX_3
+####   inputs:
+####     M1555_C3DR5ACXX_3_1.fastq.gz
+####     M1555_C3DR5ACXX_3_2.fastq.gz
+####   outputs:
+####     M1555_C3DR5ACXX_3_1_paired.fq.gz
+####     M1555_C3DR5ACXX_3_1_unpaired.fq.gz
+####     M1555_C3DR5ACXX_3_2_paired.fq.gz
+####     M1555_C3DR5ACXX_3_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` M1555_C3DR5ACXX_3_1.fastq.gz M1555_C3DR5ACXX_3_2.fastq.gz M1555_C3DR5ACXX_3_1_paired.fq.gz M1555_C3DR5ACXX_3_1_unpaired.fq.gz M1555_C3DR5ACXX_3_2_paired.fq.gz M1555_C3DR5ACXX_3_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C3DR5ACXX_3
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####     M1555_C3DR5ACXX_3_1.fq.gz (from trim_C3DR5ACXX_3)
+####     M1555_C3DR5ACXX_3_2.fq.gz (from trim_C3DR5ACXX_3)
+####   outputs:
+####     M1555_C3DR5ACXX_3.sorted.bai
+####     M1555_C3DR5ACXX_3.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C3DR5ACXX.3\tLB:C3DR5ACXX.3\tPL:ILLUMINA\tPU:C3DR5ACXX.3.UNKNOWN\tSM:M1555' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555_C3DR5ACXX_3_1.fq.gz M1555_C3DR5ACXX_3_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o M1555_C3DR5ACXX_3.sorted.bam -; samtools index M1555_C3DR5ACXX_3.sorted.bam M1555_C3DR5ACXX_3.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     M1555_C3DR5ACXX_1.bam (from bwa_C3DR5ACXX_1)
+####     M1555_C3DR5ACXX_2.bam (from bwa_C3DR5ACXX_2)
+####     M1555_C3DR5ACXX_3.bam (from bwa_C3DR5ACXX_3)
+####     M1555_C3DR5ACXX_4.bam (from bwa_C3DR5ACXX_4)
+####     M1555_C3DR5ACXX_5.bam (from bwa_C3DR5ACXX_5)
+####     M1555_C3DR5ACXX_6.bam (from bwa_C3DR5ACXX_6)
+####     M1555_C3KD4ACXX_8.bam (from bwa_C3KD4ACXX_8)
+####   outputs:
+####     M1555.merged.bai
+####     M1555.merged.bam
+
+samtools merge -@ `nproc` M1555.merged.bam M1555_C3DR5ACXX_1.bam M1555_C3DR5ACXX_2.bam M1555_C3DR5ACXX_3.bam M1555_C3DR5ACXX_4.bam M1555_C3DR5ACXX_5.bam M1555_C3DR5ACXX_6.bam M1555_C3KD4ACXX_8.bam ; samtools index M1555.merged.bam M1555.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     M1555.bam (from merge_bam)
+####   outputs:
+####     M1555.markduplicates.bam
+####     M1555.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=M1555.bam O=M1555.markduplicates.bam M=M1555.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     M1555.bam (from mark_duplicates)
+####   outputs:
+####     M1555.bai
+
+samtools index -@ `nproc` M1555.bam M1555.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M1555.bai (from index_mark_duplicates)
+####     M1555.bam (from mark_duplicates)
+####   outputs:
+####     M1555.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M1555.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M1555.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     M1555.bai (from index_mark_duplicates)
+####     M1555.bam (from mark_duplicates)
+####     M1555.recalibration.table (from base_recalibration_table)
+####   outputs:
+####     M1555.recalibrated.bai
+####     M1555.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M1555.bam --bqsr-recal-file M1555.recalibration.table -O M1555.recalibrated.bam
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.gatk_haplotypecaller.vcf.gz
+####     M1555.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M1555.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M1555.gatk_haplotypecaller.vcf.gz ; tabix -p vcf M1555.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.unmapped.fq.gz
+
+samtools view  -u -b -f 4 M1555.bam | samtools fastq - | gzip -c - > M1555.unmapped.fq.gz
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.samtoolsmpileup.vcf.gz
+####     M1555.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta M1555.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o M1555.samtoolsmpileup.vcf.gz ; tabix M1555.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.metrics.alignment_summary_metrics
+####     M1555.metrics.base_distribution_by_cycle.pdf
+####     M1555.metrics.base_distribution_by_cycle_metrics
+####     M1555.metrics.insert_size_histogram.pdf
+####     M1555.metrics.insert_size_metrics
+####     M1555.metrics.quality_by_cycle.pdf
+####     M1555.metrics.quality_by_cycle_metrics
+####     M1555.metrics.quality_distribution.pdf
+####     M1555.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=M1555.bam O=M1555.metrics
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.platypuscallvariants.vcf.gz
+####     M1555.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=M1555.bam --output=M1555.platypuscallvariants.vcf ; bgzip M1555.platypuscallvariants.vcf ; tabix -p vcf M1555.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.coverage.tsv
+
+samtools depth M1555.bam | depth-of-coverage.py > M1555.coverage.tsv
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####     M1555.bai (from apply_bsqr)
+####     M1555.bam (from apply_bsqr)
+####   outputs:
+####     M1555.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I M1555.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O M1555.recalibration.table
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     M1555.BQSR.csv
+####     M1555.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv M1555.BQSR.csv -plots M1555.BQSR.pdf
+
+
+
+#   outputs:
+#     M1555.bcftools.vcf.gz (from bcftools_mpileup)
+#     M1555.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     M1555.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     M1555.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     M1555.platypus.vcf.gz (from platypus_callvariants)
+#     M1555.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     M1555.recalibrated.bai (from apply_bsqr)
+#     M1555.recalibrated.bam (from apply_bsqr)
+#     fastqc/M1555_C3DR5ACXX_1_1_fastqc.html (from fastqc_C3DR5ACXX_1_1)
+#     fastqc/M1555_C3DR5ACXX_1_1_fastqc.zip (from fastqc_C3DR5ACXX_1_1)
+#     fastqc/M1555_C3DR5ACXX_1_2_fastqc.html (from fastqc_C3DR5ACXX_1_2)
+#     fastqc/M1555_C3DR5ACXX_1_2_fastqc.zip (from fastqc_C3DR5ACXX_1_2)
+#     fastqc/M1555_C3DR5ACXX_2_1_fastqc.html (from fastqc_C3DR5ACXX_2_1)
+#     fastqc/M1555_C3DR5ACXX_2_1_fastqc.zip (from fastqc_C3DR5ACXX_2_1)
+#     fastqc/M1555_C3DR5ACXX_2_2_fastqc.html (from fastqc_C3DR5ACXX_2_2)
+#     fastqc/M1555_C3DR5ACXX_2_2_fastqc.zip (from fastqc_C3DR5ACXX_2_2)
+#     fastqc/M1555_C3DR5ACXX_3_1_fastqc.html (from fastqc_C3DR5ACXX_3_1)
+#     fastqc/M1555_C3DR5ACXX_3_1_fastqc.zip (from fastqc_C3DR5ACXX_3_1)
+#     fastqc/M1555_C3DR5ACXX_3_2_fastqc.html (from fastqc_C3DR5ACXX_3_2)
+#     fastqc/M1555_C3DR5ACXX_3_2_fastqc.zip (from fastqc_C3DR5ACXX_3_2)
+#     fastqc/M1555_C3DR5ACXX_4_1_fastqc.html (from fastqc_C3DR5ACXX_4_1)
+#     fastqc/M1555_C3DR5ACXX_4_1_fastqc.zip (from fastqc_C3DR5ACXX_4_1)
+#     fastqc/M1555_C3DR5ACXX_4_2_fastqc.html (from fastqc_C3DR5ACXX_4_2)
+#     fastqc/M1555_C3DR5ACXX_4_2_fastqc.zip (from fastqc_C3DR5ACXX_4_2)
+#     fastqc/M1555_C3DR5ACXX_5_1_fastqc.html (from fastqc_C3DR5ACXX_5_1)
+#     fastqc/M1555_C3DR5ACXX_5_1_fastqc.zip (from fastqc_C3DR5ACXX_5_1)
+#     fastqc/M1555_C3DR5ACXX_5_2_fastqc.html (from fastqc_C3DR5ACXX_5_2)
+#     fastqc/M1555_C3DR5ACXX_5_2_fastqc.zip (from fastqc_C3DR5ACXX_5_2)
+#     fastqc/M1555_C3DR5ACXX_6_1_fastqc.html (from fastqc_C3DR5ACXX_6_1)
+#     fastqc/M1555_C3DR5ACXX_6_1_fastqc.zip (from fastqc_C3DR5ACXX_6_1)
+#     fastqc/M1555_C3DR5ACXX_6_2_fastqc.html (from fastqc_C3DR5ACXX_6_2)
+#     fastqc/M1555_C3DR5ACXX_6_2_fastqc.zip (from fastqc_C3DR5ACXX_6_2)
+#     fastqc/M1555_C3KD4ACXX_8_1_fastqc.html (from fastqc_C3KD4ACXX_8_1)
+#     fastqc/M1555_C3KD4ACXX_8_1_fastqc.zip (from fastqc_C3KD4ACXX_8_1)
+#     fastqc/M1555_C3KD4ACXX_8_2_fastqc.html (from fastqc_C3KD4ACXX_8_2)
+#     fastqc/M1555_C3KD4ACXX_8_2_fastqc.zip (from fastqc_C3KD4ACXX_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/M1555.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/M1555.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/C3DR5ACXX_1_1_unpaired.fq.gz (from trim_C3DR5ACXX_1)
+#     unpaired/C3DR5ACXX_1_2_unpaired.fq.gz (from trim_C3DR5ACXX_1)
+#     unpaired/C3DR5ACXX_2_1_unpaired.fq.gz (from trim_C3DR5ACXX_2)
+#     unpaired/C3DR5ACXX_2_2_unpaired.fq.gz (from trim_C3DR5ACXX_2)
+#     unpaired/C3DR5ACXX_3_1_unpaired.fq.gz (from trim_C3DR5ACXX_3)
+#     unpaired/C3DR5ACXX_3_2_unpaired.fq.gz (from trim_C3DR5ACXX_3)
+#     unpaired/C3DR5ACXX_4_1_unpaired.fq.gz (from trim_C3DR5ACXX_4)
+#     unpaired/C3DR5ACXX_4_2_unpaired.fq.gz (from trim_C3DR5ACXX_4)
+#     unpaired/C3DR5ACXX_5_1_unpaired.fq.gz (from trim_C3DR5ACXX_5)
+#     unpaired/C3DR5ACXX_5_2_unpaired.fq.gz (from trim_C3DR5ACXX_5)
+#     unpaired/C3DR5ACXX_6_1_unpaired.fq.gz (from trim_C3DR5ACXX_6)
+#     unpaired/C3DR5ACXX_6_2_unpaired.fq.gz (from trim_C3DR5ACXX_6)
+#     unpaired/C3KD4ACXX_8_1_unpaired.fq.gz (from trim_C3KD4ACXX_8)
+#     unpaired/C3KD4ACXX_8_2_unpaired.fq.gz (from trim_C3KD4ACXX_8)

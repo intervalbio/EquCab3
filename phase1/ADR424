@@ -1,0 +1,347 @@
+# ADR424
+#
+#   inputs:
+#     ADR424_CALBUANXX_4,5,6_1_001.fq.gz 706adf9ab1c2566d05d5a503f63befd1
+#     ADR424_CALBUANXX_4,5,6_2_001.fq.gz 6f2e58eb25de93d66edc527c8c24ff14
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_CALBUANXX_4,5,6_1
+####   inputs:
+####     ADR424_CALBUANXX_4,5,6_1.fq.gz
+####   outputs:
+####     ADR424_CALBUANXX_4,5,6_1_fastqc.html
+####     ADR424_CALBUANXX_4,5,6_1_fastqc.zip
+
+fastqc  ADR424_CALBUANXX_4,5,6_1.fq.gz 
+
+
+########
+#### stage: fastqc_CALBUANXX_4,5,6_2
+####   inputs:
+####     ADR424_CALBUANXX_4,5,6_2.fq.gz
+####   outputs:
+####     ADR424_CALBUANXX_4,5,6_2_fastqc.html
+####     ADR424_CALBUANXX_4,5,6_2_fastqc.zip
+
+fastqc  ADR424_CALBUANXX_4,5,6_2.fq.gz 
+
+
+########
+#### stage: trim_CALBUANXX_4,5,6
+####   inputs:
+####     ADR424_CALBUANXX_4,5,6_1.fastq.gz
+####     ADR424_CALBUANXX_4,5,6_2.fastq.gz
+####   outputs:
+####     ADR424_CALBUANXX_4,5,6_1_paired.fq.gz
+####     ADR424_CALBUANXX_4,5,6_1_unpaired.fq.gz
+####     ADR424_CALBUANXX_4,5,6_2_paired.fq.gz
+####     ADR424_CALBUANXX_4,5,6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` ADR424_CALBUANXX_4,5,6_1.fastq.gz ADR424_CALBUANXX_4,5,6_2.fastq.gz ADR424_CALBUANXX_4,5,6_1_paired.fq.gz ADR424_CALBUANXX_4,5,6_1_unpaired.fq.gz ADR424_CALBUANXX_4,5,6_2_paired.fq.gz ADR424_CALBUANXX_4,5,6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: split_CALBUANXX_4,5,6_2
+####   inputs:
+####     ADR424.fq.gz (from trim_CALBUANXX_4,5,6)
+####   outputs:
+####     L4.fq.gz
+####     L5.fq.gz
+####     L6.fq.gz
+
+zcat ADR424.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: split_CALBUANXX_4,5,6_1
+####   inputs:
+####     ADR424.fq.gz (from trim_CALBUANXX_4,5,6)
+####   outputs:
+####     L4.fq.gz
+####     L5.fq.gz
+####     L6.fq.gz
+
+zcat ADR424.fq.gz | awk -F: '{lane=$4 ; print > "L"lane".fq" ; for (i = 1; i <= 3; i++) {getline ; print > "L"lane".fq"}}' ; gzip *.fq
+
+
+########
+#### stage: bwa_CALBUANXX_4
+####   inputs:
+####     ADR424_CALBUANXX_4_1.fq.gz (from split_CALBUANXX_4,5,6_1)
+####     ADR424_CALBUANXX_4_2.fq.gz (from split_CALBUANXX_4,5,6_2)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     ADR424_CALBUANXX_4.sorted.bai
+####     ADR424_CALBUANXX_4.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:CALBUANXX.456\tLB:CALBUANXX.456\tPL:ILLUMINA\tPU:CALBUANXX.456.UNKNOWN\tSM:ADR424' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ADR424_CALBUANXX_4_1.fq.gz ADR424_CALBUANXX_4_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ADR424_CALBUANXX_4.sorted.bam -; samtools index ADR424_CALBUANXX_4.sorted.bam ADR424_CALBUANXX_4.sorted.bai
+
+
+########
+#### stage: bwa_CALBUANXX_6
+####   inputs:
+####     ADR424_CALBUANXX_6_1.fq.gz (from split_CALBUANXX_4,5,6_1)
+####     ADR424_CALBUANXX_6_2.fq.gz (from split_CALBUANXX_4,5,6_2)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     ADR424_CALBUANXX_6.sorted.bai
+####     ADR424_CALBUANXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:CALBUANXX.456\tLB:CALBUANXX.456\tPL:ILLUMINA\tPU:CALBUANXX.456.UNKNOWN\tSM:ADR424' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ADR424_CALBUANXX_6_1.fq.gz ADR424_CALBUANXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ADR424_CALBUANXX_6.sorted.bam -; samtools index ADR424_CALBUANXX_6.sorted.bam ADR424_CALBUANXX_6.sorted.bai
+
+
+########
+#### stage: bwa_CALBUANXX_5
+####   inputs:
+####     ADR424_CALBUANXX_5_1.fq.gz (from split_CALBUANXX_4,5,6_1)
+####     ADR424_CALBUANXX_5_2.fq.gz (from split_CALBUANXX_4,5,6_2)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     ADR424_CALBUANXX_5.sorted.bai
+####     ADR424_CALBUANXX_5.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:CALBUANXX.456\tLB:CALBUANXX.456\tPL:ILLUMINA\tPU:CALBUANXX.456.UNKNOWN\tSM:ADR424' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ADR424_CALBUANXX_5_1.fq.gz ADR424_CALBUANXX_5_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o ADR424_CALBUANXX_5.sorted.bam -; samtools index ADR424_CALBUANXX_5.sorted.bam ADR424_CALBUANXX_5.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     ADR424_CALBUANXX_4.bam (from bwa_CALBUANXX_4)
+####     ADR424_CALBUANXX_5.bam (from bwa_CALBUANXX_5)
+####     ADR424_CALBUANXX_6.bam (from bwa_CALBUANXX_6)
+####   outputs:
+####     ADR424.merged.bai
+####     ADR424.merged.bam
+
+samtools merge -@ `nproc` ADR424.merged.bam ADR424_CALBUANXX_4.bam ADR424_CALBUANXX_5.bam ADR424_CALBUANXX_6.bam ; samtools index ADR424.merged.bam ADR424.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     ADR424.bam (from merge_bam)
+####   outputs:
+####     ADR424.markduplicates.bam
+####     ADR424.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=ADR424.bam O=ADR424.markduplicates.bam M=ADR424.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     ADR424.bam (from mark_duplicates)
+####   outputs:
+####     ADR424.bai
+
+samtools index -@ `nproc` ADR424.bam ADR424.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     ADR424.bai (from index_mark_duplicates)
+####     ADR424.bam (from mark_duplicates)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     ADR424.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ADR424.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ADR424.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     ADR424.bai (from index_mark_duplicates)
+####     ADR424.bam (from mark_duplicates)
+####     ADR424.recalibration.table (from base_recalibration_table)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####   outputs:
+####     ADR424.recalibrated.bai
+####     ADR424.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ADR424.bam --bqsr-recal-file ADR424.recalibration.table -O ADR424.recalibrated.bam
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     ADR424.gatk_haplotypecaller.vcf.gz
+####     ADR424.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ADR424.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ADR424.gatk_haplotypecaller.vcf.gz ; tabix -p vcf ADR424.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####   outputs:
+####     ADR424.unmapped.fq.gz
+
+samtools view  -u -b -f 4 ADR424.bam | samtools fastq - | gzip -c - > ADR424.unmapped.fq.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     ADR424.platypuscallvariants.vcf.gz
+####     ADR424.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=ADR424.bam --output=ADR424.platypuscallvariants.vcf ; bgzip ADR424.platypuscallvariants.vcf ; tabix -p vcf ADR424.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     ADR424.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I ADR424.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O ADR424.recalibration.table
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####   outputs:
+####     ADR424.coverage.tsv
+
+samtools depth ADR424.bam | depth-of-coverage.py > ADR424.coverage.tsv
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####   outputs:
+####     ADR424.metrics.alignment_summary_metrics
+####     ADR424.metrics.base_distribution_by_cycle.pdf
+####     ADR424.metrics.base_distribution_by_cycle_metrics
+####     ADR424.metrics.insert_size_histogram.pdf
+####     ADR424.metrics.insert_size_metrics
+####     ADR424.metrics.quality_by_cycle.pdf
+####     ADR424.metrics.quality_by_cycle_metrics
+####     ADR424.metrics.quality_distribution.pdf
+####     ADR424.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=ADR424.bam O=ADR424.metrics
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     ADR424.BQSR.csv
+####     ADR424.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv ADR424.BQSR.csv -plots ADR424.BQSR.pdf
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     ADR424.bai (from apply_bsqr)
+####     ADR424.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     ADR424.samtoolsmpileup.vcf.gz
+####     ADR424.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta ADR424.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o ADR424.samtoolsmpileup.vcf.gz ; tabix ADR424.samtoolsmpileup.vcf.gz
+
+
+
+#   outputs:
+#     ADR424.bcftools.vcf.gz (from bcftools_mpileup)
+#     ADR424.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     ADR424.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     ADR424.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     ADR424.platypus.vcf.gz (from platypus_callvariants)
+#     ADR424.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     ADR424.recalibrated.bai (from apply_bsqr)
+#     ADR424.recalibrated.bam (from apply_bsqr)
+#     fastqc/ADR424_CALBUANXX_4,5,6_1_fastqc.html (from fastqc_CALBUANXX_4,5,6_1)
+#     fastqc/ADR424_CALBUANXX_4,5,6_1_fastqc.zip (from fastqc_CALBUANXX_4,5,6_1)
+#     fastqc/ADR424_CALBUANXX_4,5,6_2_fastqc.html (from fastqc_CALBUANXX_4,5,6_2)
+#     fastqc/ADR424_CALBUANXX_4,5,6_2_fastqc.zip (from fastqc_CALBUANXX_4,5,6_2)
+#     metrics/ADR424.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/ADR424.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/CALBUANXX_4,5,6_1_unpaired.fq.gz (from trim_CALBUANXX_4,5,6)
+#     unpaired/CALBUANXX_4,5,6_2_unpaired.fq.gz (from trim_CALBUANXX_4,5,6)

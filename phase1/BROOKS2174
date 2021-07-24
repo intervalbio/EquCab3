@@ -1,0 +1,283 @@
+# BROOKS2174
+#
+#   inputs:
+#     BROOKS2174_C0L2NACXX_6_1_001.fq.gz 4f528ae8d3c1c260ec0433e14eee5df8
+#     BROOKS2174_C0L2NACXX_6_2_001.fq.gz 88d0f1699568d9917ece388a233f8f33
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: fastqc_C0L2NACXX_6_2
+####   inputs:
+####     BROOKS2174_C0L2NACXX_6_2.fq.gz
+####   outputs:
+####     BROOKS2174_C0L2NACXX_6_2_fastqc.html
+####     BROOKS2174_C0L2NACXX_6_2_fastqc.zip
+
+fastqc  BROOKS2174_C0L2NACXX_6_2.fq.gz 
+
+
+########
+#### stage: fastqc_C0L2NACXX_6_1
+####   inputs:
+####     BROOKS2174_C0L2NACXX_6_1.fq.gz
+####   outputs:
+####     BROOKS2174_C0L2NACXX_6_1_fastqc.html
+####     BROOKS2174_C0L2NACXX_6_1_fastqc.zip
+
+fastqc  BROOKS2174_C0L2NACXX_6_1.fq.gz 
+
+
+########
+#### stage: trim_C0L2NACXX_6
+####   inputs:
+####     BROOKS2174_C0L2NACXX_6_1.fastq.gz
+####     BROOKS2174_C0L2NACXX_6_2.fastq.gz
+####   outputs:
+####     BROOKS2174_C0L2NACXX_6_1_paired.fq.gz
+####     BROOKS2174_C0L2NACXX_6_1_unpaired.fq.gz
+####     BROOKS2174_C0L2NACXX_6_2_paired.fq.gz
+####     BROOKS2174_C0L2NACXX_6_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` BROOKS2174_C0L2NACXX_6_1.fastq.gz BROOKS2174_C0L2NACXX_6_2.fastq.gz BROOKS2174_C0L2NACXX_6_1_paired.fq.gz BROOKS2174_C0L2NACXX_6_1_unpaired.fq.gz BROOKS2174_C0L2NACXX_6_2_paired.fq.gz BROOKS2174_C0L2NACXX_6_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: bwa_C0L2NACXX_6
+####   inputs:
+####     BROOKS2174_C0L2NACXX_6_1.fq.gz (from trim_C0L2NACXX_6)
+####     BROOKS2174_C0L2NACXX_6_2.fq.gz (from trim_C0L2NACXX_6)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     BROOKS2174_C0L2NACXX_6.sorted.bai
+####     BROOKS2174_C0L2NACXX_6.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:C0L2NACXX.6\tLB:C0L2NACXX.6\tPL:ILLUMINA\tPU:C0L2NACXX.6.UNKNOWN\tSM:BROOKS2174' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta BROOKS2174_C0L2NACXX_6_1.fq.gz BROOKS2174_C0L2NACXX_6_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o BROOKS2174_C0L2NACXX_6.sorted.bam -; samtools index BROOKS2174_C0L2NACXX_6.sorted.bam BROOKS2174_C0L2NACXX_6.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     BROOKS2174_C0L2NACXX_6.bam (from bwa_C0L2NACXX_6)
+####   outputs:
+####     BROOKS2174.merged.bai
+####     BROOKS2174.merged.bam
+
+samtools merge -@ `nproc` BROOKS2174.merged.bam BROOKS2174_C0L2NACXX_6.bam ; samtools index BROOKS2174.merged.bam BROOKS2174.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     BROOKS2174.bam (from merge_bam)
+####   outputs:
+####     BROOKS2174.markduplicates.bam
+####     BROOKS2174.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=BROOKS2174.bam O=BROOKS2174.markduplicates.bam M=BROOKS2174.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     BROOKS2174.bam (from mark_duplicates)
+####   outputs:
+####     BROOKS2174.bai
+
+samtools index -@ `nproc` BROOKS2174.bam BROOKS2174.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     BROOKS2174.bai (from index_mark_duplicates)
+####     BROOKS2174.bam (from mark_duplicates)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     BROOKS2174.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I BROOKS2174.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O BROOKS2174.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     BROOKS2174.bai (from index_mark_duplicates)
+####     BROOKS2174.bam (from mark_duplicates)
+####     BROOKS2174.recalibration.table (from base_recalibration_table)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####   outputs:
+####     BROOKS2174.recalibrated.bai
+####     BROOKS2174.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I BROOKS2174.bam --bqsr-recal-file BROOKS2174.recalibration.table -O BROOKS2174.recalibrated.bam
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     BROOKS2174.samtoolsmpileup.vcf.gz
+####     BROOKS2174.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta BROOKS2174.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o BROOKS2174.samtoolsmpileup.vcf.gz ; tabix BROOKS2174.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####   outputs:
+####     BROOKS2174.metrics.alignment_summary_metrics
+####     BROOKS2174.metrics.base_distribution_by_cycle.pdf
+####     BROOKS2174.metrics.base_distribution_by_cycle_metrics
+####     BROOKS2174.metrics.insert_size_histogram.pdf
+####     BROOKS2174.metrics.insert_size_metrics
+####     BROOKS2174.metrics.quality_by_cycle.pdf
+####     BROOKS2174.metrics.quality_by_cycle_metrics
+####     BROOKS2174.metrics.quality_distribution.pdf
+####     BROOKS2174.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=BROOKS2174.bam O=BROOKS2174.metrics
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####   outputs:
+####     BROOKS2174.coverage.tsv
+
+samtools depth BROOKS2174.bam | depth-of-coverage.py > BROOKS2174.coverage.tsv
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####   outputs:
+####     BROOKS2174.unmapped.fq.gz
+
+samtools view  -u -b -f 4 BROOKS2174.bam | samtools fastq - | gzip -c - > BROOKS2174.unmapped.fq.gz
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     BROOKS2174.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I BROOKS2174.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O BROOKS2174.recalibration.table
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     BROOKS2174.BQSR.csv
+####     BROOKS2174.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv BROOKS2174.BQSR.csv -plots BROOKS2174.BQSR.pdf
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     BROOKS2174.gatk_haplotypecaller.vcf.gz
+####     BROOKS2174.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I BROOKS2174.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O BROOKS2174.gatk_haplotypecaller.vcf.gz ; tabix -p vcf BROOKS2174.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     BROOKS2174.bai (from apply_bsqr)
+####     BROOKS2174.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     BROOKS2174.platypuscallvariants.vcf.gz
+####     BROOKS2174.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=BROOKS2174.bam --output=BROOKS2174.platypuscallvariants.vcf ; bgzip BROOKS2174.platypuscallvariants.vcf ; tabix -p vcf BROOKS2174.platypuscallvariants.vcf.gz
+
+
+
+#   outputs:
+#     BROOKS2174.bcftools.vcf.gz (from bcftools_mpileup)
+#     BROOKS2174.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     BROOKS2174.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     BROOKS2174.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     BROOKS2174.platypus.vcf.gz (from platypus_callvariants)
+#     BROOKS2174.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     BROOKS2174.recalibrated.bai (from apply_bsqr)
+#     BROOKS2174.recalibrated.bam (from apply_bsqr)
+#     fastqc/BROOKS2174_C0L2NACXX_6_1_fastqc.html (from fastqc_C0L2NACXX_6_1)
+#     fastqc/BROOKS2174_C0L2NACXX_6_1_fastqc.zip (from fastqc_C0L2NACXX_6_1)
+#     fastqc/BROOKS2174_C0L2NACXX_6_2_fastqc.html (from fastqc_C0L2NACXX_6_2)
+#     fastqc/BROOKS2174_C0L2NACXX_6_2_fastqc.zip (from fastqc_C0L2NACXX_6_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/BROOKS2174.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/BROOKS2174.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/C0L2NACXX_6_1_unpaired.fq.gz (from trim_C0L2NACXX_6)
+#     unpaired/C0L2NACXX_6_2_unpaired.fq.gz (from trim_C0L2NACXX_6)

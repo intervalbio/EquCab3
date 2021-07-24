@@ -1,0 +1,966 @@
+# M10664
+#
+#   inputs:
+#     GCF_002863925.1_EquCab3.0_genomic_NW.fna.bed
+#     M10664.gatk.gvcf.gz
+#     M10664.gatk.gvcf.gz.tbi
+#     M10664.recalibrated.bai
+#     M10664.recalibrated.bam
+
+
+########
+#### stage: NC_009171_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009171.3.vcf.gz
+####     M10664.NC_009171.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009171.3  M10664.vcf.gz > M10664.NC_009171.3.vcf; bgzip M10664.NC_009171.3.vcf; tabix M10664.NC_009171.3.vcf.gz
+
+
+########
+#### stage: NC_009161_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009161.3.vcf.gz
+####     M10664.NC_009161.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009161.3  M10664.vcf.gz > M10664.NC_009161.3.vcf; bgzip M10664.NC_009161.3.vcf; tabix M10664.NC_009161.3.vcf.gz
+
+
+########
+#### stage: NC_009172_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009172.3.vcf.gz
+####     M10664.NC_009172.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009172.3  M10664.vcf.gz > M10664.NC_009172.3.vcf; bgzip M10664.NC_009172.3.vcf; tabix M10664.NC_009172.3.vcf.gz
+
+
+########
+#### stage: NC_009150_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009150.3.bai
+####     M10664.NC_009150.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009150.3   > M10664.NC_009150.3.bam; samtools index M10664.NC_009150.3.bam M10664.NC_009150.3.bai
+
+
+########
+#### stage: NC_009163_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009163.3.vcf.gz
+####     M10664.NC_009163.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009163.3  M10664.vcf.gz > M10664.NC_009163.3.vcf; bgzip M10664.NC_009163.3.vcf; tabix M10664.NC_009163.3.vcf.gz
+
+
+########
+#### stage: NC_009153_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009153.3.vcf.gz
+####     M10664.NC_009153.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009153.3  M10664.vcf.gz > M10664.NC_009153.3.vcf; bgzip M10664.NC_009153.3.vcf; tabix M10664.NC_009153.3.vcf.gz
+
+
+########
+#### stage: NC_009156_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009156.3.vcf.gz
+####     M10664.NC_009156.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009156.3  M10664.vcf.gz > M10664.NC_009156.3.vcf; bgzip M10664.NC_009156.3.vcf; tabix M10664.NC_009156.3.vcf.gz
+
+
+########
+#### stage: NC_009146_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009146.3.bai
+####     M10664.NC_009146.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009146.3   > M10664.NC_009146.3.bam; samtools index M10664.NC_009146.3.bam M10664.NC_009146.3.bai
+
+
+########
+#### stage: NC_009164_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009164.3.bai
+####     M10664.NC_009164.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009164.3   > M10664.NC_009164.3.bam; samtools index M10664.NC_009164.3.bam M10664.NC_009164.3.bai
+
+
+########
+#### stage: NC_009166_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009166.3.bai
+####     M10664.NC_009166.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009166.3   > M10664.NC_009166.3.bam; samtools index M10664.NC_009166.3.bam M10664.NC_009166.3.bai
+
+
+########
+#### stage: NC_009151_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009151.3.bai
+####     M10664.NC_009151.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009151.3   > M10664.NC_009151.3.bam; samtools index M10664.NC_009151.3.bam M10664.NC_009151.3.bai
+
+
+########
+#### stage: NC_009157_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009157.3.bai
+####     M10664.NC_009157.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009157.3   > M10664.NC_009157.3.bam; samtools index M10664.NC_009157.3.bam M10664.NC_009157.3.bai
+
+
+########
+#### stage: NC_009172_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009172.3.bai
+####     M10664.NC_009172.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009172.3   > M10664.NC_009172.3.bam; samtools index M10664.NC_009172.3.bam M10664.NC_009172.3.bai
+
+
+########
+#### stage: NC_001640_1_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_001640.1.bai
+####     M10664.NC_001640.1.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_001640.1   > M10664.NC_001640.1.bam; samtools index M10664.NC_001640.1.bam M10664.NC_001640.1.bai
+
+
+########
+#### stage: NC_001640_1_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_001640.1.vcf.gz
+####     M10664.NC_001640.1.vcf.gz.tbi
+
+bcftools filter  -r NC_001640.1  M10664.vcf.gz > M10664.NC_001640.1.vcf; bgzip M10664.NC_001640.1.vcf; tabix M10664.NC_001640.1.vcf.gz
+
+
+########
+#### stage: NC_009175_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009175.3.vcf.gz
+####     M10664.NC_009175.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009175.3  M10664.vcf.gz > M10664.NC_009175.3.vcf; bgzip M10664.NC_009175.3.vcf; tabix M10664.NC_009175.3.vcf.gz
+
+
+########
+#### stage: NC_009145_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009145.3.vcf.gz
+####     M10664.NC_009145.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009145.3  M10664.vcf.gz > M10664.NC_009145.3.vcf; bgzip M10664.NC_009145.3.vcf; tabix M10664.NC_009145.3.vcf.gz
+
+
+########
+#### stage: NC_009144_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009144.3.vcf.gz
+####     M10664.NC_009144.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009144.3  M10664.vcf.gz > M10664.NC_009144.3.vcf; bgzip M10664.NC_009144.3.vcf; tabix M10664.NC_009144.3.vcf.gz
+
+
+########
+#### stage: NC_009148_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009148.3.bai
+####     M10664.NC_009148.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009148.3   > M10664.NC_009148.3.bam; samtools index M10664.NC_009148.3.bam M10664.NC_009148.3.bai
+
+
+########
+#### stage: NC_009150_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009150.3.vcf.gz
+####     M10664.NC_009150.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009150.3  M10664.vcf.gz > M10664.NC_009150.3.vcf; bgzip M10664.NC_009150.3.vcf; tabix M10664.NC_009150.3.vcf.gz
+
+
+########
+#### stage: NC_009155_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009155.3.bai
+####     M10664.NC_009155.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009155.3   > M10664.NC_009155.3.bam; samtools index M10664.NC_009155.3.bam M10664.NC_009155.3.bai
+
+
+########
+#### stage: NC_009165_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009165.3.bai
+####     M10664.NC_009165.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009165.3   > M10664.NC_009165.3.bam; samtools index M10664.NC_009165.3.bam M10664.NC_009165.3.bai
+
+
+########
+#### stage: NC_009166_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009166.3.vcf.gz
+####     M10664.NC_009166.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009166.3  M10664.vcf.gz > M10664.NC_009166.3.vcf; bgzip M10664.NC_009166.3.vcf; tabix M10664.NC_009166.3.vcf.gz
+
+
+########
+#### stage: NC_009174_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009174.3.vcf.gz
+####     M10664.NC_009174.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009174.3  M10664.vcf.gz > M10664.NC_009174.3.vcf; bgzip M10664.NC_009174.3.vcf; tabix M10664.NC_009174.3.vcf.gz
+
+
+########
+#### stage: NC_009167_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009167.3.vcf.gz
+####     M10664.NC_009167.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009167.3  M10664.vcf.gz > M10664.NC_009167.3.vcf; bgzip M10664.NC_009167.3.vcf; tabix M10664.NC_009167.3.vcf.gz
+
+
+########
+#### stage: NC_009169_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009169.3.bai
+####     M10664.NC_009169.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009169.3   > M10664.NC_009169.3.bam; samtools index M10664.NC_009169.3.bam M10664.NC_009169.3.bai
+
+
+########
+#### stage: NC_009175_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009175.3.bai
+####     M10664.NC_009175.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009175.3   > M10664.NC_009175.3.bam; samtools index M10664.NC_009175.3.bam M10664.NC_009175.3.bai
+
+
+########
+#### stage: NC_009164_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009164.3.vcf.gz
+####     M10664.NC_009164.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009164.3  M10664.vcf.gz > M10664.NC_009164.3.vcf; bgzip M10664.NC_009164.3.vcf; tabix M10664.NC_009164.3.vcf.gz
+
+
+########
+#### stage: NC_009146_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009146.3.vcf.gz
+####     M10664.NC_009146.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009146.3  M10664.vcf.gz > M10664.NC_009146.3.vcf; bgzip M10664.NC_009146.3.vcf; tabix M10664.NC_009146.3.vcf.gz
+
+
+########
+#### stage: NC_009144_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009144.3.bai
+####     M10664.NC_009144.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009144.3   > M10664.NC_009144.3.bam; samtools index M10664.NC_009144.3.bam M10664.NC_009144.3.bai
+
+
+########
+#### stage: NC_009173_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009173.3.vcf.gz
+####     M10664.NC_009173.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009173.3  M10664.vcf.gz > M10664.NC_009173.3.vcf; bgzip M10664.NC_009173.3.vcf; tabix M10664.NC_009173.3.vcf.gz
+
+
+########
+#### stage: NC_009149_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009149.3.vcf.gz
+####     M10664.NC_009149.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009149.3  M10664.vcf.gz > M10664.NC_009149.3.vcf; bgzip M10664.NC_009149.3.vcf; tabix M10664.NC_009149.3.vcf.gz
+
+
+########
+#### stage: NC_009170_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009170.3.vcf.gz
+####     M10664.NC_009170.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009170.3  M10664.vcf.gz > M10664.NC_009170.3.vcf; bgzip M10664.NC_009170.3.vcf; tabix M10664.NC_009170.3.vcf.gz
+
+
+########
+#### stage: NC_009160_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009160.3.bai
+####     M10664.NC_009160.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009160.3   > M10664.NC_009160.3.bam; samtools index M10664.NC_009160.3.bam M10664.NC_009160.3.bai
+
+
+########
+#### stage: NC_009154_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009154.3.vcf.gz
+####     M10664.NC_009154.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009154.3  M10664.vcf.gz > M10664.NC_009154.3.vcf; bgzip M10664.NC_009154.3.vcf; tabix M10664.NC_009154.3.vcf.gz
+
+
+########
+#### stage: NC_009163_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009163.3.bai
+####     M10664.NC_009163.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009163.3   > M10664.NC_009163.3.bam; samtools index M10664.NC_009163.3.bam M10664.NC_009163.3.bai
+
+
+########
+#### stage: unplaced_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####     regions.bed
+####   outputs:
+####     M10664.regions.bai
+####     M10664.regions.bam
+
+samtools view -bh -@ `nproc` M10664.bam  -L regions.bed > M10664.regions.bam; samtools index M10664.regions.bam M10664.regions.bai
+
+
+########
+#### stage: NC_009161_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009161.3.bai
+####     M10664.NC_009161.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009161.3   > M10664.NC_009161.3.bam; samtools index M10664.NC_009161.3.bam M10664.NC_009161.3.bai
+
+
+########
+#### stage: NC_009155_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009155.3.vcf.gz
+####     M10664.NC_009155.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009155.3  M10664.vcf.gz > M10664.NC_009155.3.vcf; bgzip M10664.NC_009155.3.vcf; tabix M10664.NC_009155.3.vcf.gz
+
+
+########
+#### stage: NC_009147_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009147.3.bai
+####     M10664.NC_009147.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009147.3   > M10664.NC_009147.3.bam; samtools index M10664.NC_009147.3.bam M10664.NC_009147.3.bai
+
+
+########
+#### stage: NC_009170_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009170.3.bai
+####     M10664.NC_009170.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009170.3   > M10664.NC_009170.3.bam; samtools index M10664.NC_009170.3.bam M10664.NC_009170.3.bai
+
+
+########
+#### stage: NC_009157_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009157.3.vcf.gz
+####     M10664.NC_009157.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009157.3  M10664.vcf.gz > M10664.NC_009157.3.vcf; bgzip M10664.NC_009157.3.vcf; tabix M10664.NC_009157.3.vcf.gz
+
+
+########
+#### stage: NC_009173_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009173.3.bai
+####     M10664.NC_009173.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009173.3   > M10664.NC_009173.3.bam; samtools index M10664.NC_009173.3.bam M10664.NC_009173.3.bai
+
+
+########
+#### stage: NC_009167_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009167.3.bai
+####     M10664.NC_009167.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009167.3   > M10664.NC_009167.3.bam; samtools index M10664.NC_009167.3.bam M10664.NC_009167.3.bai
+
+
+########
+#### stage: NC_009156_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009156.3.bai
+####     M10664.NC_009156.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009156.3   > M10664.NC_009156.3.bam; samtools index M10664.NC_009156.3.bam M10664.NC_009156.3.bai
+
+
+########
+#### stage: NC_009154_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009154.3.bai
+####     M10664.NC_009154.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009154.3   > M10664.NC_009154.3.bam; samtools index M10664.NC_009154.3.bam M10664.NC_009154.3.bai
+
+
+########
+#### stage: NC_009174_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009174.3.bai
+####     M10664.NC_009174.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009174.3   > M10664.NC_009174.3.bam; samtools index M10664.NC_009174.3.bam M10664.NC_009174.3.bai
+
+
+########
+#### stage: unplaced_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####     regions.bed
+####   outputs:
+####     M10664.regions.vcf.gz
+####     M10664.regions.vcf.gz.tbi
+
+bcftools filter   -R regions.bed M10664.vcf.gz > M10664.regions.vcf; bgzip M10664.regions.vcf; tabix M10664.regions.vcf.gz
+
+
+########
+#### stage: NC_009169_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009169.3.vcf.gz
+####     M10664.NC_009169.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009169.3  M10664.vcf.gz > M10664.NC_009169.3.vcf; bgzip M10664.NC_009169.3.vcf; tabix M10664.NC_009169.3.vcf.gz
+
+
+########
+#### stage: NC_009152_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009152.3.vcf.gz
+####     M10664.NC_009152.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009152.3  M10664.vcf.gz > M10664.NC_009152.3.vcf; bgzip M10664.NC_009152.3.vcf; tabix M10664.NC_009152.3.vcf.gz
+
+
+########
+#### stage: NC_009162_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009162.3.vcf.gz
+####     M10664.NC_009162.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009162.3  M10664.vcf.gz > M10664.NC_009162.3.vcf; bgzip M10664.NC_009162.3.vcf; tabix M10664.NC_009162.3.vcf.gz
+
+
+########
+#### stage: NC_009148_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009148.3.vcf.gz
+####     M10664.NC_009148.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009148.3  M10664.vcf.gz > M10664.NC_009148.3.vcf; bgzip M10664.NC_009148.3.vcf; tabix M10664.NC_009148.3.vcf.gz
+
+
+########
+#### stage: NC_009160_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009160.3.vcf.gz
+####     M10664.NC_009160.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009160.3  M10664.vcf.gz > M10664.NC_009160.3.vcf; bgzip M10664.NC_009160.3.vcf; tabix M10664.NC_009160.3.vcf.gz
+
+
+########
+#### stage: NC_009165_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009165.3.vcf.gz
+####     M10664.NC_009165.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009165.3  M10664.vcf.gz > M10664.NC_009165.3.vcf; bgzip M10664.NC_009165.3.vcf; tabix M10664.NC_009165.3.vcf.gz
+
+
+########
+#### stage: NC_009158_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009158.3.vcf.gz
+####     M10664.NC_009158.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009158.3  M10664.vcf.gz > M10664.NC_009158.3.vcf; bgzip M10664.NC_009158.3.vcf; tabix M10664.NC_009158.3.vcf.gz
+
+
+########
+#### stage: NC_009153_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009153.3.bai
+####     M10664.NC_009153.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009153.3   > M10664.NC_009153.3.bam; samtools index M10664.NC_009153.3.bam M10664.NC_009153.3.bai
+
+
+########
+#### stage: NC_009171_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009171.3.bai
+####     M10664.NC_009171.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009171.3   > M10664.NC_009171.3.bam; samtools index M10664.NC_009171.3.bam M10664.NC_009171.3.bai
+
+
+########
+#### stage: NC_009168_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009168.3.bai
+####     M10664.NC_009168.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009168.3   > M10664.NC_009168.3.bam; samtools index M10664.NC_009168.3.bam M10664.NC_009168.3.bai
+
+
+########
+#### stage: NC_009158_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009158.3.bai
+####     M10664.NC_009158.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009158.3   > M10664.NC_009158.3.bam; samtools index M10664.NC_009158.3.bam M10664.NC_009158.3.bai
+
+
+########
+#### stage: NC_009159_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009159.3.bai
+####     M10664.NC_009159.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009159.3   > M10664.NC_009159.3.bam; samtools index M10664.NC_009159.3.bam M10664.NC_009159.3.bai
+
+
+########
+#### stage: NC_009162_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009162.3.bai
+####     M10664.NC_009162.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009162.3   > M10664.NC_009162.3.bam; samtools index M10664.NC_009162.3.bam M10664.NC_009162.3.bai
+
+
+########
+#### stage: NC_009151_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009151.3.vcf.gz
+####     M10664.NC_009151.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009151.3  M10664.vcf.gz > M10664.NC_009151.3.vcf; bgzip M10664.NC_009151.3.vcf; tabix M10664.NC_009151.3.vcf.gz
+
+
+########
+#### stage: NC_009149_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009149.3.bai
+####     M10664.NC_009149.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009149.3   > M10664.NC_009149.3.bam; samtools index M10664.NC_009149.3.bam M10664.NC_009149.3.bai
+
+
+########
+#### stage: NC_009152_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009152.3.bai
+####     M10664.NC_009152.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009152.3   > M10664.NC_009152.3.bam; samtools index M10664.NC_009152.3.bam M10664.NC_009152.3.bai
+
+
+########
+#### stage: NC_009168_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009168.3.vcf.gz
+####     M10664.NC_009168.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009168.3  M10664.vcf.gz > M10664.NC_009168.3.vcf; bgzip M10664.NC_009168.3.vcf; tabix M10664.NC_009168.3.vcf.gz
+
+
+########
+#### stage: NC_009159_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009159.3.vcf.gz
+####     M10664.NC_009159.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009159.3  M10664.vcf.gz > M10664.NC_009159.3.vcf; bgzip M10664.NC_009159.3.vcf; tabix M10664.NC_009159.3.vcf.gz
+
+
+########
+#### stage: NC_009147_3_vcf
+####   inputs:
+####     M10664.vcf.gz
+####     M10664.vcf.gz.tbi
+####   outputs:
+####     M10664.NC_009147.3.vcf.gz
+####     M10664.NC_009147.3.vcf.gz.tbi
+
+bcftools filter  -r NC_009147.3  M10664.vcf.gz > M10664.NC_009147.3.vcf; bgzip M10664.NC_009147.3.vcf; tabix M10664.NC_009147.3.vcf.gz
+
+
+########
+#### stage: NC_009145_3_bam
+####   inputs:
+####     M10664.bai
+####     M10664.bam
+####   outputs:
+####     M10664.NC_009145.3.bai
+####     M10664.NC_009145.3.bam
+
+samtools view -bh -@ `nproc` M10664.bam NC_009145.3   > M10664.NC_009145.3.bam; samtools index M10664.NC_009145.3.bam M10664.NC_009145.3.bai
+
+
+
+#   outputs:
+#     M10664/M10664.NC_001640.1.bai (from NC_001640_1_bam)
+#     M10664/M10664.NC_001640.1.bam (from NC_001640_1_bam)
+#     M10664/M10664.NC_001640.1.vcf.gz (from NC_001640_1_vcf)
+#     M10664/M10664.NC_001640.1.vcf.gz.tbi (from NC_001640_1_vcf)
+#     M10664/M10664.NC_009144.3.bai (from NC_009144_3_bam)
+#     M10664/M10664.NC_009144.3.bam (from NC_009144_3_bam)
+#     M10664/M10664.NC_009144.3.vcf.gz (from NC_009144_3_vcf)
+#     M10664/M10664.NC_009144.3.vcf.gz.tbi (from NC_009144_3_vcf)
+#     M10664/M10664.NC_009145.3.bai (from NC_009145_3_bam)
+#     M10664/M10664.NC_009145.3.bam (from NC_009145_3_bam)
+#     M10664/M10664.NC_009145.3.vcf.gz (from NC_009145_3_vcf)
+#     M10664/M10664.NC_009145.3.vcf.gz.tbi (from NC_009145_3_vcf)
+#     M10664/M10664.NC_009146.3.bai (from NC_009146_3_bam)
+#     M10664/M10664.NC_009146.3.bam (from NC_009146_3_bam)
+#     M10664/M10664.NC_009146.3.vcf.gz (from NC_009146_3_vcf)
+#     M10664/M10664.NC_009146.3.vcf.gz.tbi (from NC_009146_3_vcf)
+#     M10664/M10664.NC_009147.3.bai (from NC_009147_3_bam)
+#     M10664/M10664.NC_009147.3.bam (from NC_009147_3_bam)
+#     M10664/M10664.NC_009147.3.vcf.gz (from NC_009147_3_vcf)
+#     M10664/M10664.NC_009147.3.vcf.gz.tbi (from NC_009147_3_vcf)
+#     M10664/M10664.NC_009148.3.bai (from NC_009148_3_bam)
+#     M10664/M10664.NC_009148.3.bam (from NC_009148_3_bam)
+#     M10664/M10664.NC_009148.3.vcf.gz (from NC_009148_3_vcf)
+#     M10664/M10664.NC_009148.3.vcf.gz.tbi (from NC_009148_3_vcf)
+#     M10664/M10664.NC_009149.3.bai (from NC_009149_3_bam)
+#     M10664/M10664.NC_009149.3.bam (from NC_009149_3_bam)
+#     M10664/M10664.NC_009149.3.vcf.gz (from NC_009149_3_vcf)
+#     M10664/M10664.NC_009149.3.vcf.gz.tbi (from NC_009149_3_vcf)
+#     M10664/M10664.NC_009150.3.bai (from NC_009150_3_bam)
+#     M10664/M10664.NC_009150.3.bam (from NC_009150_3_bam)
+#     M10664/M10664.NC_009150.3.vcf.gz (from NC_009150_3_vcf)
+#     M10664/M10664.NC_009150.3.vcf.gz.tbi (from NC_009150_3_vcf)
+#     M10664/M10664.NC_009151.3.bai (from NC_009151_3_bam)
+#     M10664/M10664.NC_009151.3.bam (from NC_009151_3_bam)
+#     M10664/M10664.NC_009151.3.vcf.gz (from NC_009151_3_vcf)
+#     M10664/M10664.NC_009151.3.vcf.gz.tbi (from NC_009151_3_vcf)
+#     M10664/M10664.NC_009152.3.bai (from NC_009152_3_bam)
+#     M10664/M10664.NC_009152.3.bam (from NC_009152_3_bam)
+#     M10664/M10664.NC_009152.3.vcf.gz (from NC_009152_3_vcf)
+#     M10664/M10664.NC_009152.3.vcf.gz.tbi (from NC_009152_3_vcf)
+#     M10664/M10664.NC_009153.3.bai (from NC_009153_3_bam)
+#     M10664/M10664.NC_009153.3.bam (from NC_009153_3_bam)
+#     M10664/M10664.NC_009153.3.vcf.gz (from NC_009153_3_vcf)
+#     M10664/M10664.NC_009153.3.vcf.gz.tbi (from NC_009153_3_vcf)
+#     M10664/M10664.NC_009154.3.bai (from NC_009154_3_bam)
+#     M10664/M10664.NC_009154.3.bam (from NC_009154_3_bam)
+#     M10664/M10664.NC_009154.3.vcf.gz (from NC_009154_3_vcf)
+#     M10664/M10664.NC_009154.3.vcf.gz.tbi (from NC_009154_3_vcf)
+#     M10664/M10664.NC_009155.3.bai (from NC_009155_3_bam)
+#     M10664/M10664.NC_009155.3.bam (from NC_009155_3_bam)
+#     M10664/M10664.NC_009155.3.vcf.gz (from NC_009155_3_vcf)
+#     M10664/M10664.NC_009155.3.vcf.gz.tbi (from NC_009155_3_vcf)
+#     M10664/M10664.NC_009156.3.bai (from NC_009156_3_bam)
+#     M10664/M10664.NC_009156.3.bam (from NC_009156_3_bam)
+#     M10664/M10664.NC_009156.3.vcf.gz (from NC_009156_3_vcf)
+#     M10664/M10664.NC_009156.3.vcf.gz.tbi (from NC_009156_3_vcf)
+#     M10664/M10664.NC_009157.3.bai (from NC_009157_3_bam)
+#     M10664/M10664.NC_009157.3.bam (from NC_009157_3_bam)
+#     M10664/M10664.NC_009157.3.vcf.gz (from NC_009157_3_vcf)
+#     M10664/M10664.NC_009157.3.vcf.gz.tbi (from NC_009157_3_vcf)
+#     M10664/M10664.NC_009158.3.bai (from NC_009158_3_bam)
+#     M10664/M10664.NC_009158.3.bam (from NC_009158_3_bam)
+#     M10664/M10664.NC_009158.3.vcf.gz (from NC_009158_3_vcf)
+#     M10664/M10664.NC_009158.3.vcf.gz.tbi (from NC_009158_3_vcf)
+#     M10664/M10664.NC_009159.3.bai (from NC_009159_3_bam)
+#     M10664/M10664.NC_009159.3.bam (from NC_009159_3_bam)
+#     M10664/M10664.NC_009159.3.vcf.gz (from NC_009159_3_vcf)
+#     M10664/M10664.NC_009159.3.vcf.gz.tbi (from NC_009159_3_vcf)
+#     M10664/M10664.NC_009160.3.bai (from NC_009160_3_bam)
+#     M10664/M10664.NC_009160.3.bam (from NC_009160_3_bam)
+#     M10664/M10664.NC_009160.3.vcf.gz (from NC_009160_3_vcf)
+#     M10664/M10664.NC_009160.3.vcf.gz.tbi (from NC_009160_3_vcf)
+#     M10664/M10664.NC_009161.3.bai (from NC_009161_3_bam)
+#     M10664/M10664.NC_009161.3.bam (from NC_009161_3_bam)
+#     M10664/M10664.NC_009161.3.vcf.gz (from NC_009161_3_vcf)
+#     M10664/M10664.NC_009161.3.vcf.gz.tbi (from NC_009161_3_vcf)
+#     M10664/M10664.NC_009162.3.bai (from NC_009162_3_bam)
+#     M10664/M10664.NC_009162.3.bam (from NC_009162_3_bam)
+#     M10664/M10664.NC_009162.3.vcf.gz (from NC_009162_3_vcf)
+#     M10664/M10664.NC_009162.3.vcf.gz.tbi (from NC_009162_3_vcf)
+#     M10664/M10664.NC_009163.3.bai (from NC_009163_3_bam)
+#     M10664/M10664.NC_009163.3.bam (from NC_009163_3_bam)
+#     M10664/M10664.NC_009163.3.vcf.gz (from NC_009163_3_vcf)
+#     M10664/M10664.NC_009163.3.vcf.gz.tbi (from NC_009163_3_vcf)
+#     M10664/M10664.NC_009164.3.bai (from NC_009164_3_bam)
+#     M10664/M10664.NC_009164.3.bam (from NC_009164_3_bam)
+#     M10664/M10664.NC_009164.3.vcf.gz (from NC_009164_3_vcf)
+#     M10664/M10664.NC_009164.3.vcf.gz.tbi (from NC_009164_3_vcf)
+#     M10664/M10664.NC_009165.3.bai (from NC_009165_3_bam)
+#     M10664/M10664.NC_009165.3.bam (from NC_009165_3_bam)
+#     M10664/M10664.NC_009165.3.vcf.gz (from NC_009165_3_vcf)
+#     M10664/M10664.NC_009165.3.vcf.gz.tbi (from NC_009165_3_vcf)
+#     M10664/M10664.NC_009166.3.bai (from NC_009166_3_bam)
+#     M10664/M10664.NC_009166.3.bam (from NC_009166_3_bam)
+#     M10664/M10664.NC_009166.3.vcf.gz (from NC_009166_3_vcf)
+#     M10664/M10664.NC_009166.3.vcf.gz.tbi (from NC_009166_3_vcf)
+#     M10664/M10664.NC_009167.3.bai (from NC_009167_3_bam)
+#     M10664/M10664.NC_009167.3.bam (from NC_009167_3_bam)
+#     M10664/M10664.NC_009167.3.vcf.gz (from NC_009167_3_vcf)
+#     M10664/M10664.NC_009167.3.vcf.gz.tbi (from NC_009167_3_vcf)
+#     M10664/M10664.NC_009168.3.bai (from NC_009168_3_bam)
+#     M10664/M10664.NC_009168.3.bam (from NC_009168_3_bam)
+#     M10664/M10664.NC_009168.3.vcf.gz (from NC_009168_3_vcf)
+#     M10664/M10664.NC_009168.3.vcf.gz.tbi (from NC_009168_3_vcf)
+#     M10664/M10664.NC_009169.3.bai (from NC_009169_3_bam)
+#     M10664/M10664.NC_009169.3.bam (from NC_009169_3_bam)
+#     M10664/M10664.NC_009169.3.vcf.gz (from NC_009169_3_vcf)
+#     M10664/M10664.NC_009169.3.vcf.gz.tbi (from NC_009169_3_vcf)
+#     M10664/M10664.NC_009170.3.bai (from NC_009170_3_bam)
+#     M10664/M10664.NC_009170.3.bam (from NC_009170_3_bam)
+#     M10664/M10664.NC_009170.3.vcf.gz (from NC_009170_3_vcf)
+#     M10664/M10664.NC_009170.3.vcf.gz.tbi (from NC_009170_3_vcf)
+#     M10664/M10664.NC_009171.3.bai (from NC_009171_3_bam)
+#     M10664/M10664.NC_009171.3.bam (from NC_009171_3_bam)
+#     M10664/M10664.NC_009171.3.vcf.gz (from NC_009171_3_vcf)
+#     M10664/M10664.NC_009171.3.vcf.gz.tbi (from NC_009171_3_vcf)
+#     M10664/M10664.NC_009172.3.bai (from NC_009172_3_bam)
+#     M10664/M10664.NC_009172.3.bam (from NC_009172_3_bam)
+#     M10664/M10664.NC_009172.3.vcf.gz (from NC_009172_3_vcf)
+#     M10664/M10664.NC_009172.3.vcf.gz.tbi (from NC_009172_3_vcf)
+#     M10664/M10664.NC_009173.3.bai (from NC_009173_3_bam)
+#     M10664/M10664.NC_009173.3.bam (from NC_009173_3_bam)
+#     M10664/M10664.NC_009173.3.vcf.gz (from NC_009173_3_vcf)
+#     M10664/M10664.NC_009173.3.vcf.gz.tbi (from NC_009173_3_vcf)
+#     M10664/M10664.NC_009174.3.bai (from NC_009174_3_bam)
+#     M10664/M10664.NC_009174.3.bam (from NC_009174_3_bam)
+#     M10664/M10664.NC_009174.3.vcf.gz (from NC_009174_3_vcf)
+#     M10664/M10664.NC_009174.3.vcf.gz.tbi (from NC_009174_3_vcf)
+#     M10664/M10664.NC_009175.3.bai (from NC_009175_3_bam)
+#     M10664/M10664.NC_009175.3.bam (from NC_009175_3_bam)
+#     M10664/M10664.NC_009175.3.vcf.gz (from NC_009175_3_vcf)
+#     M10664/M10664.NC_009175.3.vcf.gz.tbi (from NC_009175_3_vcf)
+#     M10664/M10664.NW_unplaced.bai (from unplaced_bam)
+#     M10664/M10664.NW_unplaced.bam (from unplaced_bam)
+#     M10664/M10664.unplaced.vcf.gz (from unplaced_vcf)
+#     M10664/M10664.unplaced.vcf.gz.tbi (from unplaced_vcf)

@@ -1,0 +1,347 @@
+# CON26
+#
+#   inputs:
+#     CON26_D1C8HACXX_7_1_001.fq.gz 68545b69bcea051e48911ae90455f50e
+#     CON26_D1C8HACXX_7_2_001.fq.gz 143d89413350f2652b3a8735dae869f8
+#     CON26_D1C9AACXX_8_1_001.fq.gz ff189a8204eb1b5863d656a89e977bc7
+#     CON26_D1C9AACXX_8_2_001.fq.gz 1017d2388edc823a9860d69b45b85299
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna ff47fb2cc3e2202f52532ad6c6dd0d91
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.amb 5226896f8ffa51570430f78377135807
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.ann 8bfc05fd4e48d00185627c097c0c9262
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.bwt f8c781c91605f4592dcd445fd0e75ba6
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.dict 7b404b2d6dfc4f35383569c89be73969
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.fai 3024e6675b85baf7defddaf70095b223
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.pac d2b1e11e729ab86a5365b6d119de993c
+#     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fna.sa 4cb8cbb9ec66b114f283fb8bd23174ca
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz e70070e7dc72fb1a1a99c55191922285
+#     MNEc2M.EquCab3.09182018.recode.rmGT.refseqnames.vcf.gz.tbi cb8aeefca747f82ed82f60f6ee483781
+
+
+########
+#### stage: trim_D1C9AACXX_8
+####   inputs:
+####     CON26_D1C9AACXX_8_1.fastq.gz
+####     CON26_D1C9AACXX_8_2.fastq.gz
+####   outputs:
+####     CON26_D1C9AACXX_8_1_paired.fq.gz
+####     CON26_D1C9AACXX_8_1_unpaired.fq.gz
+####     CON26_D1C9AACXX_8_2_paired.fq.gz
+####     CON26_D1C9AACXX_8_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` CON26_D1C9AACXX_8_1.fastq.gz CON26_D1C9AACXX_8_2.fastq.gz CON26_D1C9AACXX_8_1_paired.fq.gz CON26_D1C9AACXX_8_1_unpaired.fq.gz CON26_D1C9AACXX_8_2_paired.fq.gz CON26_D1C9AACXX_8_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_D1C9AACXX_8_2
+####   inputs:
+####     CON26_D1C9AACXX_8_2.fq.gz
+####   outputs:
+####     CON26_D1C9AACXX_8_2_fastqc.html
+####     CON26_D1C9AACXX_8_2_fastqc.zip
+
+fastqc  CON26_D1C9AACXX_8_2.fq.gz 
+
+
+########
+#### stage: trim_D1C8HACXX_7
+####   inputs:
+####     CON26_D1C8HACXX_7_1.fastq.gz
+####     CON26_D1C8HACXX_7_2.fastq.gz
+####   outputs:
+####     CON26_D1C8HACXX_7_1_paired.fq.gz
+####     CON26_D1C8HACXX_7_1_unpaired.fq.gz
+####     CON26_D1C8HACXX_7_2_paired.fq.gz
+####     CON26_D1C8HACXX_7_2_unpaired.fq.gz
+
+Trimmomatic PE -threads `nproc` CON26_D1C8HACXX_7_1.fastq.gz CON26_D1C8HACXX_7_2.fastq.gz CON26_D1C8HACXX_7_1_paired.fq.gz CON26_D1C8HACXX_7_1_unpaired.fq.gz CON26_D1C8HACXX_7_2_paired.fq.gz CON26_D1C8HACXX_7_2_unpaired.fq.gz ILLUMINACLIP:/usr/local/trimmomatic/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:50
+
+
+########
+#### stage: fastqc_D1C8HACXX_7_1
+####   inputs:
+####     CON26_D1C8HACXX_7_1.fq.gz
+####   outputs:
+####     CON26_D1C8HACXX_7_1_fastqc.html
+####     CON26_D1C8HACXX_7_1_fastqc.zip
+
+fastqc  CON26_D1C8HACXX_7_1.fq.gz 
+
+
+########
+#### stage: bwa_D1C8HACXX_7
+####   inputs:
+####     CON26_D1C8HACXX_7_1.fq.gz (from trim_D1C8HACXX_7)
+####     CON26_D1C8HACXX_7_2.fq.gz (from trim_D1C8HACXX_7)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     CON26_D1C8HACXX_7.sorted.bai
+####     CON26_D1C8HACXX_7.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1C8HACXX.7\tLB:D1C8HACXX.7\tPL:ILLUMINA\tPU:D1C8HACXX.7.UNKNOWN\tSM:CON26' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta CON26_D1C8HACXX_7_1.fq.gz CON26_D1C8HACXX_7_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o CON26_D1C8HACXX_7.sorted.bam -; samtools index CON26_D1C8HACXX_7.sorted.bam CON26_D1C8HACXX_7.sorted.bai
+
+
+########
+#### stage: fastqc_D1C8HACXX_7_2
+####   inputs:
+####     CON26_D1C8HACXX_7_2.fq.gz
+####   outputs:
+####     CON26_D1C8HACXX_7_2_fastqc.html
+####     CON26_D1C8HACXX_7_2_fastqc.zip
+
+fastqc  CON26_D1C8HACXX_7_2.fq.gz 
+
+
+########
+#### stage: fastqc_D1C9AACXX_8_1
+####   inputs:
+####     CON26_D1C9AACXX_8_1.fq.gz
+####   outputs:
+####     CON26_D1C9AACXX_8_1_fastqc.html
+####     CON26_D1C9AACXX_8_1_fastqc.zip
+
+fastqc  CON26_D1C9AACXX_8_1.fq.gz 
+
+
+########
+#### stage: bwa_D1C9AACXX_8
+####   inputs:
+####     CON26_D1C9AACXX_8_1.fq.gz (from trim_D1C9AACXX_8)
+####     CON26_D1C9AACXX_8_2.fq.gz (from trim_D1C9AACXX_8)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.amb
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.ann
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.bwt
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.pac
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.sa
+####   outputs:
+####     CON26_D1C9AACXX_8.sorted.bai
+####     CON26_D1C9AACXX_8.sorted.bam
+
+bwa mem -M -t `nproc` -R '@RG\tID:D1C9AACXX.8\tLB:D1C9AACXX.8\tPL:ILLUMINA\tPU:D1C9AACXX.8.UNKNOWN\tSM:CON26' GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta CON26_D1C9AACXX_8_1.fq.gz CON26_D1C9AACXX_8_2.fq.gz | samtools view -b - | samtools sort -@ `nproc` -o CON26_D1C9AACXX_8.sorted.bam -; samtools index CON26_D1C9AACXX_8.sorted.bam CON26_D1C9AACXX_8.sorted.bai
+
+
+########
+#### stage: merge_bam
+####   inputs:
+####     CON26_D1C8HACXX_7.bam (from bwa_D1C8HACXX_7)
+####     CON26_D1C9AACXX_8.bam (from bwa_D1C9AACXX_8)
+####   outputs:
+####     CON26.merged.bai
+####     CON26.merged.bam
+
+samtools merge -@ `nproc` CON26.merged.bam CON26_D1C8HACXX_7.bam CON26_D1C9AACXX_8.bam ; samtools index CON26.merged.bam CON26.merged.bai
+
+
+########
+#### stage: mark_duplicates
+####   inputs:
+####     CON26.bam (from merge_bam)
+####   outputs:
+####     CON26.markduplicates.bam
+####     CON26.markduplicates.metrics.txt
+
+/usr/picard/docker_helper.sh MarkDuplicates I=CON26.bam O=CON26.markduplicates.bam M=CON26.markduplicates.metrics.txt
+
+
+########
+#### stage: index_mark_duplicates
+####   inputs:
+####     CON26.bam (from mark_duplicates)
+####   outputs:
+####     CON26.bai
+
+samtools index -@ `nproc` CON26.bam CON26.bai
+
+
+########
+#### stage: base_recalibration_table
+####   inputs:
+####     CON26.bai (from index_mark_duplicates)
+####     CON26.bam (from mark_duplicates)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     CON26.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I CON26.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O CON26.recalibration.table
+
+
+########
+#### stage: apply_bsqr
+####   inputs:
+####     CON26.bai (from index_mark_duplicates)
+####     CON26.bam (from mark_duplicates)
+####     CON26.recalibration.table (from base_recalibration_table)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####   outputs:
+####     CON26.recalibrated.bai
+####     CON26.recalibrated.bam
+
+gatk ApplyBQSR -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I CON26.bam --bqsr-recal-file CON26.recalibration.table -O CON26.recalibrated.bam
+
+
+########
+#### stage: base_recalibration_table_2
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     CON26.recalibration.table
+
+gatk BaseRecalibrator  -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I CON26.bam --known-sites GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O CON26.recalibration.table
+
+
+########
+#### stage: platypus_callvariants
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     CON26.platypuscallvariants.vcf.gz
+####     CON26.platypuscallvariants.vcf.gz.tbi
+
+Platypus.py callVariants --refFile=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta --bamFiles=CON26.bam --output=CON26.platypuscallvariants.vcf ; bgzip CON26.platypuscallvariants.vcf ; tabix -p vcf CON26.platypuscallvariants.vcf.gz
+
+
+########
+#### stage: samtools_unmapped
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####   outputs:
+####     CON26.unmapped.fq.gz
+
+samtools view  -u -b -f 4 CON26.bam | samtools fastq - | gzip -c - > CON26.unmapped.fq.gz
+
+
+########
+#### stage: analyze_covariates
+####   inputs:
+####     firstpass.table (from base_recalibration_table)
+####     secondpass.table (from base_recalibration_table_2)
+####   outputs:
+####     CON26.BQSR.csv
+####     CON26.BQSR.pdf
+
+gatk AnalyzeCovariates  -before firstpass.table -after secondpass.table -csv CON26.BQSR.csv -plots CON26.BQSR.pdf
+
+
+########
+#### stage: intervalbio_depthofcoverage
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####   outputs:
+####     CON26.coverage.tsv
+
+samtools depth CON26.bam | depth-of-coverage.py > CON26.coverage.tsv
+
+
+########
+#### stage: bcftools_mpileup
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta.fai
+####   outputs:
+####     CON26.samtoolsmpileup.vcf.gz
+####     CON26.samtoolsmpileup.vcf.gz.tbi
+
+bcftools mpileup -Ou -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta CON26.bam | bcftools call -Ou -mv | bcftools norm -f GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta -Oz -o CON26.samtoolsmpileup.vcf.gz ; tabix CON26.samtoolsmpileup.vcf.gz
+
+
+########
+#### stage: gatk_haplotypcaller
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.dict
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa.fai
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz.tbi
+####   outputs:
+####     CON26.gatk_haplotypecaller.vcf.gz
+####     CON26.gatk_haplotypecaller.vcf.gz.tbi
+
+gatk HaplotypeCaller  -ERC GVCF -R GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fa -I CON26.bam --dbsnp GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.vcf.gz -O CON26.gatk_haplotypecaller.vcf.gz ; tabix -p vcf CON26.gatk_haplotypecaller.vcf.gz
+
+
+########
+#### stage: picard_collectmultiplemetrics
+####   inputs:
+####     CON26.bai (from apply_bsqr)
+####     CON26.bam (from apply_bsqr)
+####     GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta
+####   outputs:
+####     CON26.metrics.alignment_summary_metrics
+####     CON26.metrics.base_distribution_by_cycle.pdf
+####     CON26.metrics.base_distribution_by_cycle_metrics
+####     CON26.metrics.insert_size_histogram.pdf
+####     CON26.metrics.insert_size_metrics
+####     CON26.metrics.quality_by_cycle.pdf
+####     CON26.metrics.quality_by_cycle_metrics
+####     CON26.metrics.quality_distribution.pdf
+####     CON26.metrics.quality_distribution_metrics
+
+/usr/picard/docker_helper.sh CollectMultipleMetrics R=GCF_002863925.1_EquCab3.0_genomic/GCF_002863925.1_EquCab3.0_genomic.fasta I=CON26.bam O=CON26.metrics
+
+
+
+#   outputs:
+#     CON26.bcftools.vcf.gz (from bcftools_mpileup)
+#     CON26.bcftools.vcf.gz.tbi (from bcftools_mpileup)
+#     CON26.gatk.gvcf.gz (from gatk_haplotypcaller)
+#     CON26.gatk.gvcf.gz.tbi (from gatk_haplotypcaller)
+#     CON26.platypus.vcf.gz (from platypus_callvariants)
+#     CON26.platypus.vcf.gz.tbi (from platypus_callvariants)
+#     CON26.recalibrated.bai (from apply_bsqr)
+#     CON26.recalibrated.bam (from apply_bsqr)
+#     fastqc/CON26_D1C8HACXX_7_1_fastqc.html (from fastqc_D1C8HACXX_7_1)
+#     fastqc/CON26_D1C8HACXX_7_1_fastqc.zip (from fastqc_D1C8HACXX_7_1)
+#     fastqc/CON26_D1C8HACXX_7_2_fastqc.html (from fastqc_D1C8HACXX_7_2)
+#     fastqc/CON26_D1C8HACXX_7_2_fastqc.zip (from fastqc_D1C8HACXX_7_2)
+#     fastqc/CON26_D1C9AACXX_8_1_fastqc.html (from fastqc_D1C9AACXX_8_1)
+#     fastqc/CON26_D1C9AACXX_8_1_fastqc.zip (from fastqc_D1C9AACXX_8_1)
+#     fastqc/CON26_D1C9AACXX_8_2_fastqc.html (from fastqc_D1C9AACXX_8_2)
+#     fastqc/CON26_D1C9AACXX_8_2_fastqc.zip (from fastqc_D1C9AACXX_8_2)
+#     metrics/BQSR.csv (from analyze_covariates)
+#     metrics/BQSR.pdf (from analyze_covariates)
+#     metrics/CON26.metrics.alignment_summary_metrics (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.base_distribution_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.base_distribution_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.insert_size_histogram.pdf (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.insert_size_metrics (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.quality_by_cycle.pdf (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.quality_by_cycle_metrics (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.quality_distribution.pdf (from picard_collectmultiplemetrics)
+#     metrics/CON26.metrics.quality_distribution_metrics (from picard_collectmultiplemetrics)
+#     metrics/coverage.tsv (from intervalbio_depthofcoverage)
+#     metrics/markduplicates.txt (from mark_duplicates)
+#     metrics/recalibration.after.table (from base_recalibration_table_2)
+#     metrics/recalibration.before.table (from base_recalibration_table)
+#     unmapped.fq.gz (from samtools_unmapped)
+#     unpaired/D1C8HACXX_7_1_unpaired.fq.gz (from trim_D1C8HACXX_7)
+#     unpaired/D1C8HACXX_7_2_unpaired.fq.gz (from trim_D1C8HACXX_7)
+#     unpaired/D1C9AACXX_8_1_unpaired.fq.gz (from trim_D1C9AACXX_8)
+#     unpaired/D1C9AACXX_8_2_unpaired.fq.gz (from trim_D1C9AACXX_8)
