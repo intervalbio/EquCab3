@@ -36,6 +36,8 @@ For each sample:
 
 The sequencing read data for the 549 samples were from multiple heterogenous sources, collected over several years with multiple generations of Illumina machines, different sequencing centers, and even different library preparation.  As such, the FASTQ data had a wide range in quality across the 549 samples, including single vs. paired-end reads, varying read lengths, inconsistent read quality distribution between samples, and even differing PHRED-encoding for the quality scores.
 
+Within each sample, base quality score recalibration was performed by annotating reads with read groups based on the instrument, run, flowcell, and lane of the read data.  Where possible this information was obtained through introspection of the sequence ids in the FASTQ data, otherwise it was entered manually based on other documentation.  Samples obtained from the SRA had this data stripped, and so for these samples they were each treated as a single recalibration domain.
+
 
 ### Joint Calling (phase 2a / 2b)
 
